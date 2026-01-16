@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Warrior Revival logo">
+  <defs>
+    <linearGradient id="shield" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b2c5f"/>
+      <stop offset="55%" stop-color="#0b2c5f"/>
+      <stop offset="55%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c62828"/>
+    </linearGradient>
+  </defs>
+  <path d="M128 16c36 0 69 8 92 22v84c0 67-46 105-92 118C82 227 36 189 36 122V38c23-14 56-22 92-22z" fill="#ffffff" stroke="#c62828" stroke-width="10"/>
+  <path d="M128 26c32 0 61 7 82 19v77c0 61-42 95-82 107-40-12-82-46-82-107V45c21-12 50-19 82-19z" fill="url(#shield)"/>
+  <g fill="#ffffff">
+    <path d="M48 58h76v50H48z" fill="#0b2c5f"/>
+    <g transform="translate(54 64)" fill="#ffffff">
+      <circle cx="6" cy="6" r="3"/>
+      <circle cx="26" cy="6" r="3"/>
+      <circle cx="46" cy="6" r="3"/>
+      <circle cx="16" cy="20" r="3"/>
+      <circle cx="36" cy="20" r="3"/>
+      <circle cx="6" cy="34" r="3"/>
+      <circle cx="26" cy="34" r="3"/>
+      <circle cx="46" cy="34" r="3"/>
+    </g>
+  </g>
+  <g fill="#ffffff">
+    <rect x="132" y="58" width="76" height="10"/>
+    <rect x="132" y="76" width="76" height="10"/>
+    <rect x="132" y="94" width="76" height="10"/>
+    <rect x="40" y="126" width="176" height="10"/>
+    <rect x="40" y="144" width="176" height="10"/>
+  </g>
+  <text x="128" y="116" text-anchor="middle" font-family="'Oswald', 'Arial Black', sans-serif" font-size="28" fill="#ffffff" letter-spacing="1">WARRIOR</text>
+  <text x="128" y="146" text-anchor="middle" font-family="'Oswald', 'Arial Black', sans-serif" font-size="28" fill="#ffffff" letter-spacing="1">REVIVAL</text>
+  <text x="128" y="186" text-anchor="middle" font-family="'Montserrat', Arial, sans-serif" font-size="11" fill="#ffffff" letter-spacing="1">MILITARY · TRANSITION · COMMUNITY</text>
+</svg>

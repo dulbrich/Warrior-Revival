@@ -64,13 +64,15 @@ export default function Home() {
       <header className="sticky top-0 z-20 border-b border-border bg-surface/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-lg font-semibold text-white">
-              WR
-            </span>
+            <img
+              src="/warrior-revival-logo.svg"
+              alt="Warrior Revival logo"
+              className="h-12 w-12"
+            />
             <div>
               <p className="font-heading text-lg font-semibold text-primary">Warrior Revival</p>
               <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-                Adventure & Belonging
+                Military, Transition, Community
               </p>
             </div>
           </div>
@@ -101,14 +103,15 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
-            Warrior Revival
+            Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-heading text-4xl font-semibold md:text-5xl">
-            Outdoor experiences that restore confidence, connection, and purpose.
+            SUPPORT &amp; EMPOWER VETERANS
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
-            We guide veterans, families, and supporters through adventure-based programs that
-            strengthen mental health, build friendships, and celebrate service.
+            Warrior Revival is a non-profit 501(c)(3) organization that was established in 2023
+            to support and empower Veterans and their families transition from the military to
+            civilian life through recreation, mentorship, wellness and therapeutic retreats.
           </p>
           <div className="flex flex-wrap gap-4">
             <button className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
