@@ -99,7 +99,7 @@ export default function Home() {
       </header>
 
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/together.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
