@@ -65,7 +65,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
           <div className="flex items-center gap-3">
             <img
-              src="/warrior-revival-logo.svg"
+              src="/logo.webp"
               alt="Warrior Revival logo"
               className="h-12 w-12"
             />
