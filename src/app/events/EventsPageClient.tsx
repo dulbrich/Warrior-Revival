@@ -34,10 +34,15 @@ const eventTypeFilters = [
     match: (event: (typeof events)[number]) => /lunch with vets/i.test(event.name)
   },
   {
+    id: "book-club",
+    label: "Book club",
+    match: (event: (typeof events)[number]) => /book club/i.test(event.name)
+  },
+  {
     id: "other",
     label: "Other events",
     match: (event: (typeof events)[number]) =>
-      !/hike|coffee hour|lunch with vets/i.test(event.name)
+      !/hike|coffee hour|lunch with vets|book club/i.test(event.name)
   }
 ];
 
@@ -730,7 +735,7 @@ export default function EventsPage() {
               <p className="text-sm font-semibold uppercase tracking-wide text-textSecondary">
                 Filters
               </p>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
                 {eventTypeFilters.map((filter) => (
                   <label key={filter.id} className="flex items-center gap-2 text-sm">
                     <input

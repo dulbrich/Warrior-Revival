@@ -20,11 +20,13 @@ export const buildEventId = (event: EventItem) => `${event.name}-${event.dateIso
 const hikeContact = { name: "Audrey", phone: "801-682-5939" };
 const alphaCoffeeAddress = "7260 S Racquet Club Dr, Cottonwood Heights, UT 84121";
 const battlePitAddress = "1895 Washington Blvd, Suite 300, Ogden, UT 84401";
+const bookClubAddress = "11550 S 700 E #100, Draper, UT";
 const suuAddress = "351 West University Boulevard, Cedar City, UT 84720";
 const suuRoom = "Escalante Room 144C, Sharwan Smith Student Center";
 const hikeImage = "/events/hiking.jpg";
 const coffeeImage = "/events/coffee.jpg";
 const lunchImage = "/events/lunch.jpg";
+const bookClubImage = "/events/books.jpg";
 
 export const events: EventItem[] = [
   {
@@ -34,6 +36,7 @@ export const events: EventItem[] = [
     timeLabel: "6:00 pm - 7:30 pm MDT",
     location: "Draper, UT",
     category: "Veteran + Support Person",
+    image: bookClubImage,
     register_link: ""
   },
   {
@@ -150,6 +153,63 @@ export const events: EventItem[] = [
     image: coffeeImage,
     address: alphaCoffeeAddress,
     notes: "Coffee donated by Alpha Coffee. Monthly volunteer meeting to follow.",
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-01-27",
+    dateLabel: "Jan 27, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    notes:
+      "Monthly book club. A new title is read and discussed each month. Light refreshments provided.",
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-02-24",
+    dateLabel: "Feb 24, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-03-31",
+    dateLabel: "Mar 31, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-04-28",
+    dateLabel: "Apr 28, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-05-26",
+    dateLabel: "May 26, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
     register_link: ""
   },
   {
