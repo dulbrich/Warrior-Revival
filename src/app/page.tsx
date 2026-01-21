@@ -56,10 +56,35 @@ const pathways = [
   }
 ];
 
-const stats = [
-  { value: "120+", label: "Outings hosted this year" },
-  { value: "1,400", label: "Veterans & family members served" },
-  { value: "85%", label: "Participants report improved wellbeing" }
+const focusAreas = [
+  {
+    title: "Reacreation",
+    description:
+      "We work to give Veterans a sense of belonging through recreation and fun activities. We are inspired to bring Veterans and civilians together to close the gap.",
+    cta: "Contact Us"
+  },
+  {
+    title: "Needs of All Veterans",
+    description:
+      "We strive to create a supportive network that fosters camaraderie and a sense of purpose. We are dedicated to being inclusive to meet the needs of all Veterans throughout the State of Utah.",
+    cta: "Join"
+  },
+  {
+    title: "Mentorship",
+    description:
+      "There is no road map or manual after leaving the military. Connecting with another Veteran who has been through the process can help ease the process."
+  },
+  {
+    title: "Therapeutic Retreats",
+    description:
+      "We offer retreats twice a year for Veterans and their families to normalize, educate, and raise awareness of the challenges experienced post-discharge."
+  },
+  {
+    title: "Community Partnership",
+    description:
+      "Through community partnerships, we can all work together to better the care of our community’s service members by offering activities that meet everyone’s interests and creates a sense of purpose and belonging.",
+    cta: "Join"
+  }
 ];
 
 const heroSlides = [
@@ -74,6 +99,7 @@ const heroSlideIntervalMs = 10000;
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (heroSlides.length < 2) {
@@ -125,8 +151,57 @@ export default function Home() {
               Donate
             </button>
           </div>
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="sr-only">Toggle menu</span>
+            <span className="relative block h-5 w-6" aria-hidden="true">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "translate-y-[9px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-4 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
         </div>
       </header>
+
+      <div
+        id="mobile-navigation"
+        className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
+          isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
+          <div className="grid gap-2 pt-2 text-sm font-semibold text-textSecondary">
+            {navigation.map((item) => (
+              <a
+                key={item}
+                href="#"
+                className="rounded-md px-3 py-2 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0" aria-hidden="true">
@@ -169,16 +244,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-3 md:px-8">
-        {stats.map((stat) => (
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-5">
+        {focusAreas.map((area) => (
           <div
-            key={stat.label}
-            className="rounded-2xl border border-border bg-surface p-6 shadow-card"
+            key={area.title}
+            className="flex h-full flex-col justify-between rounded-2xl border border-border bg-surface p-6 shadow-card transition-transform duration-300 ease-out hover:scale-[1.02]"
           >
-            <p className="text-3xl font-heading font-semibold text-primary md:text-4xl">
-              {stat.value}
-            </p>
-            <p className="mt-2 text-sm text-textSecondary">{stat.label}</p>
+            <div>
+              <p className="font-heading text-xl font-semibold text-primary md:text-2xl">
+                {area.title}
+              </p>
+              <p className="mt-3 text-sm text-textSecondary">{area.description}</p>
+            </div>
+            {area.cta && (
+              <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                {area.cta}
+              </button>
+            )}
           </div>
         ))}
       </section>
@@ -190,12 +272,16 @@ export default function Home() {
               Our mission
             </p>
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Building belonging through challenge, mentorship, and shared adventure.
+              Supporting Veterans and families through connection, wellness, and purpose.
             </h2>
             <p className="text-base text-textSecondary md:text-lg">
-              Warrior Revival blends evidence-based wellness programs with outdoor education.
-              Each experience is led by trained volunteers who understand military culture and
-              create space for healing conversations.
+              Warrior Revival&apos;s mission is to support and empower current and former Veterans
+              and their families transitioning from the military to civilian life. Through
+              recreation, wellness and therapeutic retreats, Warrior Revival is committed to
+              providing resources, guidance, and opportunities that help Veterans connect with one
+              another, and to civilians. We strive to create a supportive network that fosters
+              camaraderie, a sense of purpose, and to raise awareness of the unique challenges
+              Veterans face in the transition to civilian life.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl border border-border bg-light p-4">
@@ -333,7 +419,7 @@ export default function Home() {
           <div>
             <p className="font-heading text-base font-semibold text-primary">Warrior Revival</p>
             <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-              Salt Lake City, Utah
+              Sandy, Utah
             </p>
           </div>
           <p>Empowering veterans and families through adventure and belonging.</p>
