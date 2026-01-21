@@ -573,6 +573,30 @@ export const events: EventItem[] = [
     address: "2002 Soldier Hollow Lane, Midway, UT 84089",
     contact: hikeContact,
     notes: "Snow tubing winter activity. Pre-registration required via QR code.",
+    register_link: "https://secure.qgiv.com/for/warriorrevival/event/snowtubing/"
+  },
+  {
+    name: "Mission Ready: Southern Utah Military, Veteran & Family Wellness Fair",
+    dateIso: "2026-02-21",
+    dateLabel: "Feb 21, 2026",
+    timeLabel: "10:00 am - 2:00 pm MST",
+    location: "Southern Utah Military, Veteran & Family Wellness Fair",
+    category: "Community / Resource Fair",
+    notes:
+      "Organizations are invited to participate as exhibitors to provide resources and services to military members, veterans, and families. Focus areas: Employment & Education, Family Support, Health & Wellness, Benefits & Claims. Features: Food trucks, entertainment, family activities.",
+    register_link:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdhESI4wLfoNSdzEtF220Ctd_j0oXWyhEDAolcMTyrVrw1Wgg/viewform"
+  },
+  {
+    name: "Military Kids Roller Skate",
+    dateIso: "2026-04-11",
+    dateLabel: "Apr 11, 2026",
+    timeLabel: "9:00 am - 11:00 am",
+    location: "Neptune Skating, Ogden, UT",
+    category: "Veteran + Family / Military Kids",
+    address: "2770 Washington Blvd, Ogden, UT 84401",
+    notes:
+      "Purple Up event celebrating the Month of the Military Child. Registration opens February 11, 2026.",
     register_link: ""
   },
   {
@@ -591,7 +615,7 @@ export const events: EventItem[] = [
     timeLabel: "12:00 pm - 3:30 pm MST",
     location: "Park City, UT",
     category: "Veteran Only",
-    register_link: ""
+    register_link: "https://secure.qgiv.com/for/warriorrevival/event/nacskisnowboarding/"
   },
   {
     name: "Warrior Revival Summer Fun",

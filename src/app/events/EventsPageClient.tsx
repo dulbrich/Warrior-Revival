@@ -471,7 +471,7 @@ export default function EventsPage() {
             {event.notes}
           </div>
         ) : null}
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="flex flex-col gap-2">
           <a
             href={calendarLinks.googleUrl}
             target="_blank"
@@ -491,7 +491,9 @@ export default function EventsPage() {
         {event.register_link ? (
           <a
             href={event.register_link}
-            className="inline-flex w-fit items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-full items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Register now
           </a>
@@ -504,91 +506,107 @@ export default function EventsPage() {
 
   return (
     <main className="bg-light">
-      <header className="sticky top-0 z-20 border-b border-border bg-surface/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-          <div className="flex items-center gap-3">
-            <img src="/logo.webp" alt="Warrior Revival logo" className="h-12 w-12" />
-            <div>
-              <p className="font-heading text-lg font-semibold text-primary">Warrior Revival</p>
-              <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-                Military, Transition, Community
-              </p>
+      <div className="sticky top-0 z-30">
+        <header className="border-b border-border bg-surface/95 backdrop-blur">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+            <div className="flex items-center gap-3">
+              <img src="/logo.webp" alt="Warrior Revival logo" className="h-12 w-12" />
+              <div>
+                <p className="font-heading text-lg font-semibold text-primary">Warrior Revival</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
+                  Military, Transition, Community
+                </p>
+              </div>
             </div>
-          </div>
-          <nav className="hidden items-center gap-6 text-sm font-semibold text-textSecondary lg:flex">
-            {navigation.slice(0, 7).map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="hidden items-center gap-3 lg:flex">
-            <button className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              Join
+            <nav className="hidden items-center gap-6 text-sm font-semibold text-textSecondary lg:flex">
+              {navigation.slice(0, 7).map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <div className="hidden items-center gap-3 lg:flex">
+              <button className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                Join
+              </button>
+              <button className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                Donate
+              </button>
+            </div>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              <span className="sr-only">Toggle menu</span>
+              <span className="relative block h-5 w-6" aria-hidden="true">
+                <span
+                  className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition duration-300 ${
+                    isMenuOpen ? "translate-y-[9px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition duration-300 ${
+                    isMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-4 h-0.5 w-6 bg-current transition duration-300 ${
+                    isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                  }`}
+                />
+              </span>
             </button>
-            <button className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              Donate
-            </button>
           </div>
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setIsMenuOpen((open) => !open)}
-          >
-            <span className="sr-only">Toggle menu</span>
-            <span className="relative block h-5 w-6" aria-hidden="true">
-              <span
-                className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition duration-300 ${
-                  isMenuOpen ? "translate-y-[9px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition duration-300 ${
-                  isMenuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`absolute left-0 top-4 h-0.5 w-6 bg-current transition duration-300 ${
-                  isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
-                }`}
-              />
-            </span>
-          </button>
-        </div>
-      </header>
+        </header>
 
-      <div
-        id="mobile-navigation"
-        className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
-          isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-        }`}
-        aria-hidden={!isMenuOpen}
-      >
-        <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
-          <div className="grid gap-2 pt-2 text-sm font-semibold text-textSecondary">
-            {navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="rounded-md px-3 py-2 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <div
+          id="mobile-navigation"
+          className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
+            isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          }`}
+          aria-hidden={!isMenuOpen}
+        >
+          <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
+            <div className="grid gap-2 pt-2 text-sm font-semibold text-textSecondary">
+              {navigation.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="rounded-md px-3 py-2 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
       </div>
 
       <section className="mx-auto max-w-screen-2xl px-4 py-12 md:px-8">
         <div className="lg:grid lg:grid-cols-[200px_minmax(0,1fr)_300px] lg:items-start lg:gap-8">
-          <aside className="hidden lg:block lg:row-start-2 lg:row-span-4">
+          <div className="space-y-3 lg:col-start-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+              Events
+            </p>
+            <h1 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              Explore upcoming events
+            </h1>
+            <p className="text-sm text-textSecondary">
+              Search within the filtered list by event name, location, category, or date.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-2 lg:grid lg:grid-cols-[200px_minmax(0,1fr)_300px] lg:items-start lg:gap-8">
+          <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-6">
               <div className="rounded-xl border border-border bg-surface p-4">
                 <div className="flex items-center justify-between">
@@ -690,129 +708,127 @@ export default function EventsPage() {
             </div>
           </aside>
 
-          <div className="space-y-3 lg:col-start-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Events</p>
-            <h1 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Explore upcoming events
-            </h1>
-            <p className="text-sm text-textSecondary">
-              Search within the filtered list by event name, location, category, or date.
-            </p>
-          </div>
+          <div className="lg:col-start-2">
+            <div className="mt-0 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <input
+                className="h-11 w-full rounded-md border border-border bg-white px-3 text-sm text-textPrimary placeholder:text-textSecondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:flex-1"
+                placeholder="Search events..."
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+              <button
+                type="button"
+                className="h-11 rounded-md border border-primary px-4 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                onClick={() => setQuery("")}
+              >
+                Clear
+              </button>
+            </div>
 
-          <div className="mt-0 flex flex-col gap-3 sm:flex-row sm:items-center lg:col-start-2">
-            <input
-              className="h-11 w-full rounded-md border border-border bg-white px-3 text-sm text-textPrimary placeholder:text-textSecondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:flex-1"
-              placeholder="Search events..."
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-            <button
-              type="button"
-              className="h-11 rounded-md border border-primary px-4 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              onClick={() => setQuery("")}
-            >
-              Clear
-            </button>
-          </div>
-
-          <div className="mt-1 rounded-xl border border-border bg-surface p-4 lg:col-start-2">
-            <p className="text-sm font-semibold uppercase tracking-wide text-textSecondary">Filters</p>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {eventTypeFilters.map((filter) => (
-                <label key={filter.id} className="flex items-center gap-2 text-sm">
+            <div className="mt-4 rounded-xl border border-border bg-surface p-4">
+              <p className="text-sm font-semibold uppercase tracking-wide text-textSecondary">
+                Filters
+              </p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {eventTypeFilters.map((filter) => (
+                  <label key={filter.id} className="flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-border text-primary focus-visible:ring-2 focus-visible:ring-accent"
+                      checked={selectedFilters.has(filter.id)}
+                      onChange={() => toggleFilter(filter.id)}
+                    />
+                    <span className="font-semibold text-textPrimary">{filter.label}</span>
+                  </label>
+                ))}
+                <label className="flex items-center gap-2 text-sm font-semibold text-primary">
                   <input
                     type="checkbox"
                     className="h-4 w-4 rounded border-border text-primary focus-visible:ring-2 focus-visible:ring-accent"
-                    checked={selectedFilters.has(filter.id)}
-                    onChange={() => toggleFilter(filter.id)}
+                    checked={showPastEvents}
+                    onChange={(event) => setShowPastEvents(event.target.checked)}
                   />
-                  <span className="font-semibold text-textPrimary">{filter.label}</span>
+                  Show past events
                 </label>
-              ))}
-              <label className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-border text-primary focus-visible:ring-2 focus-visible:ring-accent"
-                  checked={showPastEvents}
-                  onChange={(event) => setShowPastEvents(event.target.checked)}
-                />
-                Show past events
-              </label>
+              </div>
+            </div>
+
+            <p className="mt-4 text-xs text-textSecondary">
+              Showing {visibleEvents.length} of {monthFilteredEvents.length} events
+            </p>
+
+            <div className="mt-4 space-y-4">
+              {visibleEvents.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-textSecondary">
+                  No events match your filters.
+                </div>
+              ) : (
+                eventItems.map((item, index) => {
+                  if (item.type === "month") {
+                    return (
+                      <div
+                        key={`month-${item.key}`}
+                        className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary ${
+                          index === 0 ? "" : "mt-6"
+                        }`}
+                      >
+                        <span className="whitespace-nowrap">{item.label}</span>
+                        <span className="h-px flex-1 bg-border" />
+                      </div>
+                    );
+                  }
+
+                  const event = item.event;
+                  const eventId = buildEventId(event);
+                  const isSelected = eventId === selectedEventId;
+
+                  return (
+                    <details
+                      key={eventId}
+                      open={isSelected}
+                      className={`group rounded-xl p-4 shadow-soft transition ${
+                        isSelected
+                          ? "border-2 border-primary/70 bg-primary/10"
+                          : "border border-border bg-surface"
+                      }`}
+                    >
+                      <summary
+                        className="flex cursor-pointer flex-col gap-4 [&::-webkit-details-marker]:hidden sm:flex-row sm:items-center sm:justify-between"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setSelectedEventId(eventId);
+                        }}
+                      >
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                          <img
+                            src="/logo.webp"
+                            alt="Warrior Revival"
+                            className="h-12 w-12 rounded-md border border-border bg-white object-contain"
+                          />
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                              {event.dateLabel}
+                            </p>
+                            <p className="font-heading text-lg font-semibold text-primary">
+                              {event.name}
+                            </p>
+                            <p className="text-sm text-textSecondary">{event.location}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start justify-between gap-3 text-xs font-semibold uppercase tracking-wide text-primary/70 sm:flex-col sm:items-end">
+                          <span>{event.category}</span>
+                          <span className="text-textSecondary">{event.timeLabel}</span>
+                        </div>
+                      </summary>
+                      <div className="mt-4 lg:hidden">{renderDetails(event)}</div>
+                    </details>
+                  );
+                })
+              )}
             </div>
           </div>
 
-          <p className="mt-1 text-xs text-textSecondary lg:col-start-2">
-            Showing {visibleEvents.length} of {monthFilteredEvents.length} events
-          </p>
-
-          <div className="mt-0 space-y-4 lg:col-start-2">
-            {visibleEvents.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-textSecondary">
-                No events match your filters.
-              </div>
-            ) : (
-              eventItems.map((item, index) => {
-                if (item.type === "month") {
-                  return (
-                    <div
-                      key={`month-${item.key}`}
-                      className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary ${
-                        index === 0 ? "" : "mt-6"
-                      }`}
-                    >
-                      <span className="whitespace-nowrap">{item.label}</span>
-                      <span className="h-px flex-1 bg-border" />
-                    </div>
-                  );
-                }
-
-                const event = item.event;
-                const eventId = buildEventId(event);
-                const isSelected = eventId === selectedEventId;
-
-                return (
-                  <details
-                    key={eventId}
-                    className={`group rounded-xl p-4 shadow-soft transition ${
-                      isSelected
-                        ? "border-2 border-primary/70 bg-primary/10"
-                        : "border border-border bg-surface"
-                    }`}
-                  >
-                    <summary
-                      className="flex cursor-pointer flex-col gap-4 [&::-webkit-details-marker]:hidden sm:flex-row sm:items-center sm:justify-between"
-                      onClick={() => setSelectedEventId(eventId)}
-                    >
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <img
-                          src="/logo.webp"
-                          alt="Warrior Revival"
-                          className="h-12 w-12 rounded-md border border-border bg-white object-contain"
-                        />
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                            {event.dateLabel}
-                          </p>
-                          <p className="font-heading text-lg font-semibold text-primary">
-                            {event.name}
-                          </p>
-                          <p className="text-sm text-textSecondary">{event.location}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start justify-between gap-3 text-xs font-semibold uppercase tracking-wide text-primary/70 sm:flex-col sm:items-end">
-                        <span>{event.category}</span>
-                        <span className="text-textSecondary">{event.timeLabel}</span>
-                      </div>
-                    </summary>
-                    <div className="mt-4 lg:hidden">{renderDetails(event)}</div>
-                  </details>
-                );
-              })
-            )}
-          </div>
-
-          <aside className="hidden lg:block lg:col-start-3 lg:row-start-2 lg:row-span-4 lg:sticky lg:top-24">
+          <aside className="hidden lg:block lg:col-start-3 lg:sticky lg:top-24">
             <div className="rounded-xl border border-border bg-surface p-5 shadow-soft">
               {selectedEvent ? (
                 <div className="space-y-4">
