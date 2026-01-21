@@ -16,22 +16,355 @@ const navigation = [
 
 const events = [
   {
-    title: "Wasatch Sunrise Hike",
-    date: "Oct 12, 2024",
+    name: "Book Club",
+    dateIso: "2025-03-25",
+    dateLabel: "Mar 25, 2025",
+    timeLabel: "6:00 pm - 7:30 pm MDT",
+    location: "Draper, UT",
+    category: "Veteran + Support Person",
+    register_link: ""
+  },
+  {
+    name: "2nd Annual Warrior Revival Golf Tournament",
+    dateIso: "2025-06-13",
+    dateLabel: "Jun 13, 2025",
+    timeLabel: "6:30 am - 4:00 pm MDT",
+    location: "South Jordan, UT",
+    category: "Fundraiser / Community",
+    register_link: ""
+  },
+  {
+    name: "MTB Ride & BBQ/Games",
+    dateIso: "2025-07-26",
+    dateLabel: "Jul 26, 2025",
+    timeLabel: "10:00 am - 5:00 pm MDT",
+    location: "Kamas, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Utah Air National Guard - Family Palooza",
+    dateIso: "2025-08-02",
+    dateLabel: "Aug 2, 2025",
+    timeLabel: "8:00 am - 12:00 pm MDT",
     location: "Salt Lake City, UT",
-    tag: "Outdoor Adventure"
+    category: "Veteran + Family",
+    register_link: ""
   },
   {
-    title: "Kayak Skills Intensive",
-    date: "Nov 2, 2024",
-    location: "Provo River, UT",
-    tag: "Water Therapy"
+    name: "Muddy Dash",
+    dateIso: "2025-08-09",
+    dateLabel: "Aug 9, 2025",
+    timeLabel: "8:00 am - 5:00 pm MDT",
+    location: "Midway, UT",
+    category: "Veteran + Support Person",
+    register_link: ""
   },
   {
-    title: "Family Campfire Night",
-    date: "Nov 18, 2024",
-    location: "Ogden Canyon, UT",
-    tag: "Community"
+    name: "Fishing Tournament",
+    dateIso: "2025-09-20",
+    dateLabel: "Sep 20, 2025",
+    timeLabel: "All day",
+    location: "Strawberry Reservoir, UT",
+    category: "Community",
+    register_link: ""
+  },
+  {
+    name: "Trail Hero",
+    dateIso: "2025-09-29",
+    dateLabel: "Sep 29 - Oct 4, 2025",
+    timeLabel: "Multi-day",
+    location: "Hurricane, UT",
+    category: "Community",
+    register_link: ""
+  },
+  {
+    name: "Lunch with Vets (Weber County)",
+    dateIso: "2025-10-26",
+    dateLabel: "Oct 26, 2025",
+    timeLabel: "10:00 am - 11:00 am MDT",
+    location: "Ogden, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Coffee Hour (Utah County)",
+    dateIso: "2025-11-01",
+    dateLabel: "Nov 1, 2025",
+    timeLabel: "9:30 am - 10:30 am MDT",
+    location: "Saratoga Springs, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Coffee Hour (Salt Lake County)",
+    dateIso: "2025-11-16",
+    dateLabel: "Nov 16, 2025",
+    timeLabel: "9:00 am - 10:30 am MST",
+    location: "Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Where Art Meets Service - A Night for Military Families",
+    dateIso: "2026-01-04",
+    dateLabel: "Jan 4, 2026",
+    timeLabel: "11:00 am - 2:00 pm MST",
+    location: "Murray, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-01-10",
+    dateLabel: "Jan 10, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Draper Suspension Bridge, Draper, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-01-11",
+    dateLabel: "Jan 11, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-02-15",
+    dateLabel: "Feb 15, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-03-15",
+    dateLabel: "Mar 15, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-04-19",
+    dateLabel: "Apr 19, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-05-17",
+    dateLabel: "May 17, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-06-21",
+    dateLabel: "Jun 21, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-07-19",
+    dateLabel: "Jul 19, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-08-16",
+    dateLabel: "Aug 16, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-09-13",
+    dateLabel: "Sep 13, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-10-18",
+    dateLabel: "Oct 18, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-11-15",
+    dateLabel: "Nov 15, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-12-13",
+    dateLabel: "Dec 13, 2026",
+    timeLabel: "9:00 am - 10:30 am",
+    location: "Alpha Coffee, Cottonwood Heights, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-02-01",
+    dateLabel: "Feb 1, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Little Mountain Summit, Emigration Canyon, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-03-07",
+    dateLabel: "Mar 7, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Ensign Peak, Salt Lake City, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-04-12",
+    dateLabel: "Apr 12, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Corner Canyon, Draper, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-05-02",
+    dateLabel: "May 2, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Mueller Park Trail, Bountiful, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-06-07",
+    dateLabel: "Jun 7, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Waterfall Canyon Trail, Ogden, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-07-11",
+    dateLabel: "Jul 11, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Adams Canyon Trail, Layton, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-08-09",
+    dateLabel: "Aug 9, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Scout Falls, AF Canyon, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-09-12",
+    dateLabel: "Sep 12, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Living Room Lookout Trail, Salt Lake City, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-10-18",
+    dateLabel: "Oct 18, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Alien Tower via Deer Ridge Trailhead, Draper, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-11-14",
+    dateLabel: "Nov 14, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Grove Creek Trail, Pleasant Grove, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Hike with Audrey",
+    dateIso: "2026-12-25",
+    dateLabel: "Dec 25, 2026",
+    timeLabel: "9:00 am - 11:30 am",
+    location: "Rattlesnake Gulch, Millcreek, UT",
+    category: "Veteran + Family",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Coffee Hour (Iron County)",
+    dateIso: "2026-01-29",
+    dateLabel: "Jan 29, 2026",
+    timeLabel: "6:30 pm - 8:00 pm MST",
+    location: "Cedar City, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "St. George Mission Ready Resource Fair",
+    dateIso: "2026-02-21",
+    dateLabel: "Feb 21, 2026",
+    timeLabel: "10:00 am - 2:00 pm MST",
+    location: "St. George, UT",
+    category: "Community",
+    register_link: ""
+  },
+  {
+    name: "Ski/Snowboard Day",
+    dateIso: "2026-03-19",
+    dateLabel: "Mar 19, 2026",
+    timeLabel: "12:00 pm - 3:30 pm MST",
+    location: "Park City, UT",
+    category: "Veteran Only",
+    register_link: ""
+  },
+  {
+    name: "Warrior Revival Summer Fun",
+    dateIso: "2026-06-20",
+    dateLabel: "Jun 20, 2026",
+    timeLabel: "8:00 am - 5:00 pm MDT",
+    location: "Heber City, UT",
+    category: "Veteran + Family",
+    register_link: ""
   }
 ];
 
@@ -100,6 +433,17 @@ const heroSlideIntervalMs = 10000;
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcomingEvents = events
+    .map((event) => ({
+      ...event,
+      dateValue: new Date(`${event.dateIso}T00:00:00`)
+    }))
+    .filter((event) => !Number.isNaN(event.dateValue.getTime()) && event.dateValue >= today)
+    .sort((a, b) => a.dateValue.getTime() - b.dateValue.getTime())
+    .slice(0, 3);
 
   useEffect(() => {
     if (heroSlides.length < 2) {
@@ -244,25 +588,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-5">
-        {focusAreas.map((area) => (
-          <div
-            key={area.title}
-            className="flex h-full flex-col justify-between rounded-2xl border border-border bg-surface p-6 shadow-card transition-transform duration-300 ease-out hover:scale-[1.02]"
-          >
-            <div>
-              <p className="font-heading text-xl font-semibold text-primary md:text-2xl">
-                {area.title}
-              </p>
-              <p className="mt-3 text-sm text-textSecondary">{area.description}</p>
+      <section className="relative overflow-hidden bg-surface">
+        <div
+          className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.09]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-5">
+          {focusAreas.map((area) => (
+            <div
+              key={area.title}
+              className="flex h-full flex-col justify-between rounded-2xl border border-border bg-surface/95 p-6 shadow-card transition-transform duration-300 ease-out hover:scale-[1.02]"
+            >
+              <div>
+                <p className="font-heading text-xl font-semibold text-primary md:text-2xl">
+                  {area.title}
+                </p>
+                <p className="mt-3 text-sm text-textSecondary">{area.description}</p>
+              </div>
+              {area.cta && (
+                <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {area.cta}
+                </button>
+              )}
             </div>
-            {area.cta && (
-              <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                {area.cta}
-              </button>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       <section className="bg-surface">
@@ -287,7 +637,8 @@ export default function Home() {
               <div className="rounded-xl border border-border bg-light p-4">
                 <p className="font-heading text-lg font-semibold text-primary">Programs</p>
                 <p className="mt-2 text-sm text-textSecondary">
-                  Guided hikes, adaptive sports, and leadership workshops rooted in resilience.
+                  Monthly hikes, coffee hours, and seasonal events that help Veterans build
+                  community through shared experiences.
                 </p>
               </div>
               <div className="rounded-xl border border-border bg-light p-4">
@@ -304,29 +655,33 @@ export default function Home() {
                 Upcoming events
               </p>
               <div className="mt-6 space-y-4">
-                {events.map((event) => (
+                {upcomingEvents.map((event) => (
                   <div
-                    key={event.title}
+                    key={`${event.name}-${event.dateIso}`}
                     className="rounded-xl border border-border bg-surface p-4 shadow-soft"
                   >
                     <div className="flex items-center justify-between">
                       <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-                        {event.tag}
+                        {event.category}
                       </span>
                       <span className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                        {event.date}
+                        {event.dateLabel}
                       </span>
                     </div>
                     <p className="mt-3 font-heading text-lg font-semibold text-primary">
-                      {event.title}
+                      {event.name}
                     </p>
-                    <p className="text-sm text-textSecondary">{event.location}</p>
-                    <a
-                      href="#"
-                      className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
-                    >
-                      Register now →
-                    </a>
+                    <p className="text-xs text-textSecondary">
+                      {event.timeLabel} · {event.location}
+                    </p>
+                    {event.register_link ? (
+                      <a
+                        href={event.register_link}
+                        className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
+                      >
+                        Register now →
+                      </a>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -392,11 +747,13 @@ export default function Home() {
               Partners
             </p>
             <h2 className="font-heading text-3xl font-semibold md:text-4xl">
-              Together we deliver life-changing programs.
+              Stronger together through community partnerships.
             </h2>
             <p className="max-w-xl text-base text-white/80">
-              We collaborate with outdoor brands, mental health providers, and local
-              organizations to expand access and reduce barriers to care.
+              At Warrior Revival, we strongly believe in community and partnerships. By working
+              closely with local organizations and businesses, we can offer Veterans tailored
+              experiences to help increase a sense of meaning. Together, we can give back to those
+              who selflessly protected us.
             </p>
           </div>
           <div className="grid w-full gap-4 sm:grid-cols-2 md:max-w-md">
