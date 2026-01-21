@@ -74,6 +74,7 @@ const monthNames = [
 ];
 
 const weekdayLabels = ["S", "M", "T", "W", "Th", "F", "S"];
+const fallbackEventImage = "/logo.webp";
 
 const formatDateOnly = (date: Date) => {
   const year = date.getFullYear();
@@ -800,11 +801,11 @@ export default function EventsPage() {
                         }}
                       >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                          <img
-                            src="/logo.webp"
-                            alt="Warrior Revival"
-                            className="h-12 w-12 rounded-md border border-border bg-white object-contain"
-                          />
+                        <img
+                          src={event.image ?? fallbackEventImage}
+                          alt="Warrior Revival"
+                          className="h-12 w-12 rounded-md border border-border bg-white object-contain"
+                        />
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                               {event.dateLabel}
@@ -833,7 +834,7 @@ export default function EventsPage() {
               {selectedEvent ? (
                 <div className="space-y-4">
                   <img
-                    src="/logo.webp"
+                    src={selectedEvent.image ?? fallbackEventImage}
                     alt="Warrior Revival"
                     className="h-52 w-full rounded-lg border border-border bg-white object-contain"
                   />
