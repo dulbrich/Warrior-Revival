@@ -17,3 +17,14 @@ a {
 ::selection {
   @apply bg-accent text-white;
 }
+
+.hero-slide {
+  background-position: center 30%;
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}

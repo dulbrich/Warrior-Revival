@@ -1,34 +1,19 @@
-const navigation = [
-  "Home",
-  "About",
-  "Programs",
-  "Events",
-  "Get Involved",
-  "Partners",
-  "Gallery",
-  "Donate",
-  "Contact"
-];
+"use client";
 
-const events = [
-  {
-    title: "Wasatch Sunrise Hike",
-    date: "Oct 12, 2024",
-    location: "Salt Lake City, UT",
-    tag: "Outdoor Adventure"
-  },
-  {
-    title: "Kayak Skills Intensive",
-    date: "Nov 2, 2024",
-    location: "Provo River, UT",
-    tag: "Water Therapy"
-  },
-  {
-    title: "Family Campfire Night",
-    date: "Nov 18, 2024",
-    location: "Ogden Canyon, UT",
-    tag: "Community"
-  }
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { buildEventId, events } from "@/data/events";
+
+const navigation = [
+  { label: "Home", href: "#" },
+  { label: "About", href: "#" },
+  { label: "Programs", href: "#" },
+  { label: "Events", href: "/events" },
+  { label: "Get Involved", href: "#" },
+  { label: "Partners", href: "#" },
+  { label: "Gallery", href: "#" },
+  { label: "Donate", href: "#" },
+  { label: "Contact", href: "#" }
 ];
 
 const pathways = [
@@ -52,13 +37,77 @@ const pathways = [
   }
 ];
 
-const stats = [
-  { value: "120+", label: "Outings hosted this year" },
-  { value: "1,400", label: "Veterans & family members served" },
-  { value: "85%", label: "Participants report improved wellbeing" }
+const focusAreas = [
+  {
+    title: "Reacreation",
+    description:
+      "We work to give Veterans a sense of belonging through recreation and fun activities. We are inspired to bring Veterans and civilians together to close the gap.",
+    cta: "Contact Us"
+  },
+  {
+    title: "Needs of All Veterans",
+    description:
+      "We strive to create a supportive network that fosters camaraderie and a sense of purpose. We are dedicated to being inclusive to meet the needs of all Veterans throughout the State of Utah.",
+    cta: "Join"
+  },
+  {
+    title: "Mentorship",
+    description:
+      "There is no road map or manual after leaving the military. Connecting with another Veteran who has been through the process can help ease the process."
+  },
+  {
+    title: "Therapeutic Retreats",
+    description:
+      "We offer retreats twice a year for Veterans and their families to normalize, educate, and raise awareness of the challenges experienced post-discharge."
+  },
+  {
+    title: "Community Partnership",
+    description:
+      "Through community partnerships, we can all work together to better the care of our community’s service members by offering activities that meet everyone’s interests and creates a sense of purpose and belonging.",
+    cta: "Join"
+  }
 ];
 
+const heroSlides = [
+  "/home/slide-show/together.jpg",
+  "/home/slide-show/hiking.jpg",
+  "/home/slide-show/sundown-mission.jpg",
+  "/home/slide-show/side-by-side.jpg",
+  "/home/slide-show/uniforms.jpg"
+];
+
+const heroSlideIntervalMs = 10000;
+
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcomingEvents = events
+    .map((event) => ({
+      ...event,
+      dateValue: new Date(`${event.dateIso}T00:00:00`)
+    }))
+    .filter((event) => !Number.isNaN(event.dateValue.getTime()) && event.dateValue >= today)
+    .sort((a, b) => a.dateValue.getTime() - b.dateValue.getTime())
+    .slice(0, 3);
+
+  useEffect(() => {
+    if (heroSlides.length < 2) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, heroSlideIntervalMs);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <main className="bg-light">
       <header className="sticky top-0 z-20 border-b border-border bg-surface/95 backdrop-blur">
@@ -79,11 +128,11 @@ export default function Home() {
           <nav className="hidden items-center gap-6 text-sm font-semibold text-textSecondary lg:flex">
             {navigation.slice(0, 7).map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -95,13 +144,74 @@ export default function Home() {
               Donate
             </button>
           </div>
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="sr-only">Toggle menu</span>
+            <span className="relative block h-5 w-6" aria-hidden="true">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "translate-y-[9px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-4 h-0.5 w-6 bg-current transition duration-300 ${
+                  isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
         </div>
       </header>
 
+      <div
+        id="mobile-navigation"
+        className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
+          isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
+          <div className="grid gap-2 pt-2 text-sm font-semibold text-textSecondary">
+            {navigation.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="rounded-md px-3 py-2 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/together.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0" aria-hidden="true">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide}
+              className="hero-slide absolute inset-0 bg-cover"
+              style={{
+                backgroundImage: `url('${slide}')`,
+                opacity: index === activeSlide ? 1 : 0,
+                transition: "opacity 1000ms ease-in-out"
+              }}
+            />
+          ))}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
-        <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:px-8">
+        <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:min-h-[680px] md:px-8 lg:min-h-[720px]">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
             Welcome to Warrior Revival
           </p>
@@ -127,18 +237,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-3 md:px-8">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-border bg-surface p-6 shadow-card"
-          >
-            <p className="text-3xl font-heading font-semibold text-primary md:text-4xl">
-              {stat.value}
-            </p>
-            <p className="mt-2 text-sm text-textSecondary">{stat.label}</p>
-          </div>
-        ))}
+      <section className="relative overflow-hidden bg-surface">
+        <div
+          className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.09]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-5">
+          {focusAreas.map((area) => (
+            <div
+              key={area.title}
+              className="flex h-full flex-col justify-between rounded-2xl border border-border bg-surface/95 p-6 shadow-card transition-transform duration-300 ease-out hover:scale-[1.02]"
+            >
+              <div>
+                <p className="font-heading text-xl font-semibold text-primary md:text-2xl">
+                  {area.title}
+                </p>
+                <p className="mt-3 text-sm text-textSecondary">{area.description}</p>
+              </div>
+              {area.cta && (
+                <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {area.cta}
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="bg-surface">
@@ -148,18 +271,23 @@ export default function Home() {
               Our mission
             </p>
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Building belonging through challenge, mentorship, and shared adventure.
+              Supporting Veterans and families through connection, wellness, and purpose.
             </h2>
             <p className="text-base text-textSecondary md:text-lg">
-              Warrior Revival blends evidence-based wellness programs with outdoor education.
-              Each experience is led by trained volunteers who understand military culture and
-              create space for healing conversations.
+              Warrior Revival&apos;s mission is to support and empower current and former Veterans
+              and their families transitioning from the military to civilian life. Through
+              recreation, wellness and therapeutic retreats, Warrior Revival is committed to
+              providing resources, guidance, and opportunities that help Veterans connect with one
+              another, and to civilians. We strive to create a supportive network that fosters
+              camaraderie, a sense of purpose, and to raise awareness of the unique challenges
+              Veterans face in the transition to civilian life.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl border border-border bg-light p-4">
                 <p className="font-heading text-lg font-semibold text-primary">Programs</p>
                 <p className="mt-2 text-sm text-textSecondary">
-                  Guided hikes, adaptive sports, and leadership workshops rooted in resilience.
+                  Monthly hikes, coffee hours, and seasonal events that help Veterans build
+                  community through shared experiences.
                 </p>
               </div>
               <div className="rounded-xl border border-border bg-light p-4">
@@ -176,29 +304,45 @@ export default function Home() {
                 Upcoming events
               </p>
               <div className="mt-6 space-y-4">
-                {events.map((event) => (
+                {upcomingEvents.map((event) => (
                   <div
-                    key={event.title}
-                    className="rounded-xl border border-border bg-surface p-4 shadow-soft"
+                    key={`${event.name}-${event.dateIso}`}
+                    className="cursor-pointer rounded-xl border border-border bg-surface p-4 shadow-soft transition hover:border-primary/40 hover:bg-primary/5"
+                    role="link"
+                    tabIndex={0}
+                    onClick={() =>
+                      router.push(`/events?event=${encodeURIComponent(buildEventId(event))}`)
+                    }
+                    onKeyDown={(eventKey) => {
+                      if (eventKey.key === "Enter" || eventKey.key === " ") {
+                        eventKey.preventDefault();
+                        router.push(`/events?event=${encodeURIComponent(buildEventId(event))}`);
+                      }
+                    }}
                   >
                     <div className="flex items-center justify-between">
                       <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-                        {event.tag}
+                        {event.category}
                       </span>
                       <span className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                        {event.date}
+                        {event.dateLabel}
                       </span>
                     </div>
                     <p className="mt-3 font-heading text-lg font-semibold text-primary">
-                      {event.title}
+                      {event.name}
                     </p>
-                    <p className="text-sm text-textSecondary">{event.location}</p>
-                    <a
-                      href="#"
-                      className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
-                    >
-                      Register now →
-                    </a>
+                    <p className="text-xs text-textSecondary">
+                      {event.timeLabel} · {event.location}
+                    </p>
+                    {event.register_link ? (
+                      <a
+                        href={event.register_link}
+                        className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
+                        onClick={(clickEvent) => clickEvent.stopPropagation()}
+                      >
+                        Register now →
+                      </a>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -264,11 +408,13 @@ export default function Home() {
               Partners
             </p>
             <h2 className="font-heading text-3xl font-semibold md:text-4xl">
-              Together we deliver life-changing programs.
+              Stronger together through community partnerships.
             </h2>
             <p className="max-w-xl text-base text-white/80">
-              We collaborate with outdoor brands, mental health providers, and local
-              organizations to expand access and reduce barriers to care.
+              At Warrior Revival, we strongly believe in community and partnerships. By working
+              closely with local organizations and businesses, we can offer Veterans tailored
+              experiences to help increase a sense of meaning. Together, we can give back to those
+              who selflessly protected us.
             </p>
           </div>
           <div className="grid w-full gap-4 sm:grid-cols-2 md:max-w-md">
@@ -291,7 +437,7 @@ export default function Home() {
           <div>
             <p className="font-heading text-base font-semibold text-primary">Warrior Revival</p>
             <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-              Salt Lake City, Utah
+              Sandy, Utah
             </p>
           </div>
           <p>Empowering veterans and families through adventure and belonging.</p>
