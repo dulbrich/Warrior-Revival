@@ -23,6 +23,46 @@ a {
   will-change: opacity;
 }
 
+.marquee-shell {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: inline-flex;
+  min-width: 100%;
+  white-space: nowrap;
+}
+
+.marquee-track:not(.marquee-track--active) .marquee-item + .marquee-item {
+  display: none;
+}
+
+.marquee-track--active {
+  animation: marquee-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  display: inline-block;
+  padding-right: 2rem;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-slide {
     transition: none;

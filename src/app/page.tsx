@@ -16,6 +16,25 @@ const navigation = [
   { label: "Contact", href: "#" }
 ];
 
+const fallbackEventImage = "/logo.webp";
+const marqueeLengthThreshold = 32;
+
+const MarqueeText = ({ text, className }: { text: string; className?: string }) => {
+  const shouldScroll = text.length > marqueeLengthThreshold;
+  const textClassName = className ? `${className}` : "";
+
+  return (
+    <div className="marquee-shell min-w-0 w-full">
+      <div className={`marquee-track ${shouldScroll ? "marquee-track--active" : ""}`}>
+        <span className={`marquee-item ${textClassName}`}>{text}</span>
+        <span aria-hidden="true" className={`marquee-item ${textClassName}`}>
+          {text}
+        </span>
+      </div>
+    </div>
+  );
+};
+
 const pathways = [
   {
     title: "Veterans",
@@ -264,7 +283,7 @@ export default function Home() {
 
       <section className="bg-surface">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[1.1fr_0.9fr] md:px-8">
-          <div className="space-y-6">
+          <div className="space-y-6 min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
               Our mission
             </p>
@@ -296,7 +315,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-6 min-w-0">
             <div className="rounded-2xl border border-border bg-light p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                 Upcoming events
@@ -318,20 +337,34 @@ export default function Home() {
                       }
                     }}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-                        {event.category}
-                      </span>
-                      <span className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                        {event.dateLabel}
-                      </span>
+                    <div className="flex items-start gap-4">
+                      <img
+                        src={event.image ?? fallbackEventImage}
+                        alt={event.name}
+                        className={`h-16 w-16 rounded-md border border-border bg-white ${
+                          event.image ? "object-cover" : "object-contain"
+                        }`}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                            {event.category}
+                          </span>
+                          <span className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                            {event.dateLabel}
+                          </span>
+                        </div>
+                        <div className="mt-2">
+                          <MarqueeText
+                            text={event.name}
+                            className="font-heading text-lg font-semibold text-primary"
+                          />
+                        </div>
+                        <p className="text-xs text-textSecondary">
+                          {event.timeLabel} · {event.location}
+                        </p>
+                      </div>
                     </div>
-                    <p className="mt-3 font-heading text-lg font-semibold text-primary">
-                      {event.name}
-                    </p>
-                    <p className="text-xs text-textSecondary">
-                      {event.timeLabel} · {event.location}
-                    </p>
                     {event.register_link ? (
                       <a
                         href={event.register_link}
