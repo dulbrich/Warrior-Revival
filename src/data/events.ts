@@ -14,6 +14,8 @@ export type EventItem = {
   register_link: string;
 };
 
+export const buildEventId = (event: EventItem) => `${event.name}-${event.dateIso}`;
+
 const hikeContact = { name: "Audrey", phone: "801-682-5939" };
 const alphaCoffeeAddress = "7260 S Racquet Club Dr, Cottonwood Heights, UT 84121";
 const battlePitAddress = "1895 Washington Blvd, Suite 300, Ogden, UT 84401";

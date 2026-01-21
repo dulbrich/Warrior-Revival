@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { events } from "@/data/events";
+import { useRouter } from "next/navigation";
+import { buildEventId, events } from "@/data/events";
 
 const navigation = [
   { label: "Home", href: "#" },
@@ -80,6 +81,7 @@ const heroSlideIntervalMs = 10000;
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -305,7 +307,18 @@ export default function Home() {
                 {upcomingEvents.map((event) => (
                   <div
                     key={`${event.name}-${event.dateIso}`}
-                    className="rounded-xl border border-border bg-surface p-4 shadow-soft"
+                    className="cursor-pointer rounded-xl border border-border bg-surface p-4 shadow-soft transition hover:border-primary/40 hover:bg-primary/5"
+                    role="link"
+                    tabIndex={0}
+                    onClick={() =>
+                      router.push(`/events?event=${encodeURIComponent(buildEventId(event))}`)
+                    }
+                    onKeyDown={(eventKey) => {
+                      if (eventKey.key === "Enter" || eventKey.key === " ") {
+                        eventKey.preventDefault();
+                        router.push(`/events?event=${encodeURIComponent(buildEventId(event))}`);
+                      }
+                    }}
                   >
                     <div className="flex items-center justify-between">
                       <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
@@ -325,6 +338,7 @@ export default function Home() {
                       <a
                         href={event.register_link}
                         className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
+                        onClick={(clickEvent) => clickEvent.stopPropagation()}
                       >
                         Register now →
                       </a>
