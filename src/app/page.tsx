@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const navigation = [
   "Home",
   "About",
@@ -58,7 +62,33 @@ const stats = [
   { value: "85%", label: "Participants report improved wellbeing" }
 ];
 
+const heroSlides = [
+  "/home/slide-show/together.jpg",
+  "/home/slide-show/hiking.jpg",
+  "/home/slide-show/sundown-mission.jpg",
+  "/home/slide-show/side-by-side.jpg",
+  "/home/slide-show/uniforms.jpg"
+];
+
+const heroSlideIntervalMs = 10000;
+
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    if (heroSlides.length < 2) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, heroSlideIntervalMs);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <main className="bg-light">
       <header className="sticky top-0 z-20 border-b border-border bg-surface/95 backdrop-blur">
@@ -99,9 +129,21 @@ export default function Home() {
       </header>
 
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/together.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0" aria-hidden="true">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide}
+              className="hero-slide absolute inset-0 bg-cover"
+              style={{
+                backgroundImage: `url('${slide}')`,
+                opacity: index === activeSlide ? 1 : 0,
+                transition: "opacity 1000ms ease-in-out"
+              }}
+            />
+          ))}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
-        <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:px-8">
+        <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:min-h-[680px] md:px-8 lg:min-h-[720px]">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
             Welcome to Warrior Revival
           </p>
