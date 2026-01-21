@@ -7,6 +7,7 @@ export type EventItem = {
   category: string;
   address?: string;
   notes?: string;
+  image?: string;
   contact?: {
     name: string;
     phone: string;
@@ -19,8 +20,13 @@ export const buildEventId = (event: EventItem) => `${event.name}-${event.dateIso
 const hikeContact = { name: "Audrey", phone: "801-682-5939" };
 const alphaCoffeeAddress = "7260 S Racquet Club Dr, Cottonwood Heights, UT 84121";
 const battlePitAddress = "1895 Washington Blvd, Suite 300, Ogden, UT 84401";
+const bookClubAddress = "11550 S 700 E #100, Draper, UT";
 const suuAddress = "351 West University Boulevard, Cedar City, UT 84720";
 const suuRoom = "Escalante Room 144C, Sharwan Smith Student Center";
+const hikeImage = "/events/hiking.jpg";
+const coffeeImage = "/events/coffee.jpg";
+const lunchImage = "/events/lunch.jpg";
+const bookClubImage = "/events/books.jpg";
 
 export const events: EventItem[] = [
   {
@@ -30,6 +36,7 @@ export const events: EventItem[] = [
     timeLabel: "6:00 pm - 7:30 pm MDT",
     location: "Draper, UT",
     category: "Veteran + Support Person",
+    image: bookClubImage,
     register_link: ""
   },
   {
@@ -93,6 +100,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am MDT",
     location: "Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     register_link: ""
   },
   {
@@ -102,6 +110,7 @@ export const events: EventItem[] = [
     timeLabel: "9:30 am - 10:30 am MDT",
     location: "Saratoga Springs, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     register_link: ""
   },
   {
@@ -111,6 +120,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am MST",
     location: "Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     register_link: ""
   },
   {
@@ -129,6 +139,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Draper Suspension Bridge, Draper, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -139,8 +150,66 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     notes: "Coffee donated by Alpha Coffee. Monthly volunteer meeting to follow.",
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-01-27",
+    dateLabel: "Jan 27, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    notes:
+      "Monthly book club. A new title is read and discussed each month. Light refreshments provided.",
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-02-24",
+    dateLabel: "Feb 24, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-03-31",
+    dateLabel: "Mar 31, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-04-28",
+    dateLabel: "Apr 28, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
+    register_link: ""
+  },
+  {
+    name: "Book Club",
+    dateIso: "2026-05-26",
+    dateLabel: "May 26, 2026",
+    timeLabel: "6:00 pm - 7:30 pm",
+    location: "Warrior Revival Office, Draper, UT",
+    category: "Veteran + Support Person",
+    image: bookClubImage,
+    address: bookClubAddress,
     register_link: ""
   },
   {
@@ -150,6 +219,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -160,6 +230,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -170,6 +241,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -180,6 +252,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -190,6 +263,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -200,6 +274,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -210,6 +285,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -220,6 +296,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -230,6 +307,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -240,6 +318,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -250,6 +329,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 10:30 am",
     location: "Alpha Coffee, Cottonwood Heights, UT",
     category: "Veteran Only",
+    image: coffeeImage,
     address: alphaCoffeeAddress,
     register_link: ""
   },
@@ -260,6 +340,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     notes: "Must purchase own lunch. Appetizers will be offered.",
     register_link: ""
@@ -271,6 +352,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -281,6 +363,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -291,6 +374,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -301,6 +385,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -311,6 +396,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -321,6 +407,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -331,6 +418,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -341,6 +429,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -351,6 +440,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -361,6 +451,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -371,6 +462,7 @@ export const events: EventItem[] = [
     timeLabel: "10:00 am - 11:00 am",
     location: "Steve's Black Sabbath BBQ, Ogden, UT",
     category: "Veteran Only",
+    image: lunchImage,
     address: battlePitAddress,
     register_link: ""
   },
@@ -381,6 +473,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Little Mountain Summit, Emigration Canyon, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -391,6 +484,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Ensign Peak, Salt Lake City, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -401,6 +495,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Corner Canyon, Draper, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -411,6 +506,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Mueller Park Trail, Bountiful, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -421,6 +517,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Waterfall Canyon Trail, Ogden, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -431,6 +528,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Adams Canyon Trail, Layton, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -441,6 +539,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Scout Falls, AF Canyon, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -451,6 +550,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Living Room Lookout Trail, Salt Lake City, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -461,6 +561,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Alien Tower via Deer Ridge Trailhead, Draper, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -471,6 +572,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Grove Creek Trail, Pleasant Grove, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     contact: hikeContact,
     register_link: ""
   },
@@ -481,6 +583,7 @@ export const events: EventItem[] = [
     timeLabel: "9:00 am - 11:30 am",
     location: "Rattlesnake Gulch, Millcreek, UT",
     category: "Veteran + Family",
+    image: hikeImage,
     notes: "Christmas Day Hike",
     contact: hikeContact,
     register_link: ""
@@ -492,6 +595,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes:
       `Room: ${suuRoom}. Open to service members, veterans, and SUU students. Coffee donated by Alpha Coffee.`,
@@ -504,6 +608,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -515,6 +620,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -526,6 +632,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -537,6 +644,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -548,6 +656,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -559,6 +668,7 @@ export const events: EventItem[] = [
     timeLabel: "6:30 pm - 8:00 pm",
     location: "Southern Utah University, Cedar City, UT",
     category: "Veteran / Service Member / Student",
+    image: coffeeImage,
     address: suuAddress,
     notes: `Room: ${suuRoom}.`,
     register_link: ""
@@ -573,6 +683,30 @@ export const events: EventItem[] = [
     address: "2002 Soldier Hollow Lane, Midway, UT 84089",
     contact: hikeContact,
     notes: "Snow tubing winter activity. Pre-registration required via QR code.",
+    register_link: "https://secure.qgiv.com/for/warriorrevival/event/snowtubing/"
+  },
+  {
+    name: "Mission Ready: Southern Utah Military, Veteran & Family Wellness Fair",
+    dateIso: "2026-02-21",
+    dateLabel: "Feb 21, 2026",
+    timeLabel: "10:00 am - 2:00 pm MST",
+    location: "Southern Utah Military, Veteran & Family Wellness Fair",
+    category: "Community / Resource Fair",
+    notes:
+      "Organizations are invited to participate as exhibitors to provide resources and services to military members, veterans, and families. Focus areas: Employment & Education, Family Support, Health & Wellness, Benefits & Claims. Features: Food trucks, entertainment, family activities.",
+    register_link:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdhESI4wLfoNSdzEtF220Ctd_j0oXWyhEDAolcMTyrVrw1Wgg/viewform"
+  },
+  {
+    name: "Military Kids Roller Skate",
+    dateIso: "2026-04-11",
+    dateLabel: "Apr 11, 2026",
+    timeLabel: "9:00 am - 11:00 am",
+    location: "Neptune Skating, Ogden, UT",
+    category: "Veteran + Family / Military Kids",
+    address: "2770 Washington Blvd, Ogden, UT 84401",
+    notes:
+      "Purple Up event celebrating the Month of the Military Child. Registration opens February 11, 2026.",
     register_link: ""
   },
   {
@@ -591,7 +725,7 @@ export const events: EventItem[] = [
     timeLabel: "12:00 pm - 3:30 pm MST",
     location: "Park City, UT",
     category: "Veteran Only",
-    register_link: ""
+    register_link: "https://secure.qgiv.com/for/warriorrevival/event/nacskisnowboarding/"
   },
   {
     name: "Warrior Revival Summer Fun",
