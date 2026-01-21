@@ -564,6 +564,18 @@ export const events: EventItem[] = [
     register_link: ""
   },
   {
+    name: "Slide Into Winter Fun! - Snow Tubing",
+    dateIso: "2026-02-19",
+    dateLabel: "Feb 19, 2026",
+    timeLabel: "6:00 pm - 8:00 pm",
+    location: "Soldier Hollow Nordic Center, Midway, UT",
+    category: "Veteran + Family",
+    address: "2002 Soldier Hollow Lane, Midway, UT 84089",
+    contact: hikeContact,
+    notes: "Snow tubing winter activity. Pre-registration required via QR code.",
+    register_link: ""
+  },
+  {
     name: "St. George Mission Ready Resource Fair",
     dateIso: "2026-02-21",
     dateLabel: "Feb 21, 2026",
