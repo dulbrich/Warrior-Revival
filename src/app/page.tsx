@@ -58,7 +58,7 @@ const pathways = [
 
 const focusAreas = [
   {
-    title: "Reacreation",
+    title: "Recreation",
     description:
       "We work to give Veterans a sense of belonging through recreation and fun activities. We are inspired to bring Veterans and civilians together to close the gap.",
     cta: "Contact Us"
@@ -96,9 +96,32 @@ const heroSlides = [
 ];
 
 const heroSlideIntervalMs = 10000;
+const quoteTypingSpeedMs = 24;
+const quoteHoldMs = 5400;
+const quoteSelectMs = 650;
+const quotePauseMs = 1500;
+
+const reintegrationQuotes = [
+  "No one wears rank out here.",
+  "Solving a rubix cube with no hands.",
+  "It takes adjusting knowing I have to adjust to my family's lifestyle.",
+  "I have to slow my world... they don't march to the same beat in the civilian world.",
+  "The military kept me together like glue and now that is all melted away, I need to pick up all the pieces off the floor and figure out how to piece them back together again."
+];
+
+const goldSponsors = [
+  { name: "Cyprus", src: "/home/sponsors/gold/cyprus.jpg" },
+  { name: "Lionheart", src: "/home/sponsors/gold/lionheart.jpg" },
+  { name: "LM", src: "/home/sponsors/gold/lm.jpg" }
+];
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
+  const [typedQuote, setTypedQuote] = useState("");
+  const [quotePhase, setQuotePhase] = useState<
+    "typing" | "holding" | "selecting" | "pausing"
+  >("typing");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const today = new Date();
@@ -126,6 +149,44 @@ export default function Home() {
       window.clearInterval(intervalId);
     };
   }, []);
+
+  useEffect(() => {
+    const fullQuote = reintegrationQuotes[activeQuoteIndex];
+    let timeoutId: number | undefined;
+
+    if (quotePhase === "typing") {
+      if (typedQuote.length < fullQuote.length) {
+        timeoutId = window.setTimeout(() => {
+          setTypedQuote(fullQuote.slice(0, typedQuote.length + 1));
+        }, quoteTypingSpeedMs);
+      } else {
+        setQuotePhase("holding");
+      }
+    } else if (quotePhase === "holding") {
+      timeoutId = window.setTimeout(() => {
+        setQuotePhase("selecting");
+      }, quoteHoldMs);
+    } else if (quotePhase === "selecting") {
+      timeoutId = window.setTimeout(() => {
+        setTypedQuote("");
+        setQuotePhase("pausing");
+      }, quoteSelectMs);
+    } else if (quotePhase === "pausing") {
+      timeoutId = window.setTimeout(() => {
+        setActiveQuoteIndex((prev) => (prev + 1) % reintegrationQuotes.length);
+        setQuotePhase("typing");
+      }, quotePauseMs);
+    }
+
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [activeQuoteIndex, quotePhase, typedQuote]);
+
+  const activeQuote = reintegrationQuotes[activeQuoteIndex];
+  const showClosingQuote = typedQuote.length > 0 && typedQuote.length === activeQuote.length;
 
   return (
     <main className="bg-light">
@@ -434,6 +495,47 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-surface">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
+          <div className="space-y-6">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              Our members have described the challenges of reintegration as:
+            </h2>
+            <p className="text-base text-textSecondary">
+              We strive to create a supportive network that fosters camaraderie, a sense of
+              purpose, and to raise awareness of the unique challenges veterans face in the
+              transition to civilian life.
+            </p>
+            <div className="flex min-h-[280px] flex-col rounded-2xl border border-border bg-white p-6 shadow-card">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                Veteran voices
+              </p>
+              <div className="flex flex-1 flex-col justify-center">
+                <blockquote className="font-heading text-2xl text-primary md:text-3xl">
+                  <span
+                    className={`quote-text ${
+                      quotePhase === "selecting" ? "quote-selected" : ""
+                    }`}
+                  >
+                    {typedQuote ? `“${typedQuote}${showClosingQuote ? "”" : ""}` : ""}
+                  </span>
+                </blockquote>
+              </div>
+              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-textSecondary">
+                {activeQuoteIndex + 1} of {reintegrationQuotes.length}
+              </p>
+            </div>
+          </div>
+          <div className="relative min-h-[380px] md:min-h-[460px]">
+            <img
+              src="/home/soldier.jpg"
+              alt="Soldier reflecting outdoors"
+              className="absolute inset-0 h-full w-full rounded-3xl object-cover shadow-card"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-primary">
         <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-16 text-white md:flex-row md:items-center md:justify-between md:px-8">
           <div className="space-y-4">
@@ -450,17 +552,27 @@ export default function Home() {
               who selflessly protected us.
             </p>
           </div>
-          <div className="grid w-full gap-4 sm:grid-cols-2 md:max-w-md">
-            {["Summit Co.", "Canyon Health", "Basecamp Gear", "Utah Outdoor Society"].map(
-              (partner) => (
-                <div
-                  key={partner}
-                  className="rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold"
-                >
-                  {partner}
-                </div>
-              )
-            )}
+          <div className="w-full space-y-6 md:max-w-md">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                Gold sponsors
+              </p>
+              <div className="mt-4 grid gap-5 sm:grid-cols-2">
+                {goldSponsors.map((sponsor) => (
+                  <div
+                    key={sponsor.name}
+                    className="flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <img
+                      src={sponsor.src}
+                      alt={`${sponsor.name} logo`}
+                      className="h-24 w-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -468,10 +580,21 @@ export default function Home() {
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm text-textSecondary md:flex-row md:items-center md:justify-between md:px-8">
           <div>
-            <p className="font-heading text-base font-semibold text-primary">Warrior Revival</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-              Sandy, Utah
-            </p>
+            <div className="flex items-center gap-6">
+              <img
+                src="/logo2.png"
+                alt="Warrior Revival mark"
+                className="h-40 w-40 pr-4"
+              />
+              <div>
+                <p className="font-heading text-base font-semibold text-primary">
+                  Warrior Revival
+                </p>
+                <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
+                  Sandy, Utah
+                </p>
+              </div>
+            </div>
           </div>
           <p>Empowering veterans and families through adventure and belonging.</p>
           <button className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">

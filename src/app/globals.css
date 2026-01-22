@@ -63,6 +63,45 @@ a {
   }
 }
 
+.quote-text {
+  display: inline;
+}
+
+.quote-selected {
+  background-color: #e86f2a;
+  color: #ffffff;
+  padding: 0.05em 0.18em;
+  border-radius: 0.2em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.quote-text::after {
+  content: "";
+  display: inline-block;
+  height: 1em;
+  width: 0.12em;
+  margin-left: 0.2em;
+  background-color: currentColor;
+  animation: quote-cursor-blink 0.9s steps(2, start) infinite;
+  vertical-align: -0.08em;
+}
+
+.quote-selected::after {
+  opacity: 0;
+}
+
+@keyframes quote-cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-slide {
     transition: none;
