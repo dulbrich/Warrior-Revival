@@ -16,7 +16,10 @@ const bodyFont = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "Warrior Revival",
-  description: "Warrior Revival website prototype"
+  description: "Warrior Revival website prototype",
+  icons: {
+    icon: "/favicon.png"
+  }
 };
 
 export default function RootLayout({
