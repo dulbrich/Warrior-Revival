@@ -79,7 +79,7 @@ export default function VeteransPageClient() {
       <div className="sticky top-0 z-30">
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-            <div className="flex items-center gap-3">
+            <a href="/" className="flex items-center gap-3">
               <img
                 src="/logo.webp"
                 alt="Warrior Revival logo"
@@ -93,7 +93,7 @@ export default function VeteransPageClient() {
                   Military, Transition, Community
                 </p>
               </div>
-            </div>
+            </a>
             <nav className="hidden items-center gap-6 text-base font-accent text-textSecondary tracking-[0.08em] lg:flex">
               {navigation.slice(0, 7).map((item) => (
                 <a
