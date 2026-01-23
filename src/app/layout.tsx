@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Poppins, Source_Sans_3 } from "next/font/google";
+import { Bebas_Neue, Black_Ops_One, Poppins, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
 const headingFont = Poppins({
@@ -20,6 +20,12 @@ const accentFont = Bebas_Neue({
   weight: ["400"]
 });
 
+const blackOpsFont = Black_Ops_One({
+  subsets: ["latin"],
+  variable: "--font-black-ops",
+  weight: ["400"]
+});
+
 export const metadata: Metadata = {
   title: "Warrior Revival",
   description: "Warrior Revival website prototype",
@@ -36,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${headingFont.variable} ${bodyFont.variable} ${accentFont.variable} font-sans`}
+        className={`${headingFont.variable} ${bodyFont.variable} ${accentFont.variable} ${blackOpsFont.variable} font-sans`}
       >
         {children}
       </body>

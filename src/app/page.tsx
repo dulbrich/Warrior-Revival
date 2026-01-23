@@ -281,7 +281,7 @@ export default function Home() {
           <p className="font-accent text-base uppercase tracking-[0.3em] text-white/80 md:text-lg">
             Welcome to Warrior Revival
           </p>
-          <h1 className="max-w-3xl font-heading text-5xl font-semibold md:text-6xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
             SUPPORT &amp; EMPOWER VETERANS
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
@@ -452,23 +452,30 @@ export default function Home() {
 
       <section className="bg-primary">
         <div className="mx-auto max-w-5xl px-4 py-16 md:px-8">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-              Newsletter
-            </p>
-            <div className="mt-3 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-              <p className="font-heading text-3xl font-semibold">
-                Get monthly updates and new adventure dates.
+          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
+            <img
+              src="/logo3.png"
+              alt="Warrior Revival logo"
+              className="h-56 w-auto md:h-64 lg:h-72"
+            />
+            <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+                Newsletter
               </p>
-              <div className="flex w-full flex-col gap-3 sm:flex-row md:max-w-md">
-                <input
-                  className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
-                  placeholder="you@example.com"
-                  type="email"
-                />
-                <button className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  Subscribe
-                </button>
+              <div className="mt-3 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+                <p className="font-heading text-3xl font-semibold">
+                  Get monthly updates and new adventure dates.
+                </p>
+                <div className="flex w-full flex-col gap-3 sm:flex-row md:max-w-md">
+                  <input
+                    className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
+                    placeholder="you@example.com"
+                    type="email"
+                  />
+                  <button className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    Subscribe
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -476,14 +483,9 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-border bg-surface">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm text-textSecondary md:flex-row md:items-center md:justify-between md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 text-sm text-textSecondary md:flex-row md:items-center md:justify-between md:px-8">
           <div>
             <div className="flex items-center gap-6">
-              <img
-                src="/logo2.png"
-                alt="Warrior Revival mark"
-                className="h-40 w-40 pr-4"
-              />
               <div>
                 <p className="font-heading text-base font-semibold text-primary">
                   Warrior Revival
