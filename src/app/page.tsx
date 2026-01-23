@@ -113,15 +113,15 @@ const focusAreas = [
     cta: "Join"
   },
   {
-    title: "Mentorship/Resources",
-    titleLines: ["Mentorship", "Resources"],
+    title: "Mentorship & Resources",
+    titleLines: ["Mentorship", "& Resources"],
     description:
       "There is no roadmap or manual after leaving the military. Connecting with another veteran who has been through the process can help ease the transition. Warrior Revival also provides resources, guidance, and support to help veterans navigate civilian life successfully."
   },
   {
-    title: "Mentorship & Resources",
+    title: "Retreats",
     description:
-      "There is no roadmap or manual after leaving the military. Connecting with another veteran who has been through the process can help ease the transition. Warrior Revival also provides resources, guidance, and support to help veterans navigate civilian life successfully."
+      "Warrior Revival retreats support veterans and their families through outdoor recreation, workshops, and reflection. Led by Dr. Katie Fry, a clinical psychologist and founder, they provide a safe space for healing, connection, and ongoing support."
   },
   {
     title: "Community Partnership",
@@ -175,7 +175,7 @@ export default function Home() {
       <div className="sticky top-0 z-30">
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-            <div className="flex items-center gap-3">
+            <a href="/" className="flex items-center gap-3">
               <img
                 src="/logo.webp"
                 alt="Warrior Revival logo"
@@ -189,7 +189,7 @@ export default function Home() {
                   Military, Transition, Community
                 </p>
               </div>
-            </div>
+            </a>
             <nav className="hidden items-center gap-6 text-base font-accent text-textSecondary tracking-[0.08em] lg:flex">
               {navigation.slice(0, 7).map((item) => (
                 <a
@@ -293,9 +293,12 @@ export default function Home() {
             <button className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Donate
             </button>
-            <button className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <a
+              href="/events"
+              className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
               View Events
-            </button>
+            </a>
             <button className="inline-flex items-center justify-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Join the community
             </button>
