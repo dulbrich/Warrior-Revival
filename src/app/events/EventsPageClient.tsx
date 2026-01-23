@@ -8,6 +8,7 @@ import { buildEventId, events } from "@/data/events";
 const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "#" },
+  { label: "Veterans", href: "/veterans" },
   { label: "Programs", href: "#" },
   { label: "Events", href: "/events" },
   { label: "Get Involved", href: "#" },
@@ -516,15 +517,21 @@ export default function EventsPage() {
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
             <div className="flex items-center gap-3">
-              <img src="/logo.webp" alt="Warrior Revival logo" className="h-12 w-12" />
+              <img
+                src="/logo.webp"
+                alt="Warrior Revival logo"
+                className="h-14 w-14 md:h-16 md:w-16"
+              />
               <div>
-                <p className="font-heading text-lg font-semibold text-primary">Warrior Revival</p>
+                <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
+                  Warrior Revival
+                </p>
                 <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
                   Military, Transition, Community
                 </p>
               </div>
             </div>
-            <nav className="hidden items-center gap-6 text-sm font-semibold text-textSecondary lg:flex">
+            <nav className="hidden items-center gap-6 text-base font-accent text-textSecondary tracking-[0.08em] lg:flex">
               {navigation.slice(0, 7).map((item) => (
                 <a
                   key={item.label}
@@ -580,7 +587,7 @@ export default function EventsPage() {
           aria-hidden={!isMenuOpen}
         >
           <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
-            <div className="grid gap-2 pt-2 text-sm font-semibold text-textSecondary">
+            <div className="grid gap-2 pt-2 text-base font-accent text-textSecondary tracking-[0.08em]">
               {navigation.map((item) => (
                 <a
                   key={item.label}
@@ -602,7 +609,7 @@ export default function EventsPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
               Events
             </p>
-            <h1 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            <h1 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
               Explore upcoming events
             </h1>
             <p className="text-sm text-textSecondary">
