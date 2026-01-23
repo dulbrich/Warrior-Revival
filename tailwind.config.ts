@@ -18,7 +18,8 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Poppins", "Montserrat", "sans-serif"],
-        sans: ["var(--font-body)", "Source Sans 3", "Open Sans", "sans-serif"]
+        sans: ["var(--font-body)", "Source Sans 3", "Open Sans", "sans-serif"],
+        accent: ["var(--font-accent)", "Bebas Neue", "Roboto Condensed", "sans-serif"]
       },
       boxShadow: {
         card: "0 20px 40px -30px rgba(11, 46, 75, 0.4)",
