@@ -220,8 +220,8 @@ export default function AboutPageClient() {
               with transition - not because of a mental health disorder, but because
               they had lost the camaraderie, support, and leadership opportunities
               that once structured their lives. With few non-clinical options
-              available, many were routed into mental health care for "adjustment
-              issues," when what they actually needed was connection and purpose.
+              available, many were routed into mental health care for &quot;adjustment
+              issues,&quot; when what they actually needed was connection and purpose.
               While mental health challenges do exist after service, not every
               transition struggle is clinical.
             </p>
