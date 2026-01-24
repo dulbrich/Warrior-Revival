@@ -172,11 +172,6 @@ export default function AboutPageClient() {
           <h1 className="max-w-3xl font-heading text-4xl font-semibold text-primary md:text-5xl">
             A veteran-led community built around adventure, mentorship, and belonging.
           </h1>
-          <p className="max-w-3xl text-base text-textSecondary md:text-lg">
-            Warrior Revival is a 501(c)(3) nonprofit founded in 2023 to support
-            service members, veterans, and their families through outdoor recreation
-            and community-driven programs across Utah.
-          </p>
           <div className="flex flex-wrap gap-3">
             <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Volunteer with us
