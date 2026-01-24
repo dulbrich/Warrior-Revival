@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { leadershipTeam, volunteers } from "@/data/about";
+import { founderProfile, leadershipTeam, volunteers } from "@/data/about";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -169,7 +169,7 @@ export default function AboutPageClient() {
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             About Warrior Revival
           </p>
-          <h1 className="max-w-3xl font-heading text-4xl font-semibold text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
             A veteran-led community built around adventure, mentorship, and belonging.
           </h1>
           <div className="flex flex-wrap gap-3">
@@ -202,27 +202,49 @@ export default function AboutPageClient() {
       </section>
 
       <section className="bg-surface">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:px-8">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-start md:px-8">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-              Our story
-            </p>
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Founded to help veterans rediscover community in the outdoors.
+              Founded to help Utah&apos;s military community find a renewed sense of
+              purpose, belonging, and identity.
             </h2>
-            <p className="text-base text-textSecondary">
-              Warrior Revival began with Dr. Katie Fry and a small group of veterans
-              who believed that shared outdoor experiences could ease the transition
-              to civilian life. What started as a handful of outings has become a
-              growing network of mentors, volunteers, and partners across Utah.
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+              OUR STORY
             </p>
             <p className="text-base text-textSecondary">
-              Today, the organization brings veterans together for recreation,
-              mentorship, and family-focused events that restore connection and
-              provide a trusted support system.
+              Warrior Revival was created to fill a space that disappears when
+              military service ends.
+            </p>
+            <p className="text-base text-textSecondary">
+              Through work within the VA, its founder saw many veterans struggling
+              with transition - not because of a mental health disorder, but because
+              they had lost the camaraderie, support, and leadership opportunities
+              that once structured their lives. With few non-clinical options
+              available, many were routed into mental health care for "adjustment
+              issues," when what they actually needed was connection and purpose.
+              While mental health challenges do exist after service, not every
+              transition struggle is clinical.
+            </p>
+            <p className="text-base text-textSecondary">
+              A practical gap was also evident. Post-9/11 veterans are balancing
+              careers, school, and families, yet most support services operate during
+              business hours. Nights and weekends - when isolation is often strongest
+              - are exactly when veterans have the fewest options.
+            </p>
+            <p className="text-base text-textSecondary">
+              Warrior Revival was built to meet veterans where they are and to
+              recreate what military life naturally provided: shared experiences,
+              peer support, and meaningful opportunities to lead and contribute.
+              Through recreational experiences veterans want to do, Warrior Revival
+              builds community, reinforces identity, and supports the transition to
+              civilian life.
+            </p>
+            <p className="text-base text-textSecondary">
+              Warrior Revival does not replace mental health care. It restores the
+              human infrastructure that existed before the uniform came off.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-light p-6 shadow-card">
+          <div className="self-start rounded-2xl border border-border bg-light p-6 shadow-card">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
               Focus areas
             </p>
@@ -257,6 +279,30 @@ export default function AboutPageClient() {
             </div>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="sm:col-span-2 lg:col-span-3">
+              <div className="rounded-3xl border border-border bg-surface p-6 shadow-card md:p-10">
+                <div className="grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center">
+                  <div className="overflow-hidden rounded-2xl border border-border bg-white">
+                    <img
+                      src={founderProfile.image}
+                      alt={`${founderProfile.firstName} ${founderProfile.lastName}, ${founderProfile.role}`}
+                      className="h-64 w-full object-cover md:h-72 lg:h-80"
+                    />
+                  </div>
+                  <div className="rounded-2xl border border-border bg-white px-6 py-8 text-center shadow-soft md:px-10 md:py-12">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                      Founder &amp; President
+                    </p>
+                    <h3 className="mt-3 font-heading text-2xl font-semibold text-primary md:text-3xl">
+                      {founderProfile.firstName} {founderProfile.lastName}
+                    </h3>
+                    <p className="mx-auto mt-4 max-w-2xl text-sm text-textSecondary md:text-base">
+                      {founderProfile.bio}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
             {leadershipTeam.map((member) => {
               const fullName = `${member.firstName} ${member.lastName}`;
               return (
@@ -308,16 +354,19 @@ export default function AboutPageClient() {
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {volunteers.map((volunteer) => {
-              const displayName = `${volunteer.firstName} ${volunteer.lastInitial}.`;
+              const displayName = volunteer.lastInitial
+                ? `${volunteer.firstName} ${volunteer.lastInitial}.`
+                : volunteer.firstName;
+              const volunteerImage = volunteer.image ?? "/logo.webp";
               return (
                 <div
                   key={displayName}
                   className="flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft"
                 >
                   <img
-                    src={volunteer.image}
+                    src={volunteerImage}
                     alt={`${displayName}, ${volunteer.branch}`}
-                    className="h-16 w-16 rounded-full border border-border object-cover"
+                    className="h-16 w-16 rounded-full border border-border bg-white object-cover"
                   />
                   <div>
                     <p className="font-heading text-lg font-semibold text-primary">
