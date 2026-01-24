@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const navigation = [
@@ -80,10 +81,13 @@ export default function VeteransPageClient() {
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
             <a href="/" className="flex items-center gap-3">
-              <img
+              <Image
                 src="/logo.webp"
                 alt="Warrior Revival logo"
+                width={64}
+                height={64}
                 className="h-14 w-14 md:h-16 md:w-16"
+                priority
               />
               <div>
                 <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
@@ -202,10 +206,12 @@ export default function VeteransPageClient() {
             </div>
           </div>
           <div className="relative min-h-[380px] md:min-h-[460px]">
-            <img
+            <Image
               src="/home/soldier.jpg"
               alt="Soldier reflecting outdoors"
-              className="absolute inset-0 h-full w-full rounded-3xl object-cover shadow-card"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
             />
           </div>
         </div>

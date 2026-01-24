@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
@@ -389,7 +390,7 @@ export default function EventsPage() {
 
     const date = new Date(`${selectedEvent.dateIso}T00:00:00`);
     setCalendarMonth(new Date(date.getFullYear(), date.getMonth(), 1));
-  }, [selectedEvent?.dateIso]);
+  }, [selectedEvent]);
 
   useEffect(() => {
     if (selectedMonth === "all") {
@@ -517,10 +518,13 @@ export default function EventsPage() {
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
             <a href="/" className="flex items-center gap-3">
-              <img
+              <Image
                 src="/logo.webp"
                 alt="Warrior Revival logo"
+                width={64}
+                height={64}
                 className="h-14 w-14 md:h-16 md:w-16"
+                priority
               />
               <div>
                 <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
@@ -815,9 +819,11 @@ export default function EventsPage() {
                         }}
                       >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <img
+                        <Image
                           src={event.image ?? fallbackEventImage}
                           alt="Warrior Revival"
+                          width={48}
+                          height={48}
                           className="h-12 w-12 rounded-md border border-border bg-white object-contain"
                         />
                           <div>
@@ -847,11 +853,15 @@ export default function EventsPage() {
             <div className="rounded-xl border border-border bg-surface p-5 shadow-soft">
               {selectedEvent ? (
                 <div className="space-y-4">
-                  <img
-                    src={selectedEvent.image ?? fallbackEventImage}
-                    alt="Warrior Revival"
-                    className="h-52 w-full rounded-lg border border-border bg-white object-contain"
-                  />
+                  <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
+                    <Image
+                      src={selectedEvent.image ?? fallbackEventImage}
+                      alt="Warrior Revival"
+                      fill
+                      sizes="(min-width: 1024px) 20rem, 100vw"
+                      className="object-contain"
+                    />
+                  </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                       {selectedEvent.dateLabel}

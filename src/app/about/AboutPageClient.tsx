@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { founderProfile, leadershipTeam, volunteers } from "@/data/about";
 
@@ -67,10 +68,13 @@ export default function AboutPageClient() {
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
             <a href="/" className="flex items-center gap-3">
-              <img
+              <Image
                 src="/logo.webp"
                 alt="Warrior Revival logo"
+                width={64}
+                height={64}
                 className="h-14 w-14 md:h-16 md:w-16"
+                priority
               />
               <div>
                 <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
@@ -220,8 +224,8 @@ export default function AboutPageClient() {
               with transition - not because of a mental health disorder, but because
               they had lost the camaraderie, support, and leadership opportunities
               that once structured their lives. With few non-clinical options
-              available, many were routed into mental health care for "adjustment
-              issues," when what they actually needed was connection and purpose.
+              available, many were routed into mental health care for &quot;adjustment
+              issues,&quot; when what they actually needed was connection and purpose.
               While mental health challenges do exist after service, not every
               transition struggle is clinical.
             </p>
@@ -282,11 +286,13 @@ export default function AboutPageClient() {
             <div className="sm:col-span-2 lg:col-span-3">
               <div className="rounded-3xl border border-border bg-surface p-6 shadow-card md:p-10">
                 <div className="grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center">
-                  <div className="overflow-hidden rounded-2xl border border-border bg-white">
-                    <img
+                  <div className="relative h-64 overflow-hidden rounded-2xl border border-border bg-white md:h-72 lg:h-80">
+                    <Image
                       src={founderProfile.image}
                       alt={`${founderProfile.firstName} ${founderProfile.lastName}, ${founderProfile.role}`}
-                      className="h-64 w-full object-cover md:h-72 lg:h-80"
+                      fill
+                      sizes="(min-width: 1024px) 32rem, (min-width: 768px) 40vw, 100vw"
+                      className="object-cover"
                     />
                   </div>
                   <div className="px-6 py-8 text-center md:px-10 md:py-12">
@@ -310,11 +316,13 @@ export default function AboutPageClient() {
                   key={fullName}
                   className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
                 >
-                  <div className="h-56 w-full overflow-hidden">
-                    <img
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
                       src={member.image}
                       alt={`${fullName}, ${member.role}`}
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                      className="object-cover"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
@@ -363,9 +371,11 @@ export default function AboutPageClient() {
                   key={displayName}
                   className="flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft"
                 >
-                  <img
+                  <Image
                     src={volunteerImage}
                     alt={`${displayName}, ${volunteer.branch}`}
+                    width={64}
+                    height={64}
                     className="h-16 w-16 rounded-full border border-border bg-white object-cover"
                   />
                   <div>
@@ -414,9 +424,11 @@ export default function AboutPageClient() {
       <section className="bg-primary">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
           <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
-            <img
+            <Image
               src="/logo3.png"
               alt="Warrior Revival logo"
+              width={958}
+              height={1024}
               className="h-[18rem] w-auto md:h-[21rem] lg:h-[24rem] md:shrink-0"
             />
             <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:flex-1 md:p-8">
