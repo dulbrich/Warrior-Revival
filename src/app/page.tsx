@@ -1,6 +1,7 @@
 "use client";
 
 import { buildEventId, events } from "@/data/events";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -176,10 +177,13 @@ export default function Home() {
         <header className="border-b border-border bg-surface/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
             <a href="/" className="flex items-center gap-3">
-              <img
+              <Image
                 src="/logo.webp"
                 alt="Warrior Revival logo"
+                width={64}
+                height={64}
                 className="h-14 w-14 md:h-16 md:w-16"
+                priority
               />
               <div>
                 <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
@@ -373,9 +377,11 @@ export default function Home() {
                   }}
                 >
                   <div className="flex items-start gap-4">
-                    <img
+                    <Image
                       src={event.image ?? fallbackEventImage}
                       alt={event.name}
+                      width={64}
+                      height={64}
                       className={`h-16 w-16 rounded-md border border-border bg-white ${
                         event.image ? "object-cover" : "object-contain"
                       }`}
@@ -455,9 +461,11 @@ export default function Home() {
       <section className="bg-primary">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
           <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
-            <img
+            <Image
               src="/logo3.png"
               alt="Warrior Revival logo"
+              width={958}
+              height={1024}
               className="h-[18rem] w-auto md:h-[21rem] lg:h-[24rem] md:shrink-0"
             />
             <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:flex-1 md:p-8">
