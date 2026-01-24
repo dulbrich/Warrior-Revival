@@ -289,7 +289,7 @@ export default function AboutPageClient() {
                       className="h-64 w-full object-cover md:h-72 lg:h-80"
                     />
                   </div>
-                  <div className="rounded-2xl border border-border bg-white px-6 py-8 text-center shadow-soft md:px-10 md:py-12">
+                  <div className="px-6 py-8 text-center md:px-10 md:py-12">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
                       Founder &amp; President
                     </p>
@@ -383,35 +383,60 @@ export default function AboutPageClient() {
         </div>
       </section>
 
+      <section className="bg-light">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+          <div className="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+                Join the mission
+              </p>
+              <h2 className="mt-4 font-heading text-3xl font-semibold text-primary md:text-4xl">
+                Ready to support veterans on their next chapter?
+              </h2>
+              <p className="mt-4 text-base text-textSecondary">
+                Volunteer your time, sponsor an event, or donate to keep outdoor
+                experiences and mentorship programs accessible to every veteran we
+                serve.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                Donate today
+              </button>
+              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                Become a volunteer
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-primary">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-white md:px-8">
-          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
+          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
             <img
               src="/logo3.png"
               alt="Warrior Revival logo"
               className="h-[18rem] w-auto md:h-[21rem] lg:h-[24rem] md:shrink-0"
             />
-            <div className="grid w-full gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-center">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-                  Join the mission
+            <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:flex-1 md:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+                Newsletter
+              </p>
+              <div className="mt-3 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+                <p className="font-heading text-3xl font-semibold">
+                  Get monthly updates and new adventure dates.
                 </p>
-                <h2 className="mt-4 font-heading text-3xl font-semibold md:text-4xl">
-                  Ready to support veterans on their next chapter?
-                </h2>
-                <p className="mt-4 text-base text-white/80">
-                  Volunteer your time, sponsor an event, or donate to keep outdoor
-                  experiences and mentorship programs accessible to every veteran we
-                  serve.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3">
-                <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  Donate today
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md border border-white/60 px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  Become a volunteer
-                </button>
+                <div className="flex w-full flex-col gap-3 md:max-w-none">
+                  <input
+                    className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
+                    placeholder="you@example.com"
+                    type="email"
+                  />
+                  <button className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    Subscribe
+                  </button>
+                </div>
               </div>
             </div>
           </div>
