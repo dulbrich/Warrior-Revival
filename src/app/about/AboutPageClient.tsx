@@ -1,21 +1,10 @@
 "use client";
 
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
+import SubscribeSection from "@/components/SubscribeSection";
 import Image from "next/image";
-import { useState } from "react";
 import { founderProfile, leadershipTeam, volunteers } from "@/data/about";
-
-const navigation = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Veterans", href: "/veterans" },
-  { label: "Programs", href: "#" },
-  { label: "Events", href: "/events" },
-  { label: "Get Involved", href: "#" },
-  { label: "Partners", href: "#" },
-  { label: "Gallery", href: "#" },
-  { label: "Donate", href: "#" },
-  { label: "Contact", href: "#" }
-];
 
 const missionCards = [
   {
@@ -60,105 +49,9 @@ const focusAreas = [
 ];
 
 export default function AboutPageClient() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <main className="bg-light">
-      <div className="sticky top-0 z-30">
-        <header className="border-b border-border bg-surface/95 backdrop-blur">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-            <a href="/" className="flex items-center gap-3">
-              <Image
-                src="/logo.webp"
-                alt="Warrior Revival logo"
-                width={64}
-                height={64}
-                className="h-14 w-14 md:h-16 md:w-16"
-                priority
-              />
-              <div>
-                <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
-                  Warrior Revival
-                </p>
-                <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
-                  Military, Transition, Community
-                </p>
-              </div>
-            </a>
-            <nav className="hidden items-center gap-6 text-base font-accent text-textSecondary tracking-[0.08em] lg:flex">
-              {navigation.slice(0, 7).map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-current={item.href === "/about" ? "page" : undefined}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-            <div className="hidden items-center gap-3 lg:flex">
-              <button className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                Join
-              </button>
-              <button className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                Donate
-              </button>
-            </div>
-            <button
-              type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setIsMenuOpen((open) => !open)}
-            >
-              <span className="sr-only">Toggle menu</span>
-              <span className="relative block h-5 w-6" aria-hidden="true">
-                <span
-                  className={`absolute left-0 top-0 h-0.5 w-6 bg-current transition duration-300 ${
-                    isMenuOpen ? "translate-y-[9px] rotate-45" : ""
-                  }`}
-                />
-                <span
-                  className={`absolute left-0 top-2 h-0.5 w-6 bg-current transition duration-300 ${
-                    isMenuOpen ? "opacity-0" : ""
-                  }`}
-                />
-                <span
-                  className={`absolute left-0 top-4 h-0.5 w-6 bg-current transition duration-300 ${
-                    isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
-                  }`}
-                />
-              </span>
-            </button>
-          </div>
-        </header>
-
-        <div
-          id="mobile-navigation"
-          className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
-            isMenuOpen
-              ? "max-h-[calc(100vh-96px)] overflow-y-auto opacity-100"
-              : "max-h-0 opacity-0 pointer-events-none"
-          }`}
-          aria-hidden={!isMenuOpen}
-        >
-          <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
-            <div className="grid gap-2 pt-2 text-base font-accent text-textSecondary tracking-[0.08em]">
-              {navigation.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-md px-3 py-2 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        </div>
-      </div>
+      <SiteHeader />
 
       <section className="relative overflow-hidden bg-surface">
         <div
@@ -421,52 +314,8 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      <section className="bg-primary">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
-          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
-            <Image
-              src="/logo3.png"
-              alt="Warrior Revival logo"
-              width={958}
-              height={1024}
-              className="h-[18rem] w-auto md:h-[21rem] lg:h-[24rem] md:shrink-0"
-            />
-            <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:flex-1 md:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-                Newsletter
-              </p>
-              <div className="mt-3 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-                <p className="font-heading text-3xl font-semibold">
-                  Get monthly updates and new adventure dates.
-                </p>
-                <div className="flex w-full flex-col gap-3 md:max-w-none">
-                  <input
-                    className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
-                    placeholder="you@example.com"
-                    type="email"
-                  />
-                  <button className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-border bg-surface">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm text-textSecondary md:flex-row md:items-center md:justify-between md:px-8">
-          <div>
-            <p className="font-heading text-base font-semibold text-primary">Warrior Revival</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">Utah</p>
-          </div>
-          <p>Empowering veterans and families through adventure and belonging.</p>
-          <button className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-            Support the mission
-          </button>
-        </div>
-      </footer>
+      <SubscribeSection />
+      <SiteFooter />
     </main>
   );
 }
