@@ -166,7 +166,7 @@ export default function AboutPageClient() {
           aria-hidden="true"
         />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 md:px-8 md:py-20">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+          <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             About Warrior Revival
           </p>
           <h1 className="max-w-3xl font-heading text-4xl font-semibold text-primary md:text-5xl">
