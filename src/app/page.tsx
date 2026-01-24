@@ -310,7 +310,7 @@ export default function Home() {
 
       <section className="relative overflow-hidden bg-surface">
         <div
-          className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.09]"
+          className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.2]"
           aria-hidden="true"
         />
         <div className="relative mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-5">
@@ -453,14 +453,14 @@ export default function Home() {
       </section>
 
       <section className="bg-primary">
-        <div className="mx-auto max-w-5xl px-4 py-16 md:px-8">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-8">
           <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
             <img
               src="/logo3.png"
               alt="Warrior Revival logo"
-              className="h-56 w-auto md:h-64 lg:h-72"
+              className="h-[18rem] w-auto md:h-[21rem] lg:h-[24rem] md:shrink-0"
             />
-            <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:p-8">
+            <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 text-white md:flex-1 md:p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
                 Newsletter
               </p>
@@ -468,7 +468,7 @@ export default function Home() {
                 <p className="font-heading text-3xl font-semibold">
                   Get monthly updates and new adventure dates.
                 </p>
-                <div className="flex w-full flex-col gap-3 sm:flex-row md:max-w-md">
+                <div className="flex w-full flex-col gap-3 md:max-w-none">
                   <input
                     className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
                     placeholder="you@example.com"
