@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
   { label: "Veterans", href: "/veterans" },
   { label: "Programs", href: "#" },
   { label: "Events", href: "/events" },
