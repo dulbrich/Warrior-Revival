@@ -241,7 +241,9 @@ export default function Home() {
         <div
           id="mobile-navigation"
           className={`lg:hidden overflow-hidden border-b border-border bg-surface/95 backdrop-blur transition-[max-height,opacity] duration-300 ease-out ${
-            isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+            isMenuOpen
+              ? "max-h-[calc(100vh-96px)] overflow-y-auto opacity-100"
+              : "max-h-0 opacity-0 pointer-events-none"
           }`}
           aria-hidden={!isMenuOpen}
         >
