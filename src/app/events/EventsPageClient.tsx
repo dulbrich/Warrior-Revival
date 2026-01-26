@@ -229,6 +229,11 @@ export default function EventsPage() {
   );
   const [selectedMonth, setSelectedMonth] = useState("all");
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
+  const [mobileOptionsTab, setMobileOptionsTab] = useState<
+    "filters" | "months" | "calendar"
+  >("filters");
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [calendarMonth, setCalendarMonth] = useState(() => {
     const date = new Date();
     date.setDate(1);
@@ -390,6 +395,12 @@ export default function EventsPage() {
     setCalendarMonth(new Date(Number(year), Number(month) - 1, 1));
   }, [selectedMonth]);
 
+  useEffect(() => {
+    if (!selectedEvent) {
+      setIsDetailOpen(false);
+    }
+  }, [selectedEvent]);
+
   const toggleFilter = (filterId: string) => {
     setSelectedFilters((prev) => {
       const next = new Set(prev);
@@ -414,12 +425,15 @@ export default function EventsPage() {
     }
   };
 
-  const handleCalendarSelect = (dateKey: string) => {
+  const handleCalendarSelect = (dateKey: string, openDetail = false) => {
     const eventsOnDay = eventsByDate.get(dateKey);
     if (!eventsOnDay || eventsOnDay.length === 0) {
       return;
     }
     setSelectedEventId(buildEventId(eventsOnDay[0]));
+    if (openDetail) {
+      setIsDetailOpen(true);
+    }
   };
 
   const renderDetails = (event: (typeof events)[number]) => {
@@ -521,6 +535,106 @@ export default function EventsPage() {
         </div>
 
         <div className="mt-2 lg:grid lg:grid-cols-[200px_minmax(0,1fr)_300px] lg:items-start lg:gap-8">
+          <div className="lg:hidden">
+            <div className="sticky top-0 z-30 -mx-4 border-b border-border bg-light/95 px-4 py-4 backdrop-blur">
+              <div className="flex items-center gap-2">
+                <div className="flex h-12 flex-1 items-center gap-2 rounded-full border border-border bg-white px-4 text-sm shadow-soft">
+                  <span className="text-textSecondary">🔎</span>
+                  <input
+                    className="w-full border-none bg-transparent text-sm text-textPrimary placeholder:text-textSecondary focus:outline-none"
+                    placeholder="Search events, locations, or tags"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                  />
+                </div>
+                <button
+                  type="button"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/30 bg-white text-lg text-primary shadow-soft transition hover:bg-primary/10"
+                  onClick={() => setIsOptionsOpen(true)}
+                  aria-label="Open event options"
+                >
+                  ☰
+                </button>
+              </div>
+              <div className="mt-3 flex items-center justify-between text-xs text-textSecondary">
+                <span>
+                  {visibleEvents.length} events · {monthFilteredEvents.length} in range
+                </span>
+                {query ? (
+                  <button
+                    type="button"
+                    className="font-semibold text-primary"
+                    onClick={() => setQuery("")}
+                  >
+                    Clear search
+                  </button>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              {visibleEvents.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-textSecondary">
+                  No events match your filters.
+                </div>
+              ) : (
+                eventItems.map((item, index) => {
+                  if (item.type === "month") {
+                    return (
+                      <div
+                        key={`mobile-month-${item.key}`}
+                        className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary ${
+                          index === 0 ? "" : "mt-6"
+                        }`}
+                      >
+                        <span className="whitespace-nowrap">{item.label}</span>
+                        <span className="h-px flex-1 bg-border" />
+                      </div>
+                    );
+                  }
+
+                  const event = item.event;
+                  const eventId = buildEventId(event);
+
+                  return (
+                    <button
+                      key={`mobile-${eventId}`}
+                      type="button"
+                      onClick={() => {
+                        setSelectedEventId(eventId);
+                        setIsDetailOpen(true);
+                      }}
+                      className="flex w-full gap-4 rounded-2xl border border-border bg-white p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+                    >
+                      <Image
+                        src={event.image ?? fallbackEventImage}
+                        alt="Warrior Revival"
+                        width={64}
+                        height={64}
+                        className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
+                      />
+                      <div className="flex-1 space-y-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                            {event.dateLabel}
+                          </p>
+                          <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                            {event.category}
+                          </span>
+                        </div>
+                        <p className="font-heading text-lg font-semibold text-primary">{event.name}</p>
+                        <p className="text-sm text-textSecondary">{event.location}</p>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
+                          {event.timeLabel}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          </div>
+
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-6">
               <div className="rounded-xl border border-border bg-surface p-4">
@@ -623,7 +737,7 @@ export default function EventsPage() {
             </div>
           </aside>
 
-          <div className="lg:col-start-2">
+          <div className="hidden lg:block lg:col-start-2">
             <div className="mt-0 flex flex-col gap-3 sm:flex-row sm:items-center">
               <input
                 className="h-11 w-full rounded-md border border-border bg-white px-3 text-sm text-textPrimary placeholder:text-textSecondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:flex-1"
@@ -644,7 +758,7 @@ export default function EventsPage() {
               <p className="text-sm font-semibold uppercase tracking-wide text-textSecondary">
                 Filters
               </p>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
                 {eventTypeFilters.map((filter) => (
                   <label key={filter.id} className="flex items-center gap-2 text-sm">
                     <input
@@ -663,7 +777,7 @@ export default function EventsPage() {
                     checked={showPastEvents}
                     onChange={(event) => setShowPastEvents(event.target.checked)}
                   />
-                  Show past events
+                    Show past events
                 </label>
               </div>
             </div>
@@ -715,13 +829,13 @@ export default function EventsPage() {
                         }}
                       >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <Image
-                          src={event.image ?? fallbackEventImage}
-                          alt="Warrior Revival"
-                          width={48}
-                          height={48}
-                          className="h-12 w-12 rounded-md border border-border bg-white object-contain"
-                        />
+                          <Image
+                            src={event.image ?? fallbackEventImage}
+                            alt="Warrior Revival"
+                            width={48}
+                            height={48}
+                            className="h-12 w-12 rounded-md border border-border bg-white object-contain"
+                          />
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                               {event.dateLabel}
@@ -776,6 +890,266 @@ export default function EventsPage() {
           </aside>
         </div>
       </section>
+
+      <div
+        className={`fixed inset-0 z-40 lg:hidden ${
+          isOptionsOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        <button
+          type="button"
+          aria-hidden="true"
+          className={`absolute inset-0 bg-black/40 transition-opacity ${
+            isOptionsOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setIsOptionsOpen(false)}
+        />
+        <div
+          className={`absolute bottom-0 left-0 right-0 max-h-[85vh] rounded-t-3xl border border-border bg-surface p-5 shadow-2xl transition-transform duration-300 ${
+            isOptionsOpen ? "translate-y-0" : "translate-y-full"
+          }`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Event options"
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+                Options
+              </p>
+              <p className="font-heading text-xl font-semibold text-primary">
+                Filter & explore
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsOptionsOpen(false)}
+              className="rounded-full border border-border px-3 py-2 text-xs font-semibold uppercase tracking-wide text-textSecondary"
+            >
+              Close
+            </button>
+          </div>
+
+          <div className="mt-4 grid grid-cols-3 gap-2 rounded-full bg-light p-1 text-xs font-semibold uppercase tracking-wide text-textSecondary">
+            {[
+              { id: "filters", label: "Filters" },
+              { id: "months", label: "Months" },
+              { id: "calendar", label: "Calendar" }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                className={`rounded-full px-3 py-2 transition ${
+                  mobileOptionsTab === tab.id
+                    ? "bg-white text-primary shadow-soft"
+                    : "text-textSecondary"
+                }`}
+                onClick={() => setMobileOptionsTab(tab.id as typeof mobileOptionsTab)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-5 max-h-[55vh] space-y-4 overflow-y-auto pb-10">
+            {mobileOptionsTab === "filters" ? (
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-border bg-white p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                    Event types
+                  </p>
+                  <div className="mt-3 grid gap-3">
+                    {eventTypeFilters.map((filter) => (
+                      <label key={filter.id} className="flex items-center justify-between gap-3">
+                        <span className="text-sm font-semibold text-textPrimary">
+                          {filter.label}
+                        </span>
+                        <input
+                          type="checkbox"
+                          className="h-5 w-5 rounded border-border text-primary focus-visible:ring-2 focus-visible:ring-accent"
+                          checked={selectedFilters.has(filter.id)}
+                          onChange={() => toggleFilter(filter.id)}
+                        />
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border bg-white p-4">
+                  <label className="flex items-center justify-between gap-3 text-sm font-semibold text-primary">
+                    Show past events
+                    <input
+                      type="checkbox"
+                      className="h-5 w-5 rounded border-border text-primary focus-visible:ring-2 focus-visible:ring-accent"
+                      checked={showPastEvents}
+                      onChange={(event) => setShowPastEvents(event.target.checked)}
+                    />
+                  </label>
+                </div>
+              </div>
+            ) : null}
+
+            {mobileOptionsTab === "months" ? (
+              <div className="space-y-3">
+                <button
+                  type="button"
+                  className={`w-full rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition ${
+                    selectedMonth === "all"
+                      ? "border-primary/40 bg-primary/10 text-primary"
+                      : "border-border bg-white text-textSecondary"
+                  }`}
+                  onClick={() => setSelectedMonth("all")}
+                >
+                  All months
+                </button>
+                {monthOptions.map((option) => (
+                  <button
+                    key={option.key}
+                    type="button"
+                    className={`w-full rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition ${
+                      selectedMonth === option.key
+                        ? "border-primary/40 bg-primary/10 text-primary"
+                        : "border-border bg-white text-textSecondary"
+                    }`}
+                    onClick={() => {
+                      setSelectedMonth(option.key);
+                      setCalendarMonth(option.dateValue);
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+
+            {mobileOptionsTab === "calendar" ? (
+              <div className="rounded-2xl border border-border bg-white p-4">
+                <div className="flex items-center justify-between">
+                  <button
+                    type="button"
+                    className="rounded-full border border-border px-3 py-2 text-xs font-semibold text-textSecondary transition hover:bg-primary/10 hover:text-primary"
+                    onClick={() => handleMonthNav(-1)}
+                    aria-label="Previous month"
+                  >
+                    ←
+                  </button>
+                  <p className="text-sm font-semibold text-primary">
+                    {formatMonthLabel(calendarMonth)}
+                  </p>
+                  <button
+                    type="button"
+                    className="rounded-full border border-border px-3 py-2 text-xs font-semibold text-textSecondary transition hover:bg-primary/10 hover:text-primary"
+                    onClick={() => handleMonthNav(1)}
+                    aria-label="Next month"
+                  >
+                    →
+                  </button>
+                </div>
+                <div className="mt-4 grid grid-cols-7 text-[11px] font-semibold text-textSecondary">
+                  {weekdayLabels.map((label) => (
+                    <span key={label} className="text-center">
+                      {label}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3 grid grid-cols-7 gap-2 text-xs">
+                  {calendarCells.map((cell, index) => {
+                    if (!cell) {
+                      return <span key={`mobile-empty-${index}`} />;
+                    }
+
+                    const hasEvents = eventsByDate.has(cell.dateKey);
+
+                    if (!hasEvents) {
+                      return (
+                        <span
+                          key={cell.dateKey}
+                          className="flex h-9 w-9 items-center justify-center rounded-full text-textSecondary/40"
+                        >
+                          {cell.day}
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <button
+                        key={cell.dateKey}
+                        type="button"
+                        onClick={() => handleCalendarSelect(cell.dateKey, true)}
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-primary"
+                      >
+                        {cell.day}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-50 lg:hidden ${
+          isDetailOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        <button
+          type="button"
+          aria-hidden="true"
+          className={`absolute inset-0 bg-black/40 transition-opacity ${
+            isDetailOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setIsDetailOpen(false)}
+        />
+        <div
+          className={`absolute bottom-0 left-0 right-0 max-h-[85vh] rounded-t-3xl border border-border bg-white shadow-2xl transition-transform duration-300 ${
+            isDetailOpen ? "translate-y-0" : "translate-y-full"
+          }`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Event details"
+        >
+          {selectedEvent ? (
+            <div className="flex max-h-[85vh] flex-col">
+              <div className="flex items-start justify-between border-b border-border px-5 py-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+                    Event details
+                  </p>
+                  <p className="font-heading text-xl font-semibold text-primary">
+                    {selectedEvent.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="rounded-full border border-border px-3 py-2 text-xs font-semibold uppercase tracking-wide text-textSecondary"
+                  onClick={() => setIsDetailOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
+              <div className="flex-1 space-y-4 overflow-y-auto px-5 py-4">
+                <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-border bg-light">
+                  <Image
+                    src={selectedEvent.image ?? fallbackEventImage}
+                    alt="Warrior Revival"
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                    {selectedEvent.dateLabel} · {selectedEvent.timeLabel}
+                  </p>
+                  <p className="text-sm font-semibold text-primary">{selectedEvent.location}</p>
+                </div>
+                {renderDetails(selectedEvent)}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
 
       <SubscribeSection />
       <SiteFooter />
