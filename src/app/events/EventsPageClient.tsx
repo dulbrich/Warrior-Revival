@@ -1,5 +1,6 @@
 "use client";
 
+import MarqueeText from "@/components/MarqueeText";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -622,7 +623,10 @@ export default function EventsPage() {
                             {event.category}
                           </span>
                         </div>
-                        <p className="font-heading text-lg font-semibold text-primary">{event.name}</p>
+                        <MarqueeText
+                          text={event.name}
+                          className="font-heading text-lg font-semibold text-primary"
+                        />
                         <p className="text-sm text-textSecondary">{event.location}</p>
                         <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
                           {event.timeLabel}
@@ -840,9 +844,10 @@ export default function EventsPage() {
                             <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                               {event.dateLabel}
                             </p>
-                            <p className="font-heading text-lg font-semibold text-primary">
-                              {event.name}
-                            </p>
+                            <MarqueeText
+                              text={event.name}
+                              className="font-heading text-lg font-semibold text-primary"
+                            />
                             <p className="text-sm text-textSecondary">{event.location}</p>
                           </div>
                         </div>
@@ -876,9 +881,12 @@ export default function EventsPage() {
                     <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                       {selectedEvent.dateLabel}
                     </p>
-                    <p className="mt-1 font-heading text-2xl font-semibold text-primary">
-                      {selectedEvent.name}
-                    </p>
+                    <div className="mt-1">
+                      <MarqueeText
+                        text={selectedEvent.name}
+                        className="font-heading text-2xl font-semibold text-primary"
+                      />
+                    </div>
                     <p className="mt-1 text-sm text-textSecondary">{selectedEvent.location}</p>
                   </div>
                   {renderDetails(selectedEvent)}
