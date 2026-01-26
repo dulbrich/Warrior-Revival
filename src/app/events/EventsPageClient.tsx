@@ -541,7 +541,7 @@ export default function EventsPage() {
                 <div className="flex h-12 flex-1 items-center gap-2 rounded-full border border-border bg-white px-4 text-sm shadow-soft">
                   <span className="text-textSecondary">🔎</span>
                   <input
-                    className="w-full border-none bg-transparent text-sm text-textPrimary placeholder:text-textSecondary focus:outline-none"
+                    className="w-full border-none bg-transparent text-base text-textPrimary placeholder:text-textSecondary focus:outline-none"
                     placeholder="Search events, locations, or tags"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
@@ -997,7 +997,10 @@ export default function EventsPage() {
                       ? "border-primary/40 bg-primary/10 text-primary"
                       : "border-border bg-white text-textSecondary"
                   }`}
-                  onClick={() => setSelectedMonth("all")}
+                  onClick={() => {
+                    setSelectedMonth("all");
+                    setIsOptionsOpen(false);
+                  }}
                 >
                   All months
                 </button>
@@ -1013,6 +1016,7 @@ export default function EventsPage() {
                     onClick={() => {
                       setSelectedMonth(option.key);
                       setCalendarMonth(option.dateValue);
+                      setIsOptionsOpen(false);
                     }}
                   >
                     {option.label}
