@@ -99,7 +99,7 @@ export default function PrivacyPolicyPage() {
                 <span className="font-semibold text-primary">
                   Cookies and similar technologies.
                 </span>
-                We and our service providers may use "cookies" or similar technologies
+                We and our service providers may use &quot;cookies&quot; or similar technologies
                 on our Site. A cookie is a piece of data stored on your computer that
                 ties your computer to a web server for record keeping purposes. Most
                 browsers allow you to control the use of cookies on your computer. If
