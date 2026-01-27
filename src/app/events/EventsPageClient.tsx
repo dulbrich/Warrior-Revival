@@ -832,7 +832,7 @@ export default function EventsPage() {
                           setSelectedEventId(eventId);
                         }}
                       >
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <div className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center">
                           <Image
                             src={event.image ?? fallbackEventImage}
                             alt="Warrior Revival"
