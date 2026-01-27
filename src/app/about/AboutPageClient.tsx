@@ -80,31 +80,9 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      <section className="bg-light">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:grid-cols-3 md:px-8">
-          {missionCards.map((card) => (
-            <div
-              key={card.title}
-              className={`flex h-full flex-col rounded-2xl border bg-surface p-6 shadow-card ${card.borderClass}`}
-            >
-              <span
-                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
-              >
-                {card.title}
-              </span>
-              <p className="mt-4 text-sm text-textSecondary">{card.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-surface">
+      <section className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-start md:px-8">
           <div className="space-y-4">
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Founded to help Utah&apos;s military community find a renewed sense of
-              purpose, belonging, and identity.
-            </h2>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
               OUR STORY
             </p>
@@ -160,6 +138,24 @@ export default function AboutPageClient() {
       </section>
 
       <section className="bg-light">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 pb-4 pt-10 md:grid-cols-3 md:px-8">
+          {missionCards.map((card) => (
+            <div
+              key={card.title}
+              className={`flex h-full flex-col rounded-2xl border bg-surface p-6 shadow-card ${card.borderClass}`}
+            >
+              <span
+                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
+              >
+                {card.title}
+              </span>
+              <p className="mt-4 text-sm text-textSecondary">{card.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-light">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
@@ -177,7 +173,7 @@ export default function AboutPageClient() {
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="sm:col-span-2 lg:col-span-3">
-              <div className="rounded-3xl border border-border bg-surface p-6 shadow-card md:p-10">
+              <div className="rounded-3xl border border-border bg-surface p-6 shadow-card transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] md:p-10">
                 <div className="grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center">
                   <div className="relative h-64 overflow-hidden rounded-2xl border border-border bg-white md:h-72 lg:h-80">
                     <Image
@@ -234,8 +230,8 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 pb-16 pt-4 md:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">

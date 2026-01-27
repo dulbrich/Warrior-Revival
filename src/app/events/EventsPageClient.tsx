@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
+import MarqueeText from "@/components/MarqueeText";
 import { buildEventId, events } from "@/data/events";
 
 const eventTypeFilters = [
@@ -613,7 +614,7 @@ export default function EventsPage() {
                         height={64}
                         className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
                       />
-                      <div className="flex-1 space-y-2">
+                      <div className="flex-1 min-w-0 space-y-2">
                         <div className="flex items-center justify-between gap-2">
                           <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                             {event.dateLabel}
@@ -622,7 +623,10 @@ export default function EventsPage() {
                             {event.category}
                           </span>
                         </div>
-                        <p className="font-heading text-lg font-semibold text-primary">{event.name}</p>
+                        <MarqueeText
+                          text={event.name}
+                          className="font-heading text-lg font-semibold text-primary"
+                        />
                         <p className="text-sm text-textSecondary">{event.location}</p>
                         <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
                           {event.timeLabel}
@@ -828,7 +832,7 @@ export default function EventsPage() {
                           setSelectedEventId(eventId);
                         }}
                       >
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <div className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center">
                           <Image
                             src={event.image ?? fallbackEventImage}
                             alt="Warrior Revival"
@@ -836,13 +840,14 @@ export default function EventsPage() {
                             height={48}
                             className="h-12 w-12 rounded-md border border-border bg-white object-contain"
                           />
-                          <div>
+                          <div className="min-w-0">
                             <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                               {event.dateLabel}
                             </p>
-                            <p className="font-heading text-lg font-semibold text-primary">
-                              {event.name}
-                            </p>
+                            <MarqueeText
+                              text={event.name}
+                              className="font-heading text-lg font-semibold text-primary"
+                            />
                             <p className="text-sm text-textSecondary">{event.location}</p>
                           </div>
                         </div>
