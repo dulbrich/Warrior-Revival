@@ -17,7 +17,7 @@ export const founderProfile: LeadershipMember = {
   firstName: "Katie",
   lastName: "Fry",
   role: "Founder | President",
-  bio: "Katie holds a doctorate in clinical psychology and has dedicated her career to supporting military personnel. Passionate about trauma recovery and the transition to civilian life, she believes in the healing power of outdoor recreation and community connection for veterans.",
+  bio: "Dr. Katie Fry is a trauma psychologist with the Department of Veterans Affairs and serves as a Captain in the Utah Army National Guard. She is the founder of Warrior Revival, a Utah-based nonprofit dedicated to supporting service members, veterans, and their families. Dr. Fry also serves in a leadership role within the American Psychological Association's Division 19, the Society for Military Psychology. In addition to her public service, she owns a private practice specializing in trauma, addiction, and veteran care. In 2025, Dr. Fry was honored with the Pillar Award by the Utah Department of Veterans & Military Affairs' Veteran Business Resource Center.",
   image: "/about/leadership/katie-fry.jpg"
 };
 
