@@ -68,10 +68,21 @@ export default function VeteransPageClient() {
     <main className="bg-light">
       <SiteHeader />
 
-      <section className="bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
+      <section className="relative overflow-hidden bg-surface">
+        <div
+          className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.18]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-secondary/20"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
           <div className="space-y-6">
-            <h1 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+              IMPACT ON VETERANS
+            </p>
+            <h1 className="font-blackOps text-4xl font-normal text-primary md:text-5xl">
               Our members have described the challenges of reintegration as:
             </h1>
             <p className="text-base text-textSecondary">
@@ -105,6 +116,113 @@ export default function VeteransPageClient() {
             <Image
               src="/home/soldier.jpg"
               alt="Soldier reflecting outdoors"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-center md:px-8">
+          <div className="relative min-h-[360px]">
+            <Image
+              src="/veterans/chair.webp"
+              alt="Veteran community gathering space"
+              fill
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
+          <div className="space-y-6">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              What we know
+            </h2>
+            <p className="text-base text-textSecondary">
+              Since World War II, comradery has played an important role in well-being –
+              50 years after reintegration, World War II veterans reported that social
+              support from comrades, spouses, and family members had served as lifelong
+              coping strategies for them.
+            </p>
+            <ul className="space-y-3 list-disc pl-5 text-base text-textSecondary">
+              <li>
+                Each year, about 200,000 service members separate from the U.S. Military.
+              </li>
+              <li>Leaving the military can mean losing a close-knit group.</li>
+              <li>
+                Warrior Revival strives to build a sense of community, purpose, belonging,
+                and renewed identity.
+              </li>
+              <li>
+                Have an idea? We want to hear from you! Our goal is to bring what Veterans
+                are interested in to our community, as well as to create new opportunities.
+                If you have a cool niche that our Veteran members could participate in let
+                us know.
+              </li>
+              <li>
+                Veterans bring valuable attributes to the civilian world, such as
+                resilience, commitment to achieving goals, exceptional leadership and
+                communication skills, etc.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-light">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:px-8">
+          <div className="space-y-6">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              The realities of transition
+            </h2>
+            <div className="space-y-4 text-base text-textSecondary">
+              <p>
+                There are over 19 million Veterans in the United States. Transitioning
+                from the military to civilian life can involve important losses to
+                identity, community, income, housing, routine, and career aspirations.
+                When exiting the military, Veterans have a choice of at least 20,000 or
+                more government and non-profit services to join. Warrior Revival aims to
+                provide Veterans a “home” after transitioning that helps to find a sense
+                of purpose, belonging, and community.
+              </p>
+              <p>
+                Often, Veterans leaving the military feel unprepared, confused, alienated,
+                dispirited. Up to 56% of OEF/OIF Veterans report “some” to “extreme”
+                difficulty in their social functioning, productivity, community
+                involvement, and self-care. There is no time frame for when transitioning
+                is expected to last, or expiration date to when difficulties last until.
+                Research has shown factors such as negative homecoming reception, low
+                social support can predict PTSD symptom severity and reintegration
+                challenges 40 years post-military (Steenkamp et al., 2017).
+              </p>
+              <p>
+                Suicide rates remain high in the military population, along with divorce,
+                unemployment, incarceration, bereavement, depression and substance use
+                disorders. These challenges can lead to difficulty transitioning, along
+                with the mindset of, “I can handle it on my own.” However, at Warrior
+                Revival we emphasize personal strengths and overall core themes of
+                military service (e.g. loyalty, duty, hierarchy, accountability, respect,
+                self-less service, courage, toughness). While physical, mental health,
+                and occupational functioning may be impaired, our aim is to normalize the
+                reintegration process by connecting Veterans together, along with
+                civilians. If you are a Veteran, and feel transitioning has been
+                difficult, or you miss parts of yourself of who you were before the
+                service, this is extremely common. Reach out to us and we can help – We
+                got your six.
+              </p>
+              <p>
+                Warrior Revival’s mission to partner with community partners is to help
+                us work together as a community to reach all Veterans at any stage in
+                their post-military lifetime, to offer support, engagement, and a sense
+                of belonging.
+              </p>
+            </div>
+          </div>
+          <div className="relative min-h-[360px]">
+            <Image
+              src="/veterans/patiot.webp"
+              alt="Veterans sharing time together outdoors"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="rounded-3xl object-cover shadow-card"
