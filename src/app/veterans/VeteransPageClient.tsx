@@ -125,8 +125,13 @@ export default function VeteransPageClient() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-center md:px-8">
-          <div className="relative min-h-[360px]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:grid-rows-[auto_1fr] md:items-center md:px-8">
+          <div className="md:col-start-2 md:row-start-1">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              What we know
+            </h2>
+          </div>
+          <div className="relative min-h-[360px] md:col-start-1 md:row-start-1 md:row-span-2">
             <Image
               src="/veterans/chair.webp"
               alt="Veteran community gathering space"
@@ -135,10 +140,7 @@ export default function VeteransPageClient() {
               className="rounded-3xl object-cover shadow-card"
             />
           </div>
-          <div className="space-y-6">
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              What we know
-            </h2>
+          <div className="space-y-6 md:col-start-2 md:row-start-2">
             <p className="text-base text-textSecondary">
               Since World War II, comradery has played an important role in well-being –
               50 years after reintegration, World War II veterans reported that social
@@ -171,11 +173,22 @@ export default function VeteransPageClient() {
       </section>
 
       <section className="bg-light">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:px-8">
-          <div className="space-y-6">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:grid-rows-[auto_1fr] md:items-center md:px-8">
+          <div className="md:col-start-1 md:row-start-1">
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               The realities of transition
             </h2>
+          </div>
+          <div className="relative min-h-[360px] md:col-start-2 md:row-start-1 md:row-span-2">
+            <Image
+              src="/veterans/patiot.webp"
+              alt="Veterans sharing time together outdoors"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
+          <div className="space-y-6 md:col-start-1 md:row-start-2">
             <div className="space-y-4 text-base text-textSecondary">
               <p>
                 There are over 19 million Veterans in the United States. Transitioning
@@ -218,15 +231,6 @@ export default function VeteransPageClient() {
                 of belonging.
               </p>
             </div>
-          </div>
-          <div className="relative min-h-[360px]">
-            <Image
-              src="/veterans/patiot.webp"
-              alt="Veterans sharing time together outdoors"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
           </div>
         </div>
       </section>
