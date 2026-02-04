@@ -28,7 +28,8 @@ const testimonialCards = [
   "It's always nice to be among like minded people that can understand the military culture specially since SLC is not a big military concentration town and be able to exchange ideas and other things regarding veteran health and well being and support.",
   "I’m so thankful for the incredible opportunity to skydive last month with Warrior Revival. It was an unforgettable experience I probably wouldn’t have pursued on my own.",
   "I was able to attend the 1st Annual Fishing tournament put on by my Warrior Revival on 20 September. As a retired Air Force Veteran, I felt this event was very well represented, organized, and a great opportunity to get outdoors and enjoy the beauty of Utah and Strawberry Reservoir. Additionally, and more importantly, it was a great way to meet other Veterans, family members, and people that support our Veterans here in Utah. I will definitely be attending next year, and am looking forward to another amazing turnout.",
-  "This was my boy's first time experiencing a Jazz game and they loved it. Thank you so much for the opportunity!"
+  "This was my boy's first time experiencing a Jazz game and they loved it. Thank you so much for the opportunity!",
+  "It’s easy to see why Warrior Revival has impacted so many lives so powerfully. Katie, Carl, and the whole team genuinely care about each person they interact with. It’s a joy and an honor to be part of anything Warrior Revival does!"
 ];
 
 export default function VeteransPageClient() {
