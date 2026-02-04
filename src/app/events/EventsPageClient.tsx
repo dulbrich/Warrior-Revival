@@ -523,10 +523,10 @@ export default function EventsPage() {
       <section className="mx-auto max-w-screen-2xl px-4 py-12 md:px-8">
         <div className="lg:grid lg:grid-cols-[200px_minmax(0,1fr)_300px] lg:items-start lg:gap-8">
           <div className="space-y-3 lg:col-start-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+            <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               Events
             </p>
-            <h1 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
+            <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
               Explore upcoming events
             </h1>
             <p className="text-sm text-textSecondary">
