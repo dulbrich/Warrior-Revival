@@ -19,6 +19,7 @@ export const buildEventId = (event: EventItem) => `${event.name}-${event.dateIso
 
 const hikeContact = { name: "Audrey", phone: "801-682-5939" };
 const alphaCoffeeAddress = "7260 S Racquet Club Dr, Cottonwood Heights, UT 84121";
+const rrTacticalAddress = "227 E Crossroads Blvd, Ste 1, Saratoga Springs, UT";
 const battlePitAddress = "1895 Washington Blvd, Suite 300, Ogden, UT 84401";
 const bookClubAddress = "11550 S 700 E #100, Draper, UT";
 const suuAddress = "351 West University Boulevard, Cedar City, UT 84720";
@@ -153,6 +154,127 @@ export const events: EventItem[] = [
     image: coffeeImage,
     address: alphaCoffeeAddress,
     notes: "Coffee donated by Alpha Coffee. Monthly volunteer meeting to follow.",
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-01-03",
+    dateLabel: "Jan 3, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-02-07",
+    dateLabel: "Feb 7, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-03-07",
+    dateLabel: "Mar 7, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-04-04",
+    dateLabel: "Apr 4, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-05-02",
+    dateLabel: "May 2, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-06-06",
+    dateLabel: "Jun 6, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-08-01",
+    dateLabel: "Aug 1, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-09-05",
+    dateLabel: "Sep 5, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-10-03",
+    dateLabel: "Oct 3, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-11-07",
+    dateLabel: "Nov 7, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
+    register_link: ""
+  },
+  {
+    name: "Beyond the Uniform - Military Coffee Hour",
+    dateIso: "2026-12-05",
+    dateLabel: "Dec 5, 2026",
+    timeLabel: "9:30 am - 10:30 am",
+    location: "R&R Tactical, Saratoga Springs, UT",
+    category: "Veteran Only",
+    image: coffeeImage,
+    address: rrTacticalAddress,
     register_link: ""
   },
   {
