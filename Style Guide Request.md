@@ -36,13 +36,14 @@ Use a bright, outdoors-inspired palette with strong contrast and a warm CTA colo
 
 Choose a confident, humanist pairing that reads well on mobile and feels modern without being corporate.
 
-- **Heading Font:** `Poppins` or `Montserrat` (600-700 weights). Use for headlines, nav, and CTA labels.
+- **Hero Heading Font:** `Black Ops One` (`font-blackOps`, normal weight). Use for primary page hero H1 headlines (Home, About, Get Involved) to keep branding consistent.
+- **Section Heading Font:** `Poppins` or `Montserrat` (600-700 weights). Use for H2/H3 section titles, nav, and CTA labels.
 - **Body Font:** `Source Sans 3` or `Open Sans` (400-500 weights). Use for paragraphs and UI text.
 - **Case & Spacing:** Title case for headings; uppercase for small UI labels and buttons with `tracking-wide`.
 
 ### Type Scale (Tailwind)
 
-- `h1`: `text-4xl md:text-5xl font-semibold`
+- `h1` (hero): `font-blackOps text-4xl md:text-5xl font-normal` (Home may scale to `md:text-6xl`)
 - `h2`: `text-3xl md:text-4xl font-semibold`
 - `h3`: `text-2xl font-semibold`
 - `body`: `text-base md:text-lg leading-relaxed`
