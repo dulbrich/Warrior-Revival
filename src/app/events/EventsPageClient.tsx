@@ -864,7 +864,7 @@ export default function EventsPage() {
             </div>
           </div>
 
-          <aside className="hidden lg:block lg:col-start-3 lg:sticky lg:top-24">
+          <aside className="hidden lg:block lg:col-start-3 lg:sticky lg:top-[7.25rem]">
             <div className="rounded-xl border border-border bg-surface p-5 shadow-soft">
               {selectedEvent ? (
                 <div className="space-y-4">
