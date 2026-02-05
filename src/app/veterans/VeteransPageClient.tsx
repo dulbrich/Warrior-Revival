@@ -245,14 +245,18 @@ export default function VeteransPageClient() {
           </div>
           <div className="space-y-6 md:col-start-2 md:row-start-2">
             <p className="text-base text-textSecondary">
-              Since World War II, comradery has played an important role in well-being –
-              50 years after reintegration, World War II veterans reported that social
-              support from comrades, spouses, and family members had served as lifelong
-              coping strategies for them.
+              Since World War II, comradery has been recognized as a critical factor in
+              veteran well-being. Decades after reintegration, World War II veterans
+              reported that social support from comrades, spouses, and family remained
+              one of their most important lifelong coping strategies. Connection matters
+              — not just during service, but long after the uniform comes off.
             </p>
             <ul className="space-y-3 list-disc pl-5 text-base text-textSecondary">
               <li>
-                Each year, about 200,000 service members separate from the U.S. Military.
+                Each year, approximately 200,000 service members separate from the U.S.
+                military. While transition brings new opportunities, it often also means
+                losing the close-knit community, shared purpose, and built-in support
+                system that military life provides.
               </li>
               <li>Leaving the military can mean losing a close-knit group.</li>
               <li>
@@ -271,6 +275,82 @@ export default function VeteransPageClient() {
                 communication skills, etc.
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-light">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:px-8">
+          <div className="space-y-6">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              Utah’s Military &amp; Veteran Community
+            </h2>
+            <p className="text-base text-textSecondary">
+              Utah has a strong and active military presence:
+            </p>
+            <ul className="list-disc space-y-3 pl-5 text-base text-textSecondary">
+              <li>About 20,000 service members currently live and serve in Utah.</li>
+              <li>
+                Approximately 150,000 veterans call Utah home, representing all eras of
+                service.
+              </li>
+            </ul>
+            <p className="text-base text-textSecondary">
+              These service members and veterans contribute deeply to Utah’s communities,
+              workforce, and families — yet many still face challenges related to
+              transition, isolation, and mental health.
+            </p>
+          </div>
+          <div className="relative min-h-[320px] md:min-h-[380px]">
+            <Image
+              src="/veterans/utah-veterans-cemetery.jpg"
+              alt="Utah veterans memorial flags at a cemetery"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-center md:px-8">
+          <div className="relative min-h-[320px] md:min-h-[380px]">
+            <Image
+              src="/veterans/peer-support.jpg"
+              alt="Veterans speaking with a chaplain for support"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+              Connection as Suicide Prevention
+            </h2>
+            <div className="mt-6 space-y-6 text-base text-textSecondary">
+              <p>
+                Suicide prevention in the military and veteran community goes beyond
+                crisis response. Research consistently shows that social isolation and
+                loss of belonging are significant risk factors, while peer connection,
+                purpose, and community are protective factors.
+              </p>
+              <div>
+                <p>Veterans are more likely to thrive when they:</p>
+                <ul className="mt-4 list-disc space-y-3 pl-5">
+                  <li>Feel understood by others with shared experiences</li>
+                  <li>Maintain meaningful social connections</li>
+                  <li>
+                    Have regular opportunities to engage in purposeful, community-based
+                    activities
+                  </li>
+                </ul>
+              </div>
+              <p>
+                Creating spaces where veterans feel seen, valued, and connected is a
+                powerful form of upstream suicide prevention.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -338,17 +418,86 @@ export default function VeteransPageClient() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="border-t border-border bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            What Warrior Revival Offers
+          </h2>
+          <p className="mt-6 max-w-4xl text-base text-textSecondary">
+            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to supporting
+            veterans and their families through connection, community, and shared
+            experiences.
+          </p>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Our Approach
+          </h3>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
+              <h4 className="font-heading text-xl font-semibold text-primary">
+                Community-Centered Programming
+              </h4>
+              <p className="mt-3 text-base text-textSecondary">
+                Outdoor recreation, social gatherings, and group activities that rebuild
+                the sense of belonging many veterans miss after leaving service.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
+              <h4 className="font-heading text-xl font-semibold text-primary">
+                Peer Connection &amp; Mentorship
+              </h4>
+              <p className="mt-3 text-base text-textSecondary">
+                Veteran-to-veteran relationships that normalize transition challenges and
+                reduce isolation.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
+              <h4 className="font-heading text-xl font-semibold text-primary">
+                Therapeutic &amp; Restorative Retreats
+              </h4>
+              <p className="mt-3 text-base text-textSecondary">
+                Intentional retreats that promote mental well-being, reflection, and
+                renewed purpose in a supportive environment.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
+              <h4 className="font-heading text-xl font-semibold text-primary">
+                Accessible &amp; Inclusive Support
+              </h4>
+              <p className="mt-3 text-base text-textSecondary">
+                All programming is offered at no cost, removing barriers to participation
+                for veterans and their families.
+              </p>
+            </div>
+          </div>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Why It Matters
+          </h3>
+          <p className="mt-6 max-w-5xl text-base text-textSecondary">
+            By fostering authentic connection and community, Warrior Revival helps address
+            isolation before it becomes crisis — strengthening resilience, supporting
+            mental health, and contributing to suicide prevention through belonging and
+            purpose.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-light">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
+          <div className="relative min-h-[380px] md:min-h-[460px]">
+            <Image
+              src="/home/soldier.jpg"
+              alt="Soldier reflecting outdoors"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="rounded-3xl object-cover shadow-card"
+            />
+          </div>
           <div className="space-y-6">
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Our members have described the challenges of reintegration as:
             </h2>
-            <p className="text-base text-textSecondary">
-              We strive to create a supportive network that fosters camaraderie, a sense of
-              purpose, and to raise awareness of the unique challenges veterans face in the
-              transition to civilian life.
-            </p>
             <div className="flex min-h-[280px] flex-col rounded-2xl border border-border bg-white p-6 shadow-card">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
                 Veteran voices
@@ -370,15 +519,11 @@ export default function VeteransPageClient() {
                 {activeQuoteIndex + 1} of {reintegrationQuotes.length}
               </p>
             </div>
-          </div>
-          <div className="relative min-h-[380px] md:min-h-[460px]">
-            <Image
-              src="/home/soldier.jpg"
-              alt="Soldier reflecting outdoors"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
+            <p className="text-base text-textSecondary">
+              We strive to create a supportive network that fosters camaraderie, a sense of
+              purpose, and to raise awareness of the unique challenges veterans face in the
+              transition to civilian life.
+            </p>
           </div>
         </div>
       </section>
