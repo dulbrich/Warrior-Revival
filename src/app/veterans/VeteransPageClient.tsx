@@ -236,8 +236,8 @@ export default function VeteransPageClient() {
           </div>
           <div className="relative min-h-[360px] md:col-start-1 md:row-start-1 md:row-span-2">
             <Image
-              src="/veterans/chair.webp"
-              alt="Veteran community gathering space"
+              src="/events/hiking.jpg"
+              alt="Veteran hiking outdoors"
               fill
               sizes="(min-width: 768px) 45vw, 100vw"
               className="rounded-3xl object-cover shadow-card"
