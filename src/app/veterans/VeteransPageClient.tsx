@@ -128,7 +128,7 @@ export default function VeteransPageClient() {
               Impact on Veterans
             </p>
             <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
-              What our happy members say
+              What Our Members Say
             </h1>
           </div>
 
