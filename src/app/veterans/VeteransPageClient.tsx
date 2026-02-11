@@ -231,12 +231,12 @@ export default function VeteransPageClient() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:grid-rows-[auto_1fr] md:items-center md:px-8">
           <div className="md:col-start-2 md:row-start-1">
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              What we know
+              Lead With Purpose
             </h2>
           </div>
           <div className="relative min-h-[360px] md:col-start-1 md:row-start-1 md:row-span-2">
             <Image
-              src="/veterans/chair.webp"
+              src="/veterans/hike.png"
               alt="Veteran community gathering space"
               fill
               sizes="(min-width: 768px) 45vw, 100vw"
@@ -245,175 +245,12 @@ export default function VeteransPageClient() {
           </div>
           <div className="space-y-6 md:col-start-2 md:row-start-2">
             <p className="text-base text-textSecondary">
-              Since World War II, comradery has been recognized as a critical factor in
-              veteran well-being. Decades after reintegration, World War II veterans
-              reported that social support from comrades, spouses, and family remained
-              one of their most important lifelong coping strategies. Connection matters
-              — not just during service, but long after the uniform comes off.
+              We believe peer support matters. Veterans learn best from one another
+              through shared experience, trust, and service. If you have a purpose you
+              want to share, an idea you’re passionate about, or a desire to lead and
+              support fellow veterans, there is a place for you here. Warrior Revival
+              helps with the structure and logistics — while you lead.
             </p>
-            <ul className="space-y-3 list-disc pl-5 text-base text-textSecondary">
-              <li>
-                Each year, approximately 200,000 service members separate from the U.S.
-                military. While transition brings new opportunities, it often also means
-                losing the close-knit community, shared purpose, and built-in support
-                system that military life provides.
-              </li>
-              <li>Leaving the military can mean losing a close-knit group.</li>
-              <li>
-                Warrior Revival strives to build a sense of community, purpose, belonging,
-                and renewed identity.
-              </li>
-              <li>
-                Have an idea? We want to hear from you! Our goal is to bring what Veterans
-                are interested in to our community, as well as to create new opportunities.
-                If you have a cool niche that our Veteran members could participate in let
-                us know.
-              </li>
-              <li>
-                Veterans bring valuable attributes to the civilian world, such as
-                resilience, commitment to achieving goals, exceptional leadership and
-                communication skills, etc.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-border bg-light">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:px-8">
-          <div className="space-y-6">
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Utah’s Military &amp; Veteran Community
-            </h2>
-            <p className="text-base text-textSecondary">
-              Utah has a strong and active military presence:
-            </p>
-            <ul className="list-disc space-y-3 pl-5 text-base text-textSecondary">
-              <li>About 20,000 service members currently live and serve in Utah.</li>
-              <li>
-                Approximately 150,000 veterans call Utah home, representing all eras of
-                service.
-              </li>
-            </ul>
-            <p className="text-base text-textSecondary">
-              These service members and veterans contribute deeply to Utah’s communities,
-              workforce, and families — yet many still face challenges related to
-              transition, isolation, and mental health.
-            </p>
-          </div>
-          <div className="relative min-h-[320px] md:min-h-[380px]">
-            <Image
-              src="/veterans/utah-veterans-cemetery.jpg"
-              alt="Utah veterans memorial flags at a cemetery"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-border bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-center md:px-8">
-          <div className="relative min-h-[320px] md:min-h-[380px]">
-            <Image
-              src="/veterans/peer-support.jpg"
-              alt="Veterans speaking with a chaplain for support"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
-          </div>
-          <div>
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Connection as Suicide Prevention
-            </h2>
-            <div className="mt-6 space-y-6 text-base text-textSecondary">
-              <p>
-                Suicide prevention in the military and veteran community goes beyond
-                crisis response. Research consistently shows that social isolation and
-                loss of belonging are significant risk factors, while peer connection,
-                purpose, and community are protective factors.
-              </p>
-              <div>
-                <p>Veterans are more likely to thrive when they:</p>
-                <ul className="mt-4 list-disc space-y-3 pl-5">
-                  <li>Feel understood by others with shared experiences</li>
-                  <li>Maintain meaningful social connections</li>
-                  <li>
-                    Have regular opportunities to engage in purposeful, community-based
-                    activities
-                  </li>
-                </ul>
-              </div>
-              <p>
-                Creating spaces where veterans feel seen, valued, and connected is a
-                powerful form of upstream suicide prevention.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-light">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:grid-rows-[auto_1fr] md:items-center md:px-8">
-          <div className="md:col-start-1 md:row-start-1">
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              The realities of transition
-            </h2>
-          </div>
-          <div className="relative min-h-[360px] md:col-start-2 md:row-start-1 md:row-span-2">
-            <Image
-              src="/veterans/patiot.webp"
-              alt="Veterans sharing time together outdoors"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
-          </div>
-          <div className="space-y-6 md:col-start-1 md:row-start-2">
-            <div className="space-y-4 text-base text-textSecondary">
-              <p>
-                There are over 19 million Veterans in the United States. Transitioning
-                from the military to civilian life can involve important losses to
-                identity, community, income, housing, routine, and career aspirations.
-                When exiting the military, Veterans have a choice of at least 20,000 or
-                more government and non-profit services to join. Warrior Revival aims to
-                provide Veterans a “home” after transitioning that helps to find a sense
-                of purpose, belonging, and community.
-              </p>
-              <p>
-                Often, Veterans leaving the military feel unprepared, confused, alienated,
-                dispirited. Up to 56% of OEF/OIF Veterans report “some” to “extreme”
-                difficulty in their social functioning, productivity, community
-                involvement, and self-care. There is no time frame for when transitioning
-                is expected to last, or expiration date to when difficulties last until.
-                Research has shown factors such as negative homecoming reception, low
-                social support can predict PTSD symptom severity and reintegration
-                challenges 40 years post-military (Steenkamp et al., 2017).
-              </p>
-              <p>
-                Suicide rates remain high in the military population, along with divorce,
-                unemployment, incarceration, bereavement, depression and substance use
-                disorders. These challenges can lead to difficulty transitioning, along
-                with the mindset of, “I can handle it on my own.” However, at Warrior
-                Revival we emphasize personal strengths and overall core themes of
-                military service (e.g. loyalty, duty, hierarchy, accountability, respect,
-                self-less service, courage, toughness). While physical, mental health,
-                and occupational functioning may be impaired, our aim is to normalize the
-                reintegration process by connecting Veterans together, along with
-                civilians. If you are a Veteran, and feel transitioning has been
-                difficult, or you miss parts of yourself of who you were before the
-                service, this is extremely common. Reach out to us and we can help – We
-                got your six.
-              </p>
-              <p>
-                Warrior Revival’s mission to partner with community partners is to help
-                us work together as a community to reach all Veterans at any stage in
-                their post-military lifetime, to offer support, engagement, and a sense
-                of belonging.
-              </p>
-            </div>
           </div>
         </div>
       </section>
