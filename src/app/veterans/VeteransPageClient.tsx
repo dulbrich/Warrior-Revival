@@ -32,6 +32,37 @@ const testimonialCards = [
   "It’s easy to see why Warrior Revival has impacted so many lives so powerfully. Katie, Carl, and the whole team genuinely care about each person they interact with. It’s a joy and an honor to be part of anything Warrior Revival does!"
 ];
 
+const approachCards = [
+  {
+    title: "Community-Centered Programming",
+    description:
+      "Outdoor recreation, social gatherings, and group activities that rebuild the sense of belonging many veterans miss after leaving service.",
+    imageSrc: "/veterans/approach/community.png",
+    imageAlt: "Veterans gathering in community outdoors"
+  },
+  {
+    title: "Peer Connection & Mentorship",
+    description:
+      "Veteran-to-veteran relationships that normalize transition challenges and reduce isolation.",
+    imageSrc: "/veterans/approach/peers.png",
+    imageAlt: "Veterans talking and connecting in peer support"
+  },
+  {
+    title: "Therapeutic & Restorative Retreats",
+    description:
+      "Intentional retreats that promote mental well-being, reflection, and renewed purpose in a supportive environment.",
+    imageSrc: "/veterans/approach/retreat.jpeg",
+    imageAlt: "Veterans in a restorative retreat setting"
+  },
+  {
+    title: "Accessible & Inclusive Support",
+    description:
+      "All programming is offered at no cost, removing barriers to participation for veterans and their families.",
+    imageSrc: "/veterans/approach/chair.webp",
+    imageAlt: "Inclusive veteran community participation"
+  }
+];
+
 export default function VeteransPageClient() {
   const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
   const [typedQuote, setTypedQuote] = useState("");
@@ -255,74 +286,9 @@ export default function VeteransPageClient() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-            What Warrior Revival Offers
-          </h2>
-          <p className="mt-6 max-w-4xl text-base text-textSecondary">
-            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to supporting
-            veterans and their families through connection, community, and shared
-            experiences.
-          </p>
-
-          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
-            Our Approach
-          </h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
-              <h4 className="font-heading text-xl font-semibold text-primary">
-                Community-Centered Programming
-              </h4>
-              <p className="mt-3 text-base text-textSecondary">
-                Outdoor recreation, social gatherings, and group activities that rebuild
-                the sense of belonging many veterans miss after leaving service.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
-              <h4 className="font-heading text-xl font-semibold text-primary">
-                Peer Connection &amp; Mentorship
-              </h4>
-              <p className="mt-3 text-base text-textSecondary">
-                Veteran-to-veteran relationships that normalize transition challenges and
-                reduce isolation.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
-              <h4 className="font-heading text-xl font-semibold text-primary">
-                Therapeutic &amp; Restorative Retreats
-              </h4>
-              <p className="mt-3 text-base text-textSecondary">
-                Intentional retreats that promote mental well-being, reflection, and
-                renewed purpose in a supportive environment.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-surface p-6 shadow-card">
-              <h4 className="font-heading text-xl font-semibold text-primary">
-                Accessible &amp; Inclusive Support
-              </h4>
-              <p className="mt-3 text-base text-textSecondary">
-                All programming is offered at no cost, removing barriers to participation
-                for veterans and their families.
-              </p>
-            </div>
-          </div>
-
-          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
-            Why It Matters
-          </h3>
-          <p className="mt-6 max-w-5xl text-base text-textSecondary">
-            By fostering authentic connection and community, Warrior Revival helps address
-            isolation before it becomes crisis — strengthening resilience, supporting
-            mental health, and contributing to suicide prevention through belonging and
-            purpose.
-          </p>
-        </div>
-      </section>
-
       <section className="bg-light">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
-          <div className="relative min-h-[380px] md:min-h-[460px]">
+          <div className="relative min-h-[380px] md:order-2 md:min-h-[460px]">
             <Image
               src="/home/soldier.jpg"
               alt="Soldier reflecting outdoors"
@@ -331,7 +297,7 @@ export default function VeteransPageClient() {
               className="rounded-3xl object-cover shadow-card"
             />
           </div>
-          <div className="space-y-6">
+          <div className="space-y-6 md:order-1">
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Our members have described the challenges of reintegration as:
             </h2>
@@ -362,6 +328,57 @@ export default function VeteransPageClient() {
               transition to civilian life.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            What Warrior Revival Offers
+          </h2>
+          <p className="mt-6 max-w-4xl text-base text-textSecondary">
+            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to supporting
+            veterans and their families through connection, community, and shared
+            experiences.
+          </p>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Our Approach
+          </h3>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {approachCards.map((card) => (
+              <article
+                key={card.title}
+                className="flex overflow-hidden rounded-2xl border border-border bg-surface shadow-card"
+              >
+                <div className="relative aspect-square w-28 shrink-0 sm:w-32 md:w-36">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 144px, (min-width: 640px) 128px, 112px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-heading text-xl font-semibold text-primary">
+                    {card.title}
+                  </h4>
+                  <p className="mt-3 text-base text-textSecondary">{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Why It Matters
+          </h3>
+          <p className="mt-6 max-w-5xl text-base text-textSecondary">
+            By fostering authentic connection and community, Warrior Revival helps address
+            isolation before it becomes crisis — strengthening resilience, supporting
+            mental health, and contributing to suicide prevention through belonging and
+            purpose.
+          </p>
         </div>
       </section>
 
