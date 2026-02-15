@@ -137,6 +137,9 @@ export default function VeteransPageClient() {
   const visibleTestimonials = [0, 1, 2].map(
     (offset) => testimonialCards[(activeTestimonialIndex + offset) % testimonialCards.length]
   );
+  const mobileCurrentTestimonial = testimonialCards[activeTestimonialIndex];
+  const mobileEnteringTestimonial =
+    testimonialCards[(activeTestimonialIndex + 1) % testimonialCards.length];
   const enteringTestimonial =
     testimonialCards[(activeTestimonialIndex + 3) % testimonialCards.length];
 
@@ -163,24 +166,33 @@ export default function VeteransPageClient() {
             </h1>
           </div>
 
-          <div className="grid flex-1 items-center gap-6 md:grid-cols-2 lg:hidden">
-            {visibleTestimonials.map((quote, index) => (
+          <div className="testimonial-mobile-stage flex-1 lg:hidden">
+            <article
+              className={`testimonial-mobile-card ${
+                isTestimonialTransitioning ? "testimonial-mobile-card--exit" : ""
+              } flex flex-col rounded-xl border border-border bg-white/95 p-6 shadow-card backdrop-blur-sm`}
+            >
+              <p className="pb-5 text-base leading-7 text-textPrimary">
+                “{mobileCurrentTestimonial}”
+              </p>
+              <p className="mt-4 border-t border-border pt-4 text-sm text-textSecondary">
+                Warrior Revival veteran member
+              </p>
+            </article>
+
+            {isTestimonialTransitioning ? (
               <article
-                key={`mobile-${index}`}
-                className={`flex w-full flex-col rounded-xl border border-border bg-white/95 p-6 shadow-card backdrop-blur-sm transition-all duration-700 motion-reduce:transition-none ${
-                  index === 1 ? "hidden md:flex" : ""
-                } ${
-                  isTestimonialTransitioning
-                    ? "translate-y-2 opacity-0"
-                    : "translate-y-0 opacity-100"
-                }`}
+                key={`mobile-enter-${activeTestimonialIndex}`}
+                className="testimonial-mobile-card testimonial-mobile-card--enter flex flex-col rounded-xl border border-border bg-white/95 p-6 shadow-card backdrop-blur-sm"
               >
-                <p className="pb-5 text-base leading-7 text-textPrimary">“{quote}”</p>
-                <p className="mt-auto border-t border-border pt-4 text-sm text-textSecondary">
+                <p className="pb-5 text-base leading-7 text-textPrimary">
+                  “{mobileEnteringTestimonial}”
+                </p>
+                <p className="mt-4 border-t border-border pt-4 text-sm text-textSecondary">
                   Warrior Revival veteran member
                 </p>
               </article>
-            ))}
+            ) : null}
           </div>
 
           <div className="testimonial-lg-stage hidden flex-1 lg:block">
