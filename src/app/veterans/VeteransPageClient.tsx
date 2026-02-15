@@ -166,9 +166,13 @@ export default function VeteransPageClient() {
           <div className="grid flex-1 items-center gap-6 md:grid-cols-2 lg:hidden">
             {visibleTestimonials.map((quote, index) => (
               <article
-                key={`${activeTestimonialIndex}-${index}`}
-                className={`flex w-full flex-col rounded-xl border border-border bg-white/95 p-6 shadow-card backdrop-blur-sm transition ${
+                key={`mobile-${index}`}
+                className={`flex w-full flex-col rounded-xl border border-border bg-white/95 p-6 shadow-card backdrop-blur-sm transition-all duration-700 motion-reduce:transition-none ${
                   index === 1 ? "hidden md:flex" : ""
+                } ${
+                  isTestimonialTransitioning
+                    ? "translate-y-2 opacity-0"
+                    : "translate-y-0 opacity-100"
                 }`}
               >
                 <p className="pb-5 text-base leading-7 text-textPrimary">“{quote}”</p>
