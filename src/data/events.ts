@@ -302,6 +302,17 @@ export const events: EventItem[] = [
     register_link: ""
   },
   {
+    name: "Tubing at Soldier Hollow",
+    dateIso: "2026-03-05",
+    dateLabel: "Mar 5, 2026",
+    timeLabel: "6:00 pm - 8:00 pm MST",
+    location: "Soldier Hollow Nordic Center, Midway, UT",
+    category: "Veteran + Family",
+    address: "2002 Soldier Hollow Lane, Midway, UT 84089",
+    notes: "Evening snow tubing event.",
+    register_link: "https://secure.qgiv.com/for/warriorrevival/event/snowtubing/"
+  },
+  {
     name: "Book Club",
     dateIso: "2026-03-31",
     dateLabel: "Mar 31, 2026",
@@ -346,6 +357,27 @@ export const events: EventItem[] = [
     register_link: ""
   },
   {
+    name: "Mammoth Hockey Game",
+    dateIso: "2026-03-12",
+    dateLabel: "Mar 12, 2026",
+    timeLabel: "7:00 pm - 10:00 pm MST",
+    location: "Salt Lake City, UT",
+    category: "Veteran + Family",
+    notes:
+      "Group outing to the Mammoth hockey game. Final arena details and meetup instructions will be shared with registered attendees.",
+    register_link: ""
+  },
+  {
+    name: "Horse Therapy Workshop with USU",
+    dateIso: "2026-03-14",
+    dateLabel: "Mar 14, 2026",
+    timeLabel: "Time TBD",
+    location: "South Jordan, UT",
+    category: "Veteran + Family",
+    notes: "Equine-assisted wellness workshop hosted in partnership with Utah State University.",
+    register_link: ""
+  },
+  {
     name: "Beyond the Uniform - Military Coffee Hour",
     dateIso: "2026-03-15",
     dateLabel: "Mar 15, 2026",
@@ -354,6 +386,7 @@ export const events: EventItem[] = [
     category: "Veteran Only",
     image: coffeeImage,
     address: alphaCoffeeAddress,
+    notes: "Coffee donated by Alpha Coffee. Monthly volunteer meeting to follow.",
     register_link: ""
   },
   {
@@ -812,7 +845,7 @@ export const events: EventItem[] = [
     dateIso: "2026-02-21",
     dateLabel: "Feb 21, 2026",
     timeLabel: "10:00 am - 2:00 pm MST",
-    location: "Southern Utah Military, Veteran & Family Wellness Fair",
+    location: "St. George, UT",
     category: "Community / Resource Fair",
     notes:
       "Organizations are invited to participate as exhibitors to provide resources and services to military members, veterans, and families. Focus areas: Employment & Education, Family Support, Health & Wellness, Benefits & Claims. Features: Food trucks, entertainment, family activities.",
@@ -832,22 +865,24 @@ export const events: EventItem[] = [
     register_link: ""
   },
   {
-    name: "St. George Mission Ready Resource Fair",
-    dateIso: "2026-02-21",
-    dateLabel: "Feb 21, 2026",
-    timeLabel: "10:00 am - 2:00 pm MST",
-    location: "St. George, UT",
-    category: "Community",
-    register_link: ""
-  },
-  {
-    name: "Ski/Snowboard Day",
+    name: "Skiing/Snowboard with National Ability Center",
     dateIso: "2026-03-19",
     dateLabel: "Mar 19, 2026",
     timeLabel: "12:00 pm - 3:30 pm MST",
     location: "Park City, UT",
     category: "Veteran Only",
+    notes: "Adaptive skiing and snowboarding day hosted with the National Ability Center.",
     register_link: "https://secure.qgiv.com/for/warriorrevival/event/nacskisnowboarding/"
+  },
+  {
+    name: "Women Warriors Meetup at the Capitol",
+    dateIso: "2026-03-20",
+    dateLabel: "Mar 20, 2026",
+    timeLabel: "6:00 pm - 8:00 pm MST",
+    location: "Utah State Capitol, Salt Lake City, UT",
+    category: "Women Veterans",
+    notes: "Women Warriors community meetup at the Capitol.",
+    register_link: ""
   },
   {
     name: "Warrior Revival Summer Fun",
