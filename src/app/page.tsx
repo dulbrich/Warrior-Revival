@@ -11,12 +11,18 @@ import { useEffect, useState } from "react";
 
 const fallbackEventImage = "/logo.webp";
 
-const pathways = [
+const pathways: {
+  title: string;
+  description: string;
+  cta: string;
+  href?: string;
+}[] = [
   {
     title: "Veterans",
     description:
       "Start your next chapter with guided outings, mentorship, and a supportive community.",
-    cta: "Join a program"
+    cta: "Join a program",
+    href: "/membership"
   },
   {
     title: "Volunteers",
@@ -44,7 +50,8 @@ const focusAreas = [
     title: "Needs of All",
     description:
       "We strive to build a supportive network rooted in camaraderie and purpose. Warrior Revival is committed to inclusive programming that serves veterans throughout Utah, regardless of ability or disability.",
-    cta: "Join"
+    cta: "Join",
+    href: "/membership"
   },
   {
     title: "Mentorship & Resources",
@@ -61,7 +68,8 @@ const focusAreas = [
     title: "Community Partnership",
     description:
       "Through community partnerships, we can all work together to better the care of our community’s service members by offering activities that meet everyone’s interests and creates a sense of purpose and belonging.",
-    cta: "Join"
+    cta: "Join",
+    href: "/membership"
   }
 ];
 
@@ -135,18 +143,24 @@ export default function Home() {
             initiatives, and therapeutic retreat experiences that promote healing and connection.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <a
+              href="/donate"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
               Donate
-            </button>
+            </a>
             <a
               href="/events"
               className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               View Events
             </a>
-            <button className="inline-flex items-center justify-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <a
+              href="/membership"
+              className="inline-flex items-center justify-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
               Join the community
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -288,9 +302,18 @@ export default function Home() {
               </p>
               <p className="mt-3 text-sm text-textSecondary">{pathway.description}</p>
               <div className="mt-auto pt-6">
-                <button className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  {pathway.cta}
-                </button>
+                {pathway.href ? (
+                  <a
+                    href={pathway.href}
+                    className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    {pathway.cta}
+                  </a>
+                ) : (
+                  <button className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    {pathway.cta}
+                  </button>
+                )}
               </div>
             </div>
           ))}

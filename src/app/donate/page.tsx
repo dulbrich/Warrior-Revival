@@ -1,6 +1,10 @@
+import QgivEmbed from "@/components/QgivEmbed";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
+
+const qgivEmbedId = "86403";
+const qgivEmbedUrl = "https://secure.qgiv.com/for/warriorrevival/embed/86403/";
 
 export default function DonatePage() {
   return (
@@ -17,15 +21,22 @@ export default function DonatePage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-textSecondary">
             Donations support outdoor experiences, mentorship programs, and the
-            community resources veterans rely on during transition.
+            community resources veterans rely on during transition. One-time and
+            recurring gifts are both welcome — choose what works for you.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <button className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              Donate now
-            </button>
-            <button className="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              Become a monthly donor
-            </button>
+        </div>
+      </section>
+
+      <section id="give" className="border-t border-border bg-light">
+        <div className="mx-auto max-w-3xl px-4 py-14 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            Make a donation
+          </h2>
+          <p className="mt-3 text-base text-textSecondary">
+            Donations are processed securely by Qgiv on behalf of Warrior Revival.
+          </p>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-card md:p-6">
+            <QgivEmbed embedId={qgivEmbedId} embedUrl={qgivEmbedUrl} />
           </div>
         </div>
       </section>

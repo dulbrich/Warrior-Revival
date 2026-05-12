@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(unzip -p newsletter_form.docx word/document.xml)",
+      "Bash(python -c \"import sys, re; xml=sys.stdin.read\\(\\); texts=re.findall\\(r'<w:t[^>]*>\\([^<]*\\)</w:t>', xml\\); print\\('\\\\n'.join\\(texts\\)\\)\")",
+      "Bash(sed 's|<pre>||g; s|</pre>||g')",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p /tmp)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

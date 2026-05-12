@@ -20,16 +20,12 @@ export default function SubscribeSection() {
               <p className="font-heading text-3xl font-semibold">
                 Get monthly updates and new adventure dates.
               </p>
-              <div className="flex w-full flex-col gap-3 md:max-w-none">
-                <input
-                  className="h-12 w-full min-w-0 rounded-md border border-white/30 bg-white/10 px-3 text-base text-white placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:h-11"
-                  placeholder="you@example.com"
-                  type="email"
-                />
-                <button className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  Subscribe
-                </button>
-              </div>
+              <a
+                href="/newsletter"
+                className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-6 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                Subscribe
+              </a>
             </div>
           </div>
         </div>
