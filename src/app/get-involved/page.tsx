@@ -117,7 +117,7 @@ export default function GetInvolvedPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="/contact"
+              href="/membership"
               className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Join as a member
