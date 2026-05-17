@@ -1,15 +1,10 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS ?? "")
-  .split(",")
-  .map((s) => s.trim().toLowerCase())
-  .filter(Boolean);
-
 // Runs on every request (see src/middleware.ts). Refreshes Supabase auth
 // tokens via cookies so server components see a fresh session. Also gates
-// /admin: unauthenticated visitors are bounced to /admin/login, and authed
-// users whose email isn't in ADMIN_EMAILS are denied access.
+// /admin by role: any signed-in user with role 'admin' or 'contributor' can
+// reach /admin/*; only admins can reach /admin/users*.
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
@@ -45,6 +40,7 @@ export async function updateSession(request: NextRequest) {
   const isAdminRoute = pathname.startsWith("/admin");
   const isLoginRoute = pathname.startsWith("/admin/login");
   const isAuthRoute = pathname.startsWith("/admin/auth");
+  const isUsersRoute = pathname.startsWith("/admin/users");
 
   if (isAdminRoute && !isLoginRoute && !isAuthRoute) {
     if (!user) {
@@ -52,11 +48,18 @@ export async function updateSession(request: NextRequest) {
       url.pathname = "/admin/login";
       return NextResponse.redirect(url);
     }
-    const email = user.email?.toLowerCase() ?? "";
-    if (!ADMIN_EMAILS.includes(email)) {
+    const meta = (user.app_metadata ?? {}) as { role?: string };
+    const role = meta.role;
+    if (role !== "admin" && role !== "contributor") {
       const url = request.nextUrl.clone();
       url.pathname = "/admin/login";
       url.searchParams.set("error", "not_authorized");
+      return NextResponse.redirect(url);
+    }
+    if (isUsersRoute && role !== "admin") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin";
+      url.searchParams.set("error", "admins_only");
       return NextResponse.redirect(url);
     }
   }

@@ -30,6 +30,7 @@ export type EventRow = {
   contact_name: string | null;
   contact_phone: string | null;
   notes: string | null;
+  created_by: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -48,6 +49,7 @@ export type EventForDisplay = {
   image: string;          // resolved path (image-key → asset), never null
   contact: { name: string; phone: string } | null;
   register_link: string;
+  createdBy: string | null;  // user id; used by /admin to decide who can edit
 };
 
 export function eventRowToDisplay(row: EventRow): EventForDisplay {
@@ -68,6 +70,7 @@ export function eventRowToDisplay(row: EventRow): EventForDisplay {
     notes: row.description ?? row.notes,
     image: resolveEventImage(row.image_key),
     contact,
-    register_link: row.register_link ?? ""
+    register_link: row.register_link ?? "",
+    createdBy: row.created_by
   };
 }

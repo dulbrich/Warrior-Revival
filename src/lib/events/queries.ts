@@ -1,5 +1,6 @@
 import "server-only";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import type { SessionUser } from "@/lib/auth/role";
 import { eventRowToDisplay, type EventForDisplay, type EventRow } from "./types";
 
 // All approved events, sorted oldest → newest. The public events page applies
@@ -61,4 +62,27 @@ export async function fetchEventById(id: string): Promise<EventRow | null> {
     throw new Error(`Failed to fetch event: ${error.message}`);
   }
   return data as EventRow | null;
+}
+
+// Fetch a single event only if the caller is allowed to edit it. Admins
+// always pass through; contributors get back the row only when they are the
+// creator AND the row is still pending. Returns null otherwise so callers
+// can render notFound() consistently. RLS would also reject a contributor's
+// attempt to update someone else's row — this exists so the edit page never
+// renders a form the user can't submit.
+export async function fetchEventByIdForUser(
+  id: string,
+  user: SessionUser
+): Promise<EventRow | null> {
+  const row = await fetchEventById(id);
+  if (!row) return null;
+  if (user.role === "admin") return row;
+  if (
+    user.role === "contributor" &&
+    row.created_by === user.id &&
+    row.status === "pending"
+  ) {
+    return row;
+  }
+  return null;
 }

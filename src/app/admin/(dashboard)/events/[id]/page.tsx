@@ -1,15 +1,21 @@
-import { notFound } from "next/navigation";
-import { fetchEventById } from "@/lib/events/queries";
+import { notFound, redirect } from "next/navigation";
+import { fetchEventByIdForUser } from "@/lib/events/queries";
 import EventForm from "../EventForm";
 import { updateEventAction } from "../actions";
+import { getSessionUser } from "@/lib/auth/role";
 
 export default async function EditEventPage({
   params
 }: {
   params: { id: string };
 }) {
-  const event = await fetchEventById(params.id);
+  const user = await getSessionUser();
+  if (!user || !user.role) redirect("/admin/login");
+
+  const event = await fetchEventByIdForUser(params.id, user);
   if (!event) notFound();
+
+  const canSetStatus = user.role === "admin";
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 md:px-8">
@@ -25,7 +31,12 @@ export default async function EditEventPage({
         </h1>
         <p className="mt-1 text-sm text-textSecondary">{event.name}</p>
       </div>
-      <EventForm mode="edit" action={updateEventAction} defaults={event} />
+      <EventForm
+        mode="edit"
+        action={updateEventAction}
+        defaults={event}
+        canSetStatus={canSetStatus}
+      />
     </main>
   );
 }

@@ -6,12 +6,15 @@ type Props = {
   mode: "create" | "edit";
   action: (formData: FormData) => void | Promise<void>;
   defaults?: Partial<EventRow>;
+  // When false (contributors), the status <select> is hidden and a fixed
+  // value of "pending" is posted. Server actions also enforce this.
+  canSetStatus: boolean;
 };
 
 // Renders the admin event form. Server-component-friendly: all controls are
 // plain HTML and the form posts to a server action. Uncontrolled inputs with
 // defaultValue keep the page fast and avoid client-side state.
-export default function EventForm({ mode, action, defaults }: Props) {
+export default function EventForm({ mode, action, defaults, canSetStatus }: Props) {
   const v = defaults ?? {};
   return (
     <form action={action} className="space-y-8">
@@ -28,19 +31,23 @@ export default function EventForm({ mode, action, defaults }: Props) {
             className={inputClass}
           />
         </Field>
-        <Field label="Status">
-          <select
-            name="status"
-            defaultValue={v.status ?? "pending"}
-            className={inputClass}
-          >
-            {EVENT_STATUSES.map((s) => (
-              <option key={s} value={s}>
-                {s.charAt(0).toUpperCase() + s.slice(1)}
-              </option>
-            ))}
-          </select>
-        </Field>
+        {canSetStatus ? (
+          <Field label="Status">
+            <select
+              name="status"
+              defaultValue={v.status ?? "pending"}
+              className={inputClass}
+            >
+              {EVENT_STATUSES.map((s) => (
+                <option key={s} value={s}>
+                  {s.charAt(0).toUpperCase() + s.slice(1)}
+                </option>
+              ))}
+            </select>
+          </Field>
+        ) : (
+          <input type="hidden" name="status" value="pending" />
+        )}
         <Field label="Audience">
           <input
             name="audience"

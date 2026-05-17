@@ -39,15 +39,27 @@ Events are the canonical Supabase-backed resource. The legacy `src/data/events.t
 Other page content (about bios, etc.) is still exported as TypeScript constants from `src/data/*.ts`. Only events have moved.
 
 ### Auth + admin UI
-Admin UI lives under `/admin`, gated by Supabase Auth (magic-link, no passwords). The middleware (`src/middleware.ts` → `src/lib/supabase/middleware.ts`) refreshes the session on every request and bounces unauthenticated visitors from `/admin` to `/admin/login`. The `ADMIN_EMAILS` env var is the email allowlist — magic-link auth itself will succeed for any email, but only allowlisted ones can reach `/admin`.
+Admin UI lives under `/admin`, gated by Supabase Auth (magic-link, no passwords). The middleware (`src/middleware.ts` → `src/lib/supabase/middleware.ts`) refreshes the session on every request and bounces unauthenticated visitors from `/admin` to `/admin/login`. Authorization is **role-based**, not allowlist-based — see "Roles" below.
 
 - `src/lib/supabase/{server,client}.ts` — typed clients for Server Components / Route Handlers vs. Client Components. Both wire cookies via `@supabase/ssr`.
+- `src/lib/supabase/admin.ts` — service-role client. Only ever used server-side for `auth.admin.*` calls in `/admin/users` actions.
+- `src/lib/auth/role.ts` — `getSessionUser()` + `requireAdmin()` / `requireRole()` guards used by every server action.
 - `src/app/admin/login/` — magic-link form (client) wrapped in Suspense (server entry).
 - `src/app/admin/auth/callback/route.ts` — exchanges the OTP code for a session.
 - `src/app/admin/logout/route.ts` — POST endpoint that signs out + redirects.
-- `src/app/admin/(dashboard)/` — route group containing all authed pages. Its `layout.tsx` enforces auth one more time as defense in depth.
+- `src/app/admin/(dashboard)/` — route group containing all authed pages. Its `layout.tsx` enforces auth one more time as defense in depth and renders the role chip + nav.
 
-RLS in Supabase: anon role sees only `status = 'approved'` events; authenticated role sees everything and can mutate. The service-role key is only used by `scripts/seed-events.ts` to bypass RLS during the one-off seed.
+### Roles
+Two roles exist, stored in `auth.users.app_metadata.role`: `"admin"` and `"contributor"`. The middleware reads the role from the user's JWT and gates `/admin/users` to admins only. RLS policies on `events` (see `supabase/migrations/0002_user_roles.sql`) enforce the same rules at the database layer — server actions and UI hide / disable admin-only controls but RLS is the authoritative gate.
+
+- **Administrators**: full CRUD on events; manage users (invite / role-change / delete) via `/admin/users`.
+- **Contributors**: can create events (always saved as `pending` regardless of form input) and edit their own pending events. Can see all events including pending. Cannot reach `/admin/users` or change event status.
+
+Helper SQL functions `auth_role()` and `is_admin()` (defined in the same migration) keep the policies readable. The `events.created_by` column tracks the original creator for the contributor self-edit policy.
+
+To bootstrap the first admin after a fresh project: `npm run promote:admin -- <email>`. The promoted user must sign out + back in so a fresh JWT with the role claim is issued. There is no `ADMIN_EMAILS` env var anymore.
+
+RLS read policies are unchanged: anon sees `status = 'approved'`, authenticated sees everything. The service-role key (only present server-side) is used by `scripts/seed-events.ts`, `scripts/promote-admin.ts`, and the `/admin/users` action code.
 
 ### Design system (Tailwind theme is the contract)
 Custom semantic colors and font families are defined in `tailwind.config.ts` and loaded as CSS variables in `src/app/layout.tsx`. **Use the semantic token names, not raw hex or Tailwind defaults:**
