@@ -8,33 +8,33 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 import MarqueeText from "@/components/MarqueeText";
-import { buildEventId, events } from "@/data/events";
+import type { EventForDisplay } from "@/lib/events/types";
 
 const eventTypeFilters = [
   {
     id: "hikes",
     label: "Hikes",
-    match: (event: (typeof events)[number]) => /hike/i.test(event.name)
+    match: (event: EventForDisplay) => /hike/i.test(event.name)
   },
   {
     id: "coffee",
     label: "Coffee hours",
-    match: (event: (typeof events)[number]) => /coffee hour/i.test(event.name)
+    match: (event: EventForDisplay) => /coffee hour/i.test(event.name)
   },
   {
     id: "lunch",
     label: "Lunch with Vets",
-    match: (event: (typeof events)[number]) => /lunch with vets/i.test(event.name)
+    match: (event: EventForDisplay) => /lunch with vets/i.test(event.name)
   },
   {
     id: "book-club",
     label: "Book club",
-    match: (event: (typeof events)[number]) => /book club/i.test(event.name)
+    match: (event: EventForDisplay) => /book club/i.test(event.name)
   },
   {
     id: "other",
     label: "Other events",
-    match: (event: (typeof events)[number]) =>
+    match: (event: EventForDisplay) =>
       !/hike|coffee hour|lunch with vets|book club/i.test(event.name)
   }
 ];
@@ -72,7 +72,6 @@ const monthNames = [
 ];
 
 const weekdayLabels = ["S", "M", "T", "W", "Th", "F", "S"];
-const fallbackEventImage = "/logo.webp";
 
 const formatDateOnly = (date: Date) => {
   const year = date.getFullYear();
@@ -126,7 +125,7 @@ const parseTimeRange = (timeLabel: string) => {
   return { start, end };
 };
 
-const buildCalendarLinks = (event: (typeof events)[number]) => {
+const buildCalendarLinks = (event: EventForDisplay) => {
   const timeRange = parseTimeRange(event.timeLabel);
   const locationText = event.address ? `${event.location} (${event.address})` : event.location;
   let startValue = "";
@@ -212,7 +211,7 @@ const buildCalendarCells = (monthDate: Date) => {
   return cells;
 };
 
-type EventWithDate = (typeof events)[number] & {
+type EventWithDate = EventForDisplay & {
   dateValue: Date;
 };
 
@@ -222,7 +221,7 @@ type MonthOption = {
   dateValue: Date;
 };
 
-export default function EventsPage() {
+export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   const [query, setQuery] = useState("");
   const [showPastEvents, setShowPastEvents] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState(() =>
@@ -257,7 +256,7 @@ export default function EventsPage() {
         ...event,
         dateValue: new Date(`${event.dateIso}T00:00:00`)
       })),
-    []
+    [events]
   );
 
   const filteredEvents = useMemo(() => {
@@ -359,7 +358,7 @@ export default function EventsPage() {
     if (
       !hasAppliedRequested.current &&
       requestedEventId &&
-      visibleEvents.some((event) => buildEventId(event) === requestedEventId)
+      visibleEvents.some((event) => event.id === requestedEventId)
     ) {
       setSelectedEventId(requestedEventId);
       hasAppliedRequested.current = true;
@@ -367,15 +366,15 @@ export default function EventsPage() {
     }
 
     const exists =
-      selectedEventId && visibleEvents.some((event) => buildEventId(event) === selectedEventId);
+      selectedEventId && visibleEvents.some((event) => event.id === selectedEventId);
 
     if (!exists) {
-      setSelectedEventId(buildEventId(visibleEvents[0]));
+      setSelectedEventId(visibleEvents[0].id);
     }
   }, [requestedEventId, selectedEventId, visibleEvents]);
 
   const selectedEvent = selectedEventId
-    ? visibleEvents.find((event) => buildEventId(event) === selectedEventId) ?? null
+    ? visibleEvents.find((event) => event.id === selectedEventId) ?? null
     : visibleEvents[0] ?? null;
 
   useEffect(() => {
@@ -431,13 +430,13 @@ export default function EventsPage() {
     if (!eventsOnDay || eventsOnDay.length === 0) {
       return;
     }
-    setSelectedEventId(buildEventId(eventsOnDay[0]));
+    setSelectedEventId(eventsOnDay[0].id);
     if (openDetail) {
       setIsDetailOpen(true);
     }
   };
 
-  const renderDetails = (event: (typeof events)[number]) => {
+  const renderDetails = (event: EventForDisplay) => {
     const calendarLinks = buildCalendarLinks(event);
 
     return (
@@ -595,7 +594,7 @@ export default function EventsPage() {
                   }
 
                   const event = item.event;
-                  const eventId = buildEventId(event);
+                  const eventId = event.id;
 
                   return (
                     <button
@@ -608,7 +607,7 @@ export default function EventsPage() {
                       className="flex w-full gap-4 rounded-2xl border border-border bg-white p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
                     >
                       <Image
-                        src={event.image ?? fallbackEventImage}
+                        src={event.image}
                         alt="Warrior Revival"
                         width={64}
                         height={64}
@@ -812,7 +811,7 @@ export default function EventsPage() {
                   }
 
                   const event = item.event;
-                  const eventId = buildEventId(event);
+                  const eventId = event.id;
                   const isSelected = eventId === selectedEventId;
 
                   return (
@@ -834,7 +833,7 @@ export default function EventsPage() {
                       >
                         <div className="flex min-w-0 flex-1 flex-col gap-3 sm:flex-row sm:items-center">
                           <Image
-                            src={event.image ?? fallbackEventImage}
+                            src={event.image}
                             alt="Warrior Revival"
                             width={48}
                             height={48}
@@ -870,7 +869,7 @@ export default function EventsPage() {
                 <div className="space-y-4">
                   <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
                     <Image
-                      src={selectedEvent.image ?? fallbackEventImage}
+                      src={selectedEvent.image}
                       alt="Warrior Revival"
                       fill
                       sizes="(min-width: 1024px) 20rem, 100vw"
@@ -1140,7 +1139,7 @@ export default function EventsPage() {
               <div className="flex-1 space-y-4 overflow-y-auto px-5 py-4">
                 <div className="relative h-48 w-full overflow-hidden rounded-2xl border border-border bg-light">
                   <Image
-                    src={selectedEvent.image ?? fallbackEventImage}
+                    src={selectedEvent.image}
                     alt="Warrior Revival"
                     fill
                     sizes="100vw"
