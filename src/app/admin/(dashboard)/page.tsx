@@ -64,6 +64,24 @@ export default async function AdminHome({
 
         {isAdmin ? (
           <a
+            href="/admin/testimonials"
+            className="rounded-2xl border border-border bg-surface p-6 shadow-card transition hover:-translate-y-0.5 hover:border-primary/40"
+          >
+            <p className="font-accent text-xs uppercase tracking-[0.3em] text-secondary">
+              Manage
+            </p>
+            <p className="mt-2 font-heading text-2xl font-semibold text-primary">
+              Testimonials
+            </p>
+            <p className="mt-2 text-sm text-textSecondary">
+              Quotes that rotate in the &ldquo;What Our Members Say&rdquo;
+              carousel on /veterans.
+            </p>
+          </a>
+        ) : null}
+
+        {isAdmin ? (
+          <a
             href="/admin/gallery"
             className="rounded-2xl border border-border bg-surface p-6 shadow-card transition hover:-translate-y-0.5 hover:border-primary/40"
           >

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "seed:events": "tsx scripts/seed-events.ts",
     "seed:volunteers": "tsx scripts/seed-volunteers.ts",
+    "seed:testimonials": "tsx scripts/seed-testimonials.ts",
     "promote:admin": "tsx scripts/promote-admin.ts"
   },
   "dependencies": {
