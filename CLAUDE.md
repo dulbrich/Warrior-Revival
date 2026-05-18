@@ -38,6 +38,8 @@ Events are the canonical Supabase-backed resource. The legacy `src/data/events.t
 
 The volunteers list shown on `/about` is also Supabase-backed (see `supabase/migrations/0003_volunteers.sql`). Images live in the `public-images` storage bucket under the `about/volunteers/` prefix, stored as bucket-relative keys in `volunteers.image_path`. Display URLs are constructed in `src/lib/volunteers/types.ts`; lifecycle (delete-old-on-replace) is implemented in `src/app/admin/(dashboard)/volunteers/actions.ts` and `src/lib/volunteers/storage.ts`. Admin UI: `/admin/volunteers` (admin role only). Falls back to `/logo.webp` when `image_path` is null.
 
+The `/gallery` page is bucket-as-source-of-truth: no DB table, photos live in `public-images/gallery/` and are listed at render time via `supabase.storage.from('public-images').list('gallery', ...)` (see `src/lib/gallery/queries.ts`). Storage policies in `supabase/migrations/0004_gallery_storage.sql` allow public read on `gallery/*` and admin-only writes. The admin UI at `/admin/gallery` includes `StorageUsageBar` (`src/components/StorageUsageBar.tsx` → `src/lib/storage/usage.ts`) which sums sizes across every bucket via the service-role client and renders a project-wide bar (free-tier cap = 1 GB).
+
 Other page content (founder/leadership bios) is still exported as TypeScript constants from `src/data/*.ts`. Only events and volunteers have moved.
 
 ### Auth + admin UI
