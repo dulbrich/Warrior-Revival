@@ -7,7 +7,17 @@
       "Bash(sed 's|<pre>||g; s|</pre>||g')",
       "Read(//tmp/**)",
       "Bash(mkdir -p /tmp)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000/ -o /tmp/home.html -w \"HTTP %{http_code}, size %{size_download}\\\\n\")",
+      "Bash(curl -s http://localhost:3000/events -o /tmp/events.html -w \"HTTP %{http_code}, size %{size_download}\\\\n\")",
+      "Bash(grep -oE 'Upcoming events.{0,800}' /tmp/home.html)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w \"GET /admin: %{http_code}, redirect: %{redirect_url}\\\\n\" http://localhost:3000/admin)",
+      "Bash(curl -s -o /dev/null -w \"GET /admin/events: %{http_code}, redirect: %{redirect_url}\\\\n\" http://localhost:3000/admin/events)",
+      "Bash(curl -s -o /dev/null -w \"GET /admin/login: %{http_code}\\\\n\" http://localhost:3000/admin/login)",
+      "Bash(pkill -f \"node.*next\")"
     ]
   }
 }
