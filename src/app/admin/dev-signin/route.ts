@@ -1,11 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-// Dev-only shortcut: generates a real Supabase magic-link token via the
-// service-role admin API and redirects the browser through it, landing back
-// at /admin/auth/callback with a real ?code= to exchange for a session.
-// Skips the email round-trip without faking anything — RLS, auth.uid(),
-// and role claims all still work as normal.
+// Dev-only shortcut: mints a magic-link token via the service-role API,
+// then verifies it server-side with the cookie-integrated SSR client so
+// session cookies are set in one step. No email round-trip, no PKCE
+// dependency on a browser-initiated sign-in flow.
 //
 // Hard-gated to NODE_ENV=development. In production builds this returns 404.
 export async function GET(request: NextRequest) {
@@ -24,15 +24,13 @@ export async function GET(request: NextRequest) {
   }
 
   const admin = createSupabaseAdminClient();
-  const callbackUrl = `${request.nextUrl.origin}/admin/auth/callback`;
-  const { data, error } = await admin.auth.admin.generateLink({
+  const { data, error: linkError } = await admin.auth.admin.generateLink({
     type: "magiclink",
-    email,
-    options: { redirectTo: callbackUrl }
+    email
   });
 
-  if (error || !data.properties?.action_link) {
-    console.error("[dev-signin] generateLink failed:", error?.message);
+  if (linkError || !data.properties?.hashed_token) {
+    console.error("[dev-signin] generateLink failed:", linkError?.message);
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.search = "";
@@ -40,8 +38,28 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // The browser follows this through Supabase's /auth/v1/verify endpoint,
-  // which then 302s to callbackUrl with ?code=<...>. The existing callback
-  // route handler exchanges that for cookies.
-  return NextResponse.redirect(data.properties.action_link);
+  // Verify the hashed token directly via the SSR client. Its cookie handler
+  // writes the session cookies onto the response stream for us. We skip the
+  // browser → Supabase /auth/v1/verify → /admin/auth/callback chain entirely
+  // because that path relies on a PKCE code_verifier cookie which only gets
+  // set during a browser-initiated signInWithOtp().
+  const supabase = createSupabaseServerClient();
+  const { error: verifyError } = await supabase.auth.verifyOtp({
+    type: "magiclink",
+    token_hash: data.properties.hashed_token
+  });
+
+  if (verifyError) {
+    console.error("[dev-signin] verifyOtp failed:", verifyError.message);
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/login";
+    url.search = "";
+    url.searchParams.set("error", "dev_signin_failed");
+    return NextResponse.redirect(url);
+  }
+
+  const url = request.nextUrl.clone();
+  url.pathname = "/admin";
+  url.search = "";
+  return NextResponse.redirect(url);
 }
