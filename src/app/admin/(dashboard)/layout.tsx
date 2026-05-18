@@ -40,6 +40,12 @@ export default async function AdminDashboardLayout({
                     Volunteers
                   </a>
                   <a
+                    href="/admin/gallery"
+                    className="text-textSecondary transition hover:text-primary"
+                  >
+                    Gallery
+                  </a>
+                  <a
                     href="/admin/users"
                     className="text-textSecondary transition hover:text-primary"
                   >
