@@ -219,12 +219,6 @@ export default function GetInvolvedPage() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="/partners"
-              className="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              View all partners
-            </a>
-            <a
               href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >

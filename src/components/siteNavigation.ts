@@ -5,7 +5,6 @@ export const siteNavigation = [
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
   { label: "Get Involved", href: "/get-involved" },
-  { label: "Partners", href: "/partners" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donate", href: "/donate" },
   { label: "Contact", href: "/contact" }
