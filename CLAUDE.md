@@ -36,7 +36,9 @@ Events are the canonical Supabase-backed resource. The legacy `src/data/events.t
 - Event images are a controlled vocabulary (`image_key` column) mapped to `/public/events/*` assets via `src/lib/events/imageKeys.ts`. Add a new event type by dropping the asset + extending `IMAGE_KEYS`.
 - Deep-links from the homepage strip use the row's UUID (`?event=<uuid>`), not the legacy `name+date` slug.
 
-Other page content (about bios, etc.) is still exported as TypeScript constants from `src/data/*.ts`. Only events have moved.
+The volunteers list shown on `/about` is also Supabase-backed (see `supabase/migrations/0003_volunteers.sql`). Images live in the `public-images` storage bucket under the `about/volunteers/` prefix, stored as bucket-relative keys in `volunteers.image_path`. Display URLs are constructed in `src/lib/volunteers/types.ts`; lifecycle (delete-old-on-replace) is implemented in `src/app/admin/(dashboard)/volunteers/actions.ts` and `src/lib/volunteers/storage.ts`. Admin UI: `/admin/volunteers` (admin role only). Falls back to `/logo.webp` when `image_path` is null.
+
+Other page content (founder/leadership bios) is still exported as TypeScript constants from `src/data/*.ts`. Only events and volunteers have moved.
 
 ### Auth + admin UI
 Admin UI lives under `/admin`, gated by Supabase Auth (magic-link, no passwords). The middleware (`src/middleware.ts` → `src/lib/supabase/middleware.ts`) refreshes the session on every request and bounces unauthenticated visitors from `/admin` to `/admin/login`. Authorization is **role-based**, not allowlist-based — see "Roles" below.

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed:events": "tsx scripts/seed-events.ts",
+    "seed:volunteers": "tsx scripts/seed-volunteers.ts",
     "promote:admin": "tsx scripts/promote-admin.ts"
   },
   "dependencies": {
