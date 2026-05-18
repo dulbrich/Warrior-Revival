@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/auth/role";
 
@@ -20,9 +21,17 @@ export default async function AdminDashboardLayout({
           <div className="flex items-center gap-6">
             <a
               href="/admin"
-              className="font-heading text-xl font-semibold text-primary"
+              className="flex items-center gap-3 font-heading text-xl font-semibold text-primary"
             >
-              Warrior Revival admin
+              <Image
+                src="/logo.webp"
+                alt="Warrior Revival logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+                priority
+              />
+              <span>Warrior Revival admin</span>
             </a>
             <nav className="hidden items-center gap-4 text-sm font-semibold md:flex">
               <a
