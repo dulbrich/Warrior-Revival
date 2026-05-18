@@ -20,7 +20,7 @@ The existing WordPress site highlights the mission of supporting and empowering 
 - **Maintenance overhead.** Events are manually posted with images and forms, which is time‑consuming.  Staff would like an automated workflow where organizers can submit events, admins can approve them, and the events appear on the calendar.
 - **Ambiguous membership flow.** Current membership sign‑up uses Zeffy because Bloomerang asks for payment information up front.  The organization would prefer to consolidate on Bloomerang but avoid requiring payment for membership.
 - **Shop usage.** The existing store sees little traffic and may not be a priority.
-- **Presentation.** The current design is dark and heavy.  Katie prefers fresher, brighter colour palettes like those used by the National Ability Center (NAC) and Best Defense Foundation sites.  She also noted that the location in the footer should say “Utah” instead of “Sandy.”
+- **Presentation.** The current design is dark and heavy.  Katie prefers fresher, brighter colour palettes like those used by the National Ability Center (NAC) and Best Defense Foundation sites.  The location is rendered as “Sandy, Utah” across the site.
 
 ### 2.2 Comparable Sites
 
@@ -38,7 +38,7 @@ These examples illustrate effective navigation, clear mission statements and bri
 2. **Headless CMS integration.**  Content (pages, events, bios, sponsors, gallery items) should be managed via a headless CMS (e.g., Strapi).  Editors must be able to update content without developer involvement.  The CMS will expose an API that the Next.js frontend consumes via TanStack Query.
 3. **CRM and donation integration.**  Bloomerang remains the system of record for donations and possibly volunteer sign‑ups.  The site will embed Bloomerang’s hosted donation forms and integrate membership/volunteer submission flows via Bloomerang or a custom form backed by the CMS.  Zeffy will be phased out once Bloomerang forms can be used without requiring payment.
 4. **Events and activities workflow.**  A submission form allows event organizers or community members to propose activities.  Submitted events enter an approval queue for admins.  After approval, events appear automatically on the events calendar.  This workflow reduces manual posting and ensures quality control.
-5. **Improved navigation and information architecture.**  Simplify the header and reorganize pages into intuitive categories: About, Programs/Activities, Events, Get Involved (with subpages for participants and sponsors), Partners, Gallery, Donate, and Contact.  Remove cluttered icons and ensure important content is reachable in one or two clicks.  Update the footer to list the correct location (“Utah”) and contact information.
+5. **Improved navigation and information architecture.**  Simplify the header and reorganize pages into intuitive categories: About, Programs/Activities, Events, Get Involved (with subpages for participants and sponsors), Partners, Gallery, Donate, and Contact.  Remove cluttered icons and ensure important content is reachable in one or two clicks.  Update the footer to list the location (“Sandy, Utah”) and contact information.
 6. **Fresh, inviting design.**  Use a lighter colour palette inspired by the National Ability Center and other modern nonprofits.  Large imagery and accessible typography should convey optimism and inclusivity.  Maintain strong brand recognition with a coherent colour scheme and logo usage.  The site must meet WCAG 2.1 AA accessibility guidelines.
 7. **Mobile‑first and performant.**  The site should load quickly on mobile devices.  Lazy‑load images, prefetch routes and optimize bundle size.  Pages must render in less than 2 seconds on a 3G connection.
 8. **Analytics and SEO.**  Integrate analytics (e.g., Google Analytics or Plausible) to track page visits, conversions and form submissions.  Use structured data (Open Graph, Schema.org) for SEO and social sharing.
@@ -85,7 +85,7 @@ These examples illustrate effective navigation, clear mission statements and bri
   - **Partners** – highlight sponsors/partners with tiers similar to the current sponsors page【88111362770371†L317-L333】.
   - **Gallery** – images and videos of past events; optional categories and search.
   - **Donate** – donation page with Bloomerang embed and messaging; highlight recurring giving and donor matching.
-  - **Contact** – contact form and organization contact info.  Remove the outdated “Sandy” location and use “Utah.”
+  - **Contact** – contact form and organization contact info.  Render the location as “Sandy, Utah.”
 
 - **Call‑to‑Action Buttons.**  Important actions (Donate, Join, Submit Event) should be styled as buttons in the navigation on mobile.
 - **Responsive Menu.**  Use a hamburger menu on small screens.  Ensure focus states and ARIA attributes for accessibility.
@@ -144,7 +144,7 @@ Provide a “Join an Activity” CTA linking to the membership sign‑up form or
 
 ### 5.10 Contact
 
-- **Contact Information.**  Provide email, phone and mailing address.  Correct the location to “Utah” rather than “Sandy.”
+- **Contact Information.**  Provide email, phone and mailing address.  Render the location as “Sandy, Utah.”
 - **Contact Form.**  A simple contact form for general inquiries with spam protection.
 
 ### 5.11 Footer

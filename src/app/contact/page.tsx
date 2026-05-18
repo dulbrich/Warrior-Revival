@@ -10,10 +10,10 @@ export default function ContactPage() {
       <section className="bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+            <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               Contact
             </p>
-            <h1 className="mt-4 font-heading text-4xl font-semibold text-primary md:text-5xl">
+            <h1 className="mt-4 max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
               Let&apos;s connect.
             </h1>
             <p className="mt-4 text-base text-textSecondary">
@@ -23,13 +23,18 @@ export default function ContactPage() {
             <div className="mt-6 space-y-2 text-sm text-textSecondary">
               <p>
                 <span className="font-semibold text-primary">Email:</span>{" "}
-                hello@warriorrevival.org
+                <a href="mailto:info@warrior-revival.org" className="hover:text-primary">
+                  info@warrior-revival.org
+                </a>
               </p>
               <p>
-                <span className="font-semibold text-primary">Phone:</span> (801) 555-0123
+                <span className="font-semibold text-primary">Phone:</span>{" "}
+                <a href="tel:+18018105515" className="hover:text-primary">
+                  801-810-5515
+                </a>
               </p>
               <p>
-                <span className="font-semibold text-primary">Location:</span> Utah
+                <span className="font-semibold text-primary">Location:</span> Sandy, Utah
               </p>
             </div>
           </div>
