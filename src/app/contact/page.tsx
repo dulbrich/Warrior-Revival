@@ -34,7 +34,7 @@ export default function ContactPage() {
                 </a>
               </p>
               <p>
-                <span className="font-semibold text-primary">Location:</span> Utah
+                <span className="font-semibold text-primary">Location:</span> Sandy, Utah
               </p>
             </div>
           </div>
