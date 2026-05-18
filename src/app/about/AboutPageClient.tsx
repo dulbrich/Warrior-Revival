@@ -4,7 +4,8 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
 import Image from "next/image";
-import { founderProfile, leadershipTeam, volunteers } from "@/data/about";
+import { founderProfile, leadershipTeam } from "@/data/about";
+import type { VolunteerForDisplay } from "@/lib/volunteers/types";
 
 const missionCards = [
   {
@@ -48,7 +49,11 @@ const focusAreas = [
   }
 ];
 
-export default function AboutPageClient() {
+export default function AboutPageClient({
+  volunteers
+}: {
+  volunteers: VolunteerForDisplay[];
+}) {
   return (
     <main className="bg-light">
       <SiteHeader />
@@ -242,34 +247,28 @@ export default function AboutPageClient() {
             </button>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {volunteers.map((volunteer) => {
-              const displayName = volunteer.lastInitial
-                ? `${volunteer.firstName} ${volunteer.lastInitial}.`
-                : volunteer.firstName;
-              const volunteerImage = volunteer.image ?? "/logo.webp";
-              return (
-                <div
-                  key={displayName}
-                  className="flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft"
-                >
-                  <Image
-                    src={volunteerImage}
-                    alt={`${displayName}, ${volunteer.branch}`}
-                    width={64}
-                    height={64}
-                    className="h-16 w-16 rounded-full border border-border bg-white object-cover"
-                  />
-                  <div>
-                    <p className="font-heading text-lg font-semibold text-primary">
-                      {displayName}
-                    </p>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
-                      {volunteer.branch}
-                    </p>
-                  </div>
+            {volunteers.map((volunteer) => (
+              <div
+                key={volunteer.id}
+                className="flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft"
+              >
+                <Image
+                  src={volunteer.imageUrl}
+                  alt={`${volunteer.displayName}, ${volunteer.displayBranch}`}
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 rounded-full border border-border bg-white object-cover"
+                />
+                <div>
+                  <p className="font-heading text-lg font-semibold text-primary">
+                    {volunteer.displayName}
+                  </p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+                    {volunteer.displayBranch}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>

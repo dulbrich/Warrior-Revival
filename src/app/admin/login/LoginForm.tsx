@@ -49,6 +49,17 @@ export default function LoginForm() {
           The sign-in link was invalid or expired. Try requesting a new one below.
         </p>
       ) : null}
+      {errorParam === "dev_signin_email_missing" ? (
+        <p className="mt-5 rounded-md border border-warning/40 bg-warning/10 px-3 py-2 text-sm text-warning">
+          Dev shortcut hit but <code>DEV_AUTH_EMAIL</code> isn&apos;t set in
+          <code>.env.local</code>. Add it or sign in normally.
+        </p>
+      ) : null}
+      {errorParam === "dev_signin_failed" ? (
+        <p className="mt-5 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-600">
+          Dev sign-in couldn&apos;t generate a session. Check the server logs.
+        </p>
+      ) : null}
 
       {sent ? (
         <div className="mt-6 rounded-md border border-success/40 bg-success/10 px-3 py-3 text-sm text-success">

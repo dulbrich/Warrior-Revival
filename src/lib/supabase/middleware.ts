@@ -40,12 +40,23 @@ export async function updateSession(request: NextRequest) {
   const isAdminRoute = pathname.startsWith("/admin");
   const isLoginRoute = pathname.startsWith("/admin/login");
   const isAuthRoute = pathname.startsWith("/admin/auth");
+  const isDevSigninRoute = pathname.startsWith("/admin/dev-signin");
   const isUsersRoute = pathname.startsWith("/admin/users");
 
-  if (isAdminRoute && !isLoginRoute && !isAuthRoute) {
+  if (isAdminRoute && !isLoginRoute && !isAuthRoute && !isDevSigninRoute) {
     if (!user) {
       const url = request.nextUrl.clone();
-      url.pathname = "/admin/login";
+      // Dev convenience: skip the magic-link email round-trip when running
+      // locally with DEV_AUTH_EMAIL set. /admin/dev-signin is hard-gated to
+      // NODE_ENV=development and 404s in production, so this can't escape.
+      if (
+        process.env.NODE_ENV === "development" &&
+        process.env.DEV_AUTH_EMAIL
+      ) {
+        url.pathname = "/admin/dev-signin";
+      } else {
+        url.pathname = "/admin/login";
+      }
       return NextResponse.redirect(url);
     }
     const meta = (user.app_metadata ?? {}) as { role?: string };

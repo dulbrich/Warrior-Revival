@@ -1,10 +1,12 @@
 import { Suspense } from "react";
+import { fetchVolunteers } from "@/lib/volunteers/queries";
 import AboutPageClient from "./AboutPageClient";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const volunteers = await fetchVolunteers();
   return (
     <Suspense fallback={<div className="min-h-screen bg-light" />}>
-      <AboutPageClient />
+      <AboutPageClient volunteers={volunteers} />
     </Suspense>
   );
 }

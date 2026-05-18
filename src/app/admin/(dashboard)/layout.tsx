@@ -32,12 +32,20 @@ export default async function AdminDashboardLayout({
                 Events
               </a>
               {user.role === "admin" ? (
-                <a
-                  href="/admin/users"
-                  className="text-textSecondary transition hover:text-primary"
-                >
-                  Users
-                </a>
+                <>
+                  <a
+                    href="/admin/volunteers"
+                    className="text-textSecondary transition hover:text-primary"
+                  >
+                    Volunteers
+                  </a>
+                  <a
+                    href="/admin/users"
+                    className="text-textSecondary transition hover:text-primary"
+                  >
+                    Users
+                  </a>
+                </>
               ) : null}
             </nav>
           </div>
