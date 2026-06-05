@@ -44,6 +44,22 @@ export default async function AdminHome({
           </p>
         </a>
 
+        <a
+          href="/admin/events/import"
+          className="rounded-2xl border border-border bg-surface p-6 shadow-card transition hover:-translate-y-0.5 hover:border-primary/40"
+        >
+          <p className="font-accent text-xs uppercase tracking-[0.3em] text-secondary">
+            Bulk
+          </p>
+          <p className="mt-2 font-heading text-2xl font-semibold text-primary">
+            Import events
+          </p>
+          <p className="mt-2 text-sm text-textSecondary">
+            Mass-upload events from a JSON file. Duplicates are detected and
+            skipped automatically.
+          </p>
+        </a>
+
         {isAdmin ? (
           <a
             href="/admin/volunteers"

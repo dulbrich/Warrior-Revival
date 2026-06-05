@@ -250,12 +250,20 @@ export default function AdminEventsBoard({
             Manage events
           </h1>
         </div>
-        <a
-          href="/admin/events/new"
-          className="rounded-md bg-accent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90"
-        >
-          + New event
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="/admin/events/import"
+            className="rounded-md border border-primary px-4 py-2 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10"
+          >
+            Import JSON
+          </a>
+          <a
+            href="/admin/events/new"
+            className="rounded-md bg-accent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90"
+          >
+            + New event
+          </a>
+        </div>
       </div>
 
       <div className="mt-6 lg:grid lg:grid-cols-[220px_minmax(0,1fr)_360px] lg:items-start lg:gap-6">

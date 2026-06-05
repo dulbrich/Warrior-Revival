@@ -40,6 +40,12 @@ export default async function AdminDashboardLayout({
               >
                 Events
               </a>
+              <a
+                href="/admin/events/import"
+                className="text-textSecondary transition hover:text-primary"
+              >
+                Import
+              </a>
               {user.role === "admin" ? (
                 <>
                   <a
