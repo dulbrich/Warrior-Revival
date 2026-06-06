@@ -4,31 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireRole } from "@/lib/auth/role";
 import { parseBulkEvents, eventDedupeKey } from "@/lib/events/bulkImport";
-
-export type ImportState = {
-  status: "idle" | "success" | "error";
-  // Top-level message (fatal parse error, auth error, or summary headline).
-  message: string | null;
-  // Per-category counts for the result summary.
-  summary: {
-    total: number;
-    created: number;
-    duplicatesInFile: number;
-    duplicatesExisting: number;
-    invalid: number;
-  } | null;
-  // Detailed per-entry problems so the admin can fix and re-upload.
-  invalid: { label: string; messages: string[] }[];
-  duplicates: { label: string; reason: "in-file" | "already-exists" }[];
-};
-
-export const initialImportState: ImportState = {
-  status: "idle",
-  message: null,
-  summary: null,
-  invalid: [],
-  duplicates: []
-};
+import type { ImportState } from "./types";
 
 // useFormState action: validate a pasted/uploaded JSON array of events, drop
 // duplicates (both within the file and against rows already in the DB), and

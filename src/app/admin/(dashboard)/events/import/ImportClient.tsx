@@ -3,11 +3,8 @@
 import { useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { IMAGE_KEYS } from "@/lib/events/imageKeys";
-import {
-  bulkImportEventsAction,
-  initialImportState,
-  type ImportState
-} from "./actions";
+import { bulkImportEventsAction } from "./actions";
+import { initialImportState, type ImportState } from "./types";
 
 // A copy-paste starting point that exercises every column. Kept in sync with
 // eventFormSchema — name/event_date/location are required, the rest optional.
