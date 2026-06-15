@@ -158,7 +158,7 @@ export default function VeteransPageClient({
             <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               Impact on Veterans
             </p>
-            <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+            <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
               What Our Members Say
             </h1>
           </div>
@@ -315,7 +315,7 @@ export default function VeteransPageClient({
               Our members have described the challenges of reintegration as:
             </h2>
             <div className="flex min-h-[280px] flex-col rounded-2xl border border-border bg-white p-6 shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                 Veteran voices
               </p>
               <div className="flex flex-1 flex-col justify-center">
@@ -331,7 +331,7 @@ export default function VeteransPageClient({
                   </span>
                 </blockquote>
               </div>
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-textSecondary">
+              <p className="mt-4 text-sm uppercase tracking-[0.2em] text-textSecondary">
                 {activeQuoteIndex + 1} of {reintegrationQuotes.length}
               </p>
             </div>

@@ -26,7 +26,7 @@ export default function SiteHeader() {
               <p className="font-accent text-2xl text-primary md:text-3xl tracking-[0.08em]">
                 Warrior Revival
               </p>
-              <p className="text-xs uppercase tracking-[0.2em] text-textSecondary">
+              <p className="text-sm uppercase tracking-[0.2em] text-textSecondary">
                 Military, Transition, Community
               </p>
             </div>
@@ -51,13 +51,13 @@ export default function SiteHeader() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href="/membership"
-              className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Join
             </a>
             <a
               href="/donate"
-              className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-base font-bold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Donate
             </a>

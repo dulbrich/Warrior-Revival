@@ -81,9 +81,9 @@ export default function GetInvolvedPage() {
         />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 md:px-8 md:py-20">
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
-            Get involved
+            Join the mission
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             Join Warrior Revival as a participant, volunteer, or sponsor.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">
@@ -108,23 +108,23 @@ export default function GetInvolvedPage() {
                 key={step.title}
                 className="rounded-2xl border border-border bg-surface p-6 shadow-card"
               >
-                <h3 className="font-heading text-xl font-semibold text-primary">
+                <h3 className="font-heading text-2xl font-semibold text-primary">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm text-textSecondary">{step.description}</p>
+                <p className="mt-3 text-base text-textSecondary">{step.description}</p>
               </div>
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="/membership"
-              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Join as a member
             </a>
             <a
               href="/events"
-              className="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Browse events
             </a>
@@ -147,16 +147,16 @@ export default function GetInvolvedPage() {
                 key={role.title}
                 className="rounded-2xl border border-border bg-light p-6 shadow-card"
               >
-                <h3 className="font-heading text-xl font-semibold text-primary">
+                <h3 className="font-heading text-2xl font-semibold text-primary">
                   {role.title}
                 </h3>
-                <p className="mt-3 text-sm text-textSecondary">{role.description}</p>
+                <p className="mt-3 text-base text-textSecondary">{role.description}</p>
               </div>
             ))}
           </div>
           <a
             href="/membership"
-            className="mt-8 inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="mt-8 inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Apply to volunteer
           </a>
@@ -176,7 +176,7 @@ export default function GetInvolvedPage() {
           <div className="mt-8 overflow-x-auto rounded-2xl border border-border bg-surface shadow-card">
             <table className="min-w-full text-left">
               <thead>
-                <tr className="border-b border-border text-sm uppercase tracking-wide text-textSecondary">
+                <tr className="border-b border-border text-base uppercase tracking-wide text-textSecondary">
                   <th className="px-5 py-4 font-semibold">Tier</th>
                   <th className="px-5 py-4 font-semibold">Support</th>
                   <th className="px-5 py-4 font-semibold">Benefits</th>
@@ -186,7 +186,7 @@ export default function GetInvolvedPage() {
                 {sponsorLevels.map((level) => (
                   <tr
                     key={level.tier}
-                    className="border-b border-border/80 text-sm text-textPrimary last:border-b-0"
+                    className="border-b border-border/80 text-base text-textPrimary last:border-b-0"
                   >
                     <td className="px-5 py-4 font-semibold text-primary">{level.tier}</td>
                     <td className="px-5 py-4">{level.support}</td>
@@ -198,7 +198,7 @@ export default function GetInvolvedPage() {
           </div>
 
           <div className="mt-8 rounded-2xl border border-border bg-surface p-6 shadow-card">
-            <h3 className="font-heading text-xl font-semibold text-primary">Current sponsors</h3>
+            <h3 className="font-heading text-2xl font-semibold text-primary">Current sponsors</h3>
             <div className="mt-5 grid gap-5 sm:grid-cols-3">
               {featuredSponsors.map((sponsor) => (
                 <div
@@ -220,7 +220,7 @@ export default function GetInvolvedPage() {
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Become a sponsor
             </a>

@@ -71,7 +71,7 @@ export default function AboutPageClient({
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             About Warrior Revival
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             A veteran-led community built around adventure, mentorship, and belonging.
           </h1>
         </div>
@@ -84,49 +84,49 @@ export default function AboutPageClient({
               OUR STORY
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival was created to fill a space that disappears when
-              military service ends.
+              I built Warrior Revival because I kept witnessing warriors lose their
+              purpose and pull away from life &mdash; and the evenings and weekends
+              were the hardest. The community they needed simply didn&rsquo;t exist.
+              I wanted to change that &mdash; so I created the space I kept wishing
+              was there.
             </p>
             <p className="text-base text-textSecondary">
-              Through work within the VA, its founder saw many veterans struggling
-              with transition - not because of a mental health disorder, but because
-              they had lost the camaraderie, support, and leadership opportunities
-              that once structured their lives. With few non-clinical options
-              available, many were routed into mental health care for &quot;adjustment
-              issues,&quot; when what they actually needed was connection and purpose.
-              While mental health challenges do exist after service, not every
-              transition struggle is clinical.
+              Warrior Revival was created for every service member, veteran, and
+              military family navigating the journey between service and civilian
+              life &mdash; whether that transition is still ahead of you or already
+              underway.
             </p>
             <p className="text-base text-textSecondary">
-              A practical gap was also evident. Post-9/11 veterans are balancing
-              careers, school, and families, yet most support services operate during
-              business hours. Nights and weekends - when isolation is often strongest
-              - are exactly when veterans have the fewest options.
+              The strongest transitions happen when preparation starts early. By
+              connecting active duty service members with community, resources, and
+              experiences before they separate, we help make the road ahead a little
+              less uncertain and a lot less lonely.
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival was built to meet veterans where they are and to
-              recreate what military life naturally provided: shared experiences,
-              peer support, and meaningful opportunities to lead and contribute.
-              Through recreational experiences veterans want to do, Warrior Revival
-              builds community, reinforces identity, and supports the transition to
-              civilian life.
+              The transition to civilian life opens a new chapter &mdash; and we
+              want to be part of it. Warrior Revival fills the evenings and
+              weekends with high energy, high adventure, and meaningful experiences
+              built around the things service members and veterans genuinely want
+              to do.
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival does not replace mental health care. It restores the
-              human infrastructure that existed before the uniform came off.
+              We restore what military life naturally provided &mdash; shared
+              experiences, genuine connection, and a sense of purpose that
+              doesn&rsquo;t end when the uniform comes off. Because every warrior
+              deserves a tribe that has their back, long after service ends.
             </p>
           </div>
           <div className="self-start rounded-2xl border border-border bg-light p-6 shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-textSecondary">
               Focus areas
             </p>
             <div className="mt-4 space-y-4">
               {focusAreas.map((area) => (
                 <div key={area.title}>
-                  <p className="font-heading text-lg font-semibold text-primary">
+                  <p className="font-heading text-xl font-semibold text-primary">
                     {area.title}
                   </p>
-                  <p className="mt-2 text-sm text-textSecondary">{area.description}</p>
+                  <p className="mt-2 text-base text-textSecondary">{area.description}</p>
                 </div>
               ))}
             </div>
@@ -142,11 +142,11 @@ export default function AboutPageClient({
               className={`flex h-full flex-col rounded-2xl border bg-surface p-6 shadow-card ${card.borderClass}`}
             >
               <span
-                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
+                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide ${card.badgeClass}`}
               >
                 {card.title}
               </span>
-              <p className="mt-4 text-sm text-textSecondary">{card.description}</p>
+              <p className="mt-4 text-base text-textSecondary">{card.description}</p>
             </div>
           ))}
         </div>
@@ -162,7 +162,7 @@ export default function AboutPageClient({
               <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
                 Meet the leadership team
               </h2>
-              <p className="max-w-2xl text-sm text-textSecondary">
+              <p className="max-w-2xl text-base text-textSecondary">
                 Our board and advisors bring clinical insight, service experience,
                 and community leadership to every program we offer.
               </p>
@@ -182,13 +182,13 @@ export default function AboutPageClient({
                     />
                   </div>
                   <div className="px-6 py-8 text-center md:px-10 md:py-12">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                       Founder &amp; President
                     </p>
                     <h3 className="mt-3 font-heading text-2xl font-semibold text-primary md:text-3xl">
                       {founderProfile.firstName} {founderProfile.lastName}
                     </h3>
-                    <p className="mx-auto mt-4 max-w-2xl text-sm text-textSecondary md:text-base">
+                    <p className="mx-auto mt-4 max-w-2xl text-base text-textSecondary md:text-lg">
                       {founderProfile.bio}
                     </p>
                   </div>
@@ -212,13 +212,13 @@ export default function AboutPageClient({
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                       {member.role}
                     </p>
-                    <h3 className="mt-2 font-heading text-xl font-semibold text-primary">
+                    <h3 className="mt-2 font-heading text-2xl font-semibold text-primary">
                       {fullName}
                     </h3>
-                    <p className="mt-3 text-sm text-textSecondary">{member.bio}</p>
+                    <p className="mt-3 text-base text-textSecondary">{member.bio}</p>
                   </div>
                 </article>
               );
@@ -237,12 +237,12 @@ export default function AboutPageClient({
               <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
                 The volunteers who make it happen
               </h2>
-              <p className="max-w-2xl text-sm text-textSecondary">
+              <p className="max-w-2xl text-base text-textSecondary">
                 Our volunteer team brings lived experience, steady leadership, and
                 heartfelt encouragement to every event.
               </p>
             </div>
-            <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Join the volunteer team
             </button>
           </div>
@@ -260,10 +260,10 @@ export default function AboutPageClient({
                   className="h-16 w-16 rounded-full border border-border bg-white object-cover"
                 />
                 <div>
-                  <p className="font-heading text-lg font-semibold text-primary">
+                  <p className="font-heading text-xl font-semibold text-primary">
                     {volunteer.displayName}
                   </p>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-textSecondary">
                     {volunteer.displayBranch}
                   </p>
                 </div>
@@ -290,10 +290,10 @@ export default function AboutPageClient({
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                 Donate today
               </button>
-              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                 Become a volunteer
               </button>
             </div>

@@ -86,7 +86,7 @@ export default function ProgramsPage() {
             <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               Programs &amp; Activities
             </p>
-            <h1 className="mt-4 max-w-4xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+            <h1 className="mt-4 max-w-4xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
               Adventure-led programs that strengthen connection, confidence, and purpose.
             </h1>
             <p className="mt-5 max-w-3xl text-base text-textSecondary md:text-lg">
@@ -97,13 +97,13 @@ export default function ProgramsPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/events"
-                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 View upcoming events
               </Link>
               <Link
                 href="/get-involved"
-                className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Join an activity
               </Link>
@@ -120,10 +120,10 @@ export default function ProgramsPage() {
                 key={pillar.title}
                 className="rounded-2xl border border-border bg-surface p-6 shadow-card"
               >
-                <h2 className="font-heading text-xl font-semibold text-primary">
+                <h2 className="font-heading text-2xl font-semibold text-primary">
                   {pillar.title}
                 </h2>
-                <p className="mt-3 text-sm text-textSecondary">{pillar.description}</p>
+                <p className="mt-3 text-base text-textSecondary">{pillar.description}</p>
               </article>
             ))}
           </div>
@@ -139,7 +139,7 @@ export default function ProgramsPage() {
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Explore the programs currently offered
             </h2>
-            <p className="max-w-3xl text-sm text-textSecondary md:text-base">
+            <p className="max-w-3xl text-base text-textSecondary md:text-lg">
               Each activity includes eligibility guidance and direct access to upcoming
               opportunities on the Events page.
             </p>
@@ -163,8 +163,8 @@ export default function ProgramsPage() {
                   <h3 className="font-heading text-2xl font-semibold text-primary">
                     {program.title}
                   </h3>
-                  <p className="mt-3 text-sm text-textSecondary">{program.benefit}</p>
-                  <p className="mt-4 rounded-xl border border-border bg-light px-3 py-2 text-xs text-textSecondary">
+                  <p className="mt-3 text-base text-textSecondary">{program.benefit}</p>
+                  <p className="mt-4 rounded-xl border border-border bg-light px-3 py-2 text-sm text-textSecondary">
                     <span className="font-semibold uppercase tracking-[0.12em] text-primary">
                       Eligibility:{" "}
                     </span>
@@ -172,7 +172,7 @@ export default function ProgramsPage() {
                   </p>
                   <Link
                     href="/events"
-                    className="mt-5 inline-flex w-fit items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="mt-5 inline-flex w-fit items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     See related events
                   </Link>
@@ -192,7 +192,7 @@ export default function ProgramsPage() {
             <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-primary md:text-4xl">
               Ready to get involved?
             </h2>
-            <p className="mt-4 max-w-3xl text-sm text-textSecondary md:text-base">
+            <p className="mt-4 max-w-3xl text-base text-textSecondary md:text-lg">
               Start by joining as a participant or browse current events to find the
               best fit. Warrior Revival membership is free, and programs are designed to
               create lasting community support.
@@ -200,13 +200,13 @@ export default function ProgramsPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/veterans"
-                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Become a member
               </Link>
               <Link
                 href="/events"
-                className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Browse events
               </Link>

@@ -22,7 +22,7 @@ export default function SubscribeSection() {
               </p>
               <a
                 href="/newsletter"
-                className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-6 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-6 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Subscribe
               </a>
