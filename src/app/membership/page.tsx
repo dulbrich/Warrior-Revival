@@ -40,7 +40,7 @@ export default function MembershipPage() {
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             Membership
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             Join Warrior Revival.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">
@@ -59,10 +59,10 @@ export default function MembershipPage() {
                 key={benefit.title}
                 className="rounded-2xl border border-border bg-surface p-6 shadow-card"
               >
-                <h2 className="font-heading text-xl font-semibold text-primary">
+                <h2 className="font-heading text-2xl font-semibold text-primary">
                   {benefit.title}
                 </h2>
-                <p className="mt-3 text-sm text-textSecondary">{benefit.description}</p>
+                <p className="mt-3 text-base text-textSecondary">{benefit.description}</p>
               </div>
             ))}
           </div>

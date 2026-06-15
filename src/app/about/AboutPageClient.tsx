@@ -71,7 +71,7 @@ export default function AboutPageClient({
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             About Warrior Revival
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             A veteran-led community built around adventure, mentorship, and belonging.
           </h1>
         </div>
@@ -117,16 +117,16 @@ export default function AboutPageClient({
             </p>
           </div>
           <div className="self-start rounded-2xl border border-border bg-light p-6 shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-textSecondary">
               Focus areas
             </p>
             <div className="mt-4 space-y-4">
               {focusAreas.map((area) => (
                 <div key={area.title}>
-                  <p className="font-heading text-lg font-semibold text-primary">
+                  <p className="font-heading text-xl font-semibold text-primary">
                     {area.title}
                   </p>
-                  <p className="mt-2 text-sm text-textSecondary">{area.description}</p>
+                  <p className="mt-2 text-base text-textSecondary">{area.description}</p>
                 </div>
               ))}
             </div>
@@ -142,11 +142,11 @@ export default function AboutPageClient({
               className={`flex h-full flex-col rounded-2xl border bg-surface p-6 shadow-card ${card.borderClass}`}
             >
               <span
-                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
+                className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wide ${card.badgeClass}`}
               >
                 {card.title}
               </span>
-              <p className="mt-4 text-sm text-textSecondary">{card.description}</p>
+              <p className="mt-4 text-base text-textSecondary">{card.description}</p>
             </div>
           ))}
         </div>
@@ -162,7 +162,7 @@ export default function AboutPageClient({
               <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
                 Meet the leadership team
               </h2>
-              <p className="max-w-2xl text-sm text-textSecondary">
+              <p className="max-w-2xl text-base text-textSecondary">
                 Our board and advisors bring clinical insight, service experience,
                 and community leadership to every program we offer.
               </p>
@@ -182,13 +182,13 @@ export default function AboutPageClient({
                     />
                   </div>
                   <div className="px-6 py-8 text-center md:px-10 md:py-12">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                       Founder &amp; President
                     </p>
                     <h3 className="mt-3 font-heading text-2xl font-semibold text-primary md:text-3xl">
                       {founderProfile.firstName} {founderProfile.lastName}
                     </h3>
-                    <p className="mx-auto mt-4 max-w-2xl text-sm text-textSecondary md:text-base">
+                    <p className="mx-auto mt-4 max-w-2xl text-base text-textSecondary md:text-lg">
                       {founderProfile.bio}
                     </p>
                   </div>
@@ -212,13 +212,13 @@ export default function AboutPageClient({
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
                       {member.role}
                     </p>
-                    <h3 className="mt-2 font-heading text-xl font-semibold text-primary">
+                    <h3 className="mt-2 font-heading text-2xl font-semibold text-primary">
                       {fullName}
                     </h3>
-                    <p className="mt-3 text-sm text-textSecondary">{member.bio}</p>
+                    <p className="mt-3 text-base text-textSecondary">{member.bio}</p>
                   </div>
                 </article>
               );
@@ -237,12 +237,12 @@ export default function AboutPageClient({
               <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
                 The volunteers who make it happen
               </h2>
-              <p className="max-w-2xl text-sm text-textSecondary">
+              <p className="max-w-2xl text-base text-textSecondary">
                 Our volunteer team brings lived experience, steady leadership, and
                 heartfelt encouragement to every event.
               </p>
             </div>
-            <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Join the volunteer team
             </button>
           </div>
@@ -260,10 +260,10 @@ export default function AboutPageClient({
                   className="h-16 w-16 rounded-full border border-border bg-white object-cover"
                 />
                 <div>
-                  <p className="font-heading text-lg font-semibold text-primary">
+                  <p className="font-heading text-xl font-semibold text-primary">
                     {volunteer.displayName}
                   </p>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-textSecondary">
                     {volunteer.displayBranch}
                   </p>
                 </div>
@@ -290,10 +290,10 @@ export default function AboutPageClient({
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                 Donate today
               </button>
-              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                 Become a volunteer
               </button>
             </div>

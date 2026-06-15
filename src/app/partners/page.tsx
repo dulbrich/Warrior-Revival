@@ -18,7 +18,7 @@ export default function PartnersPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
             Partners
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-semibold text-primary md:text-5xl">
+          <h1 className="mt-4 font-heading text-5xl font-semibold text-primary md:text-6xl">
             Our partners power every adventure.
           </h1>
           <p className="mt-4 max-w-3xl text-base text-textSecondary">
@@ -29,7 +29,7 @@ export default function PartnersPage() {
             {partnerBenefits.map((benefit) => (
               <div key={benefit} className="flex items-start gap-3 text-textSecondary">
                 <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-accent" />
-                <p className="text-sm">{benefit}</p>
+                <p className="text-base">{benefit}</p>
               </div>
             ))}
           </div>

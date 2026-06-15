@@ -137,19 +137,19 @@ export default function HomePageClient({
           <div className="flex flex-wrap gap-4">
             <a
               href="/donate"
-              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Donate
             </a>
             <a
               href="/events"
-              className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               View Events
             </a>
             <a
               href="/membership"
-              className="inline-flex items-center justify-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md border border-white/70 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Join the community
             </a>
@@ -169,7 +169,7 @@ export default function HomePageClient({
               className="flex h-full flex-col justify-between rounded-2xl border border-border bg-surface/95 p-6 shadow-card transition-transform duration-300 ease-out hover:scale-[1.02]"
             >
               <div>
-                <p className="font-heading text-xl font-semibold text-primary md:text-2xl">
+                <p className="font-heading text-2xl font-semibold text-primary">
                   {area.titleLines
                     ? area.titleLines.map((line, index) => (
                         <span key={`${area.title}-${index}`} className="block">
@@ -178,18 +178,18 @@ export default function HomePageClient({
                       ))
                     : area.title}
                 </p>
-                <p className="mt-3 text-sm text-textSecondary">{area.description}</p>
+                <p className="mt-3 text-base text-textSecondary">{area.description}</p>
               </div>
               {area.cta &&
                 (area.href ? (
                   <a
                     href={area.href}
-                    className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     {area.cta}
                   </a>
                 ) : (
-                  <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  <button className="mt-6 inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                     {area.cta}
                   </button>
                 ))}
@@ -207,7 +207,7 @@ export default function HomePageClient({
               </p>
               <a
                 href="/events"
-                className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 See more
               </a>
@@ -241,10 +241,10 @@ export default function HomePageClient({
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                        <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-primary">
                           {event.category}
                         </span>
-                        <span className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                        <span className="text-sm font-semibold uppercase tracking-wide text-textSecondary">
                           {event.dateLabel}
                         </span>
                       </div>
@@ -254,7 +254,7 @@ export default function HomePageClient({
                           className="font-heading text-lg font-semibold text-primary"
                         />
                       </div>
-                      <p className="text-xs text-textSecondary">
+                      <p className="text-sm text-textSecondary">
                         {event.timeLabel} · {event.location}
                       </p>
                     </div>
@@ -264,7 +264,7 @@ export default function HomePageClient({
                       href={event.register_link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-3 inline-flex items-center text-sm font-semibold text-secondary hover:text-primary"
+                      className="mt-3 inline-flex items-center text-base font-bold text-secondary hover:text-primary"
                       onClick={(clickEvent) => clickEvent.stopPropagation()}
                     >
                       Register now →
@@ -282,7 +282,7 @@ export default function HomePageClient({
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
             Get involved
           </p>
-          <h2 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             Choose your pathway to impact.
           </h2>
         </div>
@@ -292,20 +292,20 @@ export default function HomePageClient({
               key={pathway.title}
               className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6 shadow-card"
             >
-              <p className="font-heading text-xl font-semibold text-primary">
+              <p className="font-heading text-2xl font-semibold text-primary">
                 {pathway.title}
               </p>
-              <p className="mt-3 text-sm text-textSecondary">{pathway.description}</p>
+              <p className="mt-3 text-base text-textSecondary">{pathway.description}</p>
               <div className="mt-auto pt-6">
                 {pathway.href ? (
                   <a
                     href={pathway.href}
-                    className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-base font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     {pathway.cta}
                   </a>
                 ) : (
-                  <button className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  <button className="inline-flex items-center justify-center rounded-md bg-secondary px-4 py-2 text-base font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                     {pathway.cta}
                   </button>
                 )}

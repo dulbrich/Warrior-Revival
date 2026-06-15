@@ -24,7 +24,7 @@ export default async function GalleryPage() {
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             Gallery
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             Moments from the trail.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">

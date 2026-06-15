@@ -39,7 +39,7 @@ export default function GalleryGrid({ photos }: Props) {
     return (
       <div className="rounded-2xl border border-dashed border-border bg-surface px-6 py-16 text-center">
         <p className="font-heading text-2xl text-primary">No photos yet</p>
-        <p className="mt-2 text-sm text-textSecondary">
+        <p className="mt-2 text-base text-textSecondary">
           Check back soon — we&apos;ll be sharing photos from upcoming events here.
         </p>
       </div>
@@ -84,7 +84,7 @@ export default function GalleryGrid({ photos }: Props) {
               setActiveIndex(null);
             }}
             aria-label="Close"
-            className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-white/20"
+            className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-1.5 text-base font-bold text-white transition hover:bg-white/20"
           >
             Close ✕
           </button>

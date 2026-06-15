@@ -20,7 +20,7 @@ export default function NewsletterPage() {
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
             Newsletter
           </p>
-          <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+          <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
             Stay in the loop.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">
@@ -36,10 +36,10 @@ export default function NewsletterPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
               Sign up
             </p>
-            <h2 className="mt-3 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            <h2 className="mt-3 font-heading text-3xl font-semibold text-primary md:text-4xl">
               Add your name to our mailing list
             </h2>
-            <p className="mt-3 text-sm text-textSecondary">
+            <p className="mt-3 text-base text-textSecondary">
               Sign-ups are managed by Bloomerang on Warrior Revival&apos;s behalf.
             </p>
             <div className="mt-6">

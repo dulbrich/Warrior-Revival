@@ -13,14 +13,14 @@ export default function ContactPage() {
             <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               Contact
             </p>
-            <h1 className="mt-4 max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
+            <h1 className="mt-4 max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
               Let&apos;s connect.
             </h1>
             <p className="mt-4 text-base text-textSecondary">
               Reach out with questions about events, volunteering, or partnerships.
               We are based in Utah and ready to help.
             </p>
-            <div className="mt-6 space-y-2 text-sm text-textSecondary">
+            <div className="mt-6 space-y-2 text-base text-textSecondary">
               <p>
                 <span className="font-semibold text-primary">Email:</span>{" "}
                 <a href="mailto:info@warrior-revival.org" className="hover:text-primary">
@@ -40,7 +40,7 @@ export default function ContactPage() {
           </div>
           <form className="rounded-2xl border border-border bg-light p-6 shadow-card">
             <div className="grid gap-4">
-              <label className="text-sm font-semibold text-textSecondary">
+              <label className="text-base font-semibold text-textSecondary">
                 Name
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-border bg-white px-3 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -48,7 +48,7 @@ export default function ContactPage() {
                   placeholder="Your name"
                 />
               </label>
-              <label className="text-sm font-semibold text-textSecondary">
+              <label className="text-base font-semibold text-textSecondary">
                 Email
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-border bg-white px-3 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -56,7 +56,7 @@ export default function ContactPage() {
                   placeholder="you@example.com"
                 />
               </label>
-              <label className="text-sm font-semibold text-textSecondary">
+              <label className="text-base font-semibold text-textSecondary">
                 Message
                 <textarea
                   className="mt-2 min-h-[140px] w-full rounded-md border border-border bg-white px-3 py-2 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -65,7 +65,7 @@ export default function ContactPage() {
               </label>
               <button
                 type="button"
-                className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Send message
               </button>

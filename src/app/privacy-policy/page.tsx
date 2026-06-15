@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
               Policies
             </p>
-            <h1 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
+            <h1 className="font-heading text-5xl font-semibold text-primary md:text-6xl">
               Privacy policy and waivers
             </h1>
             <p className="max-w-3xl text-base text-textSecondary">
@@ -23,10 +23,10 @@ export default function PrivacyPolicyPage() {
           </header>
 
           <article className="space-y-6 rounded-2xl border border-border bg-light p-6 shadow-card md:p-8">
-            <h2 className="font-heading text-2xl font-semibold text-primary md:text-3xl">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Privacy policy
             </h2>
-            <div className="space-y-4 text-sm text-textSecondary md:text-base">
+            <div className="space-y-4 text-base text-textSecondary md:text-lg">
               <p>
                 Your privacy is of great importance to us and our website has been
                 developed with that in mind. We recognize your right to know what
@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
                 </li>
               </ul>
 
-              <h3 className="pt-2 font-heading text-xl font-semibold text-primary">
+              <h3 className="pt-2 font-heading text-2xl font-semibold text-primary">
                 Information We Collect About You
               </h3>
               <p className="font-semibold text-primary">Personal Information.</p>
@@ -117,8 +117,8 @@ export default function PrivacyPolicyPage() {
               </p>
             </div>
 
-            <div className="space-y-4 text-sm text-textSecondary md:text-base">
-              <h3 className="pt-2 font-heading text-xl font-semibold text-primary">
+            <div className="space-y-4 text-base text-textSecondary md:text-lg">
+              <h3 className="pt-2 font-heading text-2xl font-semibold text-primary">
                 How We Use Information We Collect
               </h3>
               <p>
@@ -166,10 +166,10 @@ export default function PrivacyPolicyPage() {
           </article>
 
           <article className="space-y-6 rounded-2xl border border-border bg-light p-6 shadow-card md:p-8">
-            <h2 className="font-heading text-2xl font-semibold text-primary md:text-3xl">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Liability waiver
             </h2>
-            <div className="space-y-4 text-sm text-textSecondary md:text-base">
+            <div className="space-y-4 text-base text-textSecondary md:text-lg">
               <p>
                 Warrior Revival programs may include outdoor, fitness, or community
                 activities. Participation is voluntary and may involve inherent risks,
@@ -204,10 +204,10 @@ export default function PrivacyPolicyPage() {
           </article>
 
           <article className="space-y-6 rounded-2xl border border-border bg-light p-6 shadow-card md:p-8">
-            <h2 className="font-heading text-2xl font-semibold text-primary md:text-3xl">
+            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
               Photo and video release waiver
             </h2>
-            <div className="space-y-4 text-sm text-textSecondary md:text-base">
+            <div className="space-y-4 text-base text-textSecondary md:text-lg">
               <p>
                 Warrior Revival may photograph or record video at events, programs,
                 and gatherings to share our mission and celebrate participants.

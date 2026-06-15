@@ -17,8 +17,8 @@ const config: Config = {
         warning: "#B9792A"
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Poppins", "Montserrat", "sans-serif"],
-        sans: ["var(--font-body)", "Source Sans 3", "Open Sans", "sans-serif"],
+        heading: ["var(--font-heading)", "Montserrat", "Poppins", "sans-serif"],
+        sans: ["var(--font-body)", "Open Sans", "Source Sans 3", "sans-serif"],
         accent: ["var(--font-accent)", "Bebas Neue", "Roboto Condensed", "sans-serif"],
         blackOps: ["var(--font-black-ops)", "Black Ops One", "system-ui", "sans-serif"]
       },

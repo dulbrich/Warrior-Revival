@@ -16,7 +16,7 @@ export default function DonatePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
             Donate
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-semibold text-primary md:text-5xl">
+          <h1 className="mt-4 font-heading text-5xl font-semibold text-primary md:text-6xl">
             Your gift fuels the next adventure.
           </h1>
           <p className="mt-4 max-w-3xl text-base text-textSecondary">
