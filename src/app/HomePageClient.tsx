@@ -126,12 +126,13 @@ export default function HomePageClient({
             Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
-            SUPPORT &amp; EMPOWER VETERANS
+            Built for Warriors. Open to Family. One Tribe.
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
-            Warrior Revival is a 501(c)(3) nonprofit organization founded in 2023 with the mission of supporting and 
-            empowering service members, veterans and their families in Utah through recreation, mentorship, wellness 
-            initiatives, and therapeutic retreat experiences that promote healing and connection.
+            Warrior Revival is a 501(c)(3) nonprofit founded in 2023 on the belief that no warrior should navigate
+            life&rsquo;s transitions alone. Through recreation, mentorship, wellness, and therapeutic retreat experiences,
+            we walk alongside service members, veterans, and their families in Utah &mdash; fostering healing, resilience,
+            and lasting connection.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
