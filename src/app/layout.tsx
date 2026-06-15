@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "Warrior Revival",
   description: "Warrior Revival website prototype",
   icons: {
-    icon: "/favicon.png"
+    icon: "/logo.webp"
   }
 };
 
