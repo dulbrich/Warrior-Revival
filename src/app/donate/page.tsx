@@ -20,22 +20,18 @@ export default function DonatePage() {
             Your gift fuels the next adventure.
           </h1>
           <p className="mt-4 max-w-3xl text-base text-textSecondary">
-            Donations support outdoor experiences, mentorship programs, and the
-            community resources veterans rely on during transition. One-time and
-            recurring gifts are both welcome — choose what works for you.
+            Every warrior deserves a tribe — and your gift helps build it.
+            Donations fund outdoor experiences, mentorship programs, and
+            community resources that support service members, veterans, and
+            their families through transition and beyond. One-time or recurring,
+            every contribution moves the mission forward.
           </p>
         </div>
       </section>
 
       <section id="give" className="border-t border-border bg-light">
         <div className="mx-auto max-w-3xl px-4 py-14 md:px-8">
-          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-            Make a donation
-          </h2>
-          <p className="mt-3 text-base text-textSecondary">
-            Donations are processed securely by Qgiv on behalf of Warrior Revival.
-          </p>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-card md:p-6">
+          <div className="overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-card md:p-6">
             <QgivEmbed embedId={qgivEmbedId} embedUrl={qgivEmbedUrl} />
           </div>
         </div>

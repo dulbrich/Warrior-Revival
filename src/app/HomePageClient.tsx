@@ -16,22 +16,22 @@ const pathways: {
   href?: string;
 }[] = [
   {
-    title: "Veterans",
+    title: "Warrior",
     description:
-      "Start your next chapter with guided outings, mentorship, and a supportive community.",
+      "Whether you’re still in uniform or already on the other side, your next chapter starts with finding your people. Get outside, get connected, and get moving with a community built for warriors like you.",
     cta: "Join a program",
     href: "/membership"
   },
   {
-    title: "Volunteers",
+    title: "Volunteer",
     description:
-      "Join us and make a difference! Help lead events, staff our community booths, assist with administrative work, or even design your own program to support veterans and their families. As an all-volunteer organization, we can’t do this without you.",
+      "Getting involved looks different for everyone — and that’s perfectly okay. Whether you can give an hour or a whole season, there’s a place for you here. Help at events, support our outreach, work behind the scenes, or bring your own idea to the table. No pressure, no long commitments — just real people showing up for warriors and their families. As an all-volunteer organization, every contribution means the world to us.",
     cta: "Become a volunteer"
   },
   {
-    title: "Sponsors",
+    title: "Sponsor",
     description:
-      "Give back to those who gave everything - partner with Warrior Revival by sponsoring an event or making a donation.",
+      "Behind every great mission is a community that believes in it. Sponsor an event, fund a retreat, or make a donation — your partnership helps Warrior Revival show up for service members, veterans, and their families when it matters most.",
     cta: "Partner with us"
   }
 ];
@@ -40,14 +40,14 @@ const focusAreas = [
   {
     title: "Recreation",
     description:
-      "Provides structured events, outdoor-based experiences designed to reduce isolation, build peer connection, and restore a sense of purpose.",
+      "From guided outdoor adventures to structured community events, we create spaces where warriors and families can step outside, find their people, and rediscover a sense of purpose.",
     cta: "Events",
     href: "/events"
   },
   {
     title: "Needs of All",
     description:
-      "We strive to build a supportive network rooted in camaraderie and purpose. Warrior Revival is committed to inclusive programming that serves veterans throughout Utah, regardless of ability or disability.",
+      "From guided outdoor adventures to structured community events, we create spaces where warriors and families can step outside, find their people, and rediscover a sense of purpose.",
     cta: "Join",
     href: "/membership"
   },
@@ -55,17 +55,17 @@ const focusAreas = [
     title: "Mentorship & Resources",
     titleLines: ["Mentorship", "& Resources"],
     description:
-      "There is no roadmap or manual after leaving the military. Connecting with another veteran who has been through the process can help ease the transition. Warrior Revival also provides resources, guidance, and support to help veterans navigate civilian life successfully."
+      "Whether you’re preparing to leave the military or already navigating civilian life, the transition can feel overwhelming and uncertain. Warrior Revival helps service members, veterans, and their families find their tribe and the right resources to move forward with confidence."
   },
   {
     title: "Retreats",
     description:
-      "Warrior Revival retreats support veterans and their families through outdoor recreation, workshops, and reflection. Led by Dr. Katie Fry, a clinical psychologist and founder, they provide a safe space for healing, connection, and ongoing support."
+      "Sometimes healing happens best when you step outside your everyday life. Warrior Revival retreats offer service members and veterans a safe, restorative space to breathe, reflect, and reconnect — through outdoor adventures, meaningful workshops, and clinically guided reflection designed to foster lasting healing and genuine connection."
   },
   {
     title: "Community Partnership",
     description:
-      "Through community partnerships, we can all work together to better the care of our community’s service members by offering activities that meet everyone’s interests and creates a sense of purpose and belonging.",
+      "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong.",
     cta: "Join",
     href: "/membership"
   }
@@ -201,9 +201,17 @@ export default function HomePageClient({
       <section className="bg-surface">
         <div className="mx-auto max-w-5xl px-4 py-16 md:px-8">
           <div className="rounded-2xl border border-border bg-light p-6 md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-              Upcoming events
-            </p>
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+                Upcoming events
+              </p>
+              <a
+                href="/events"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                See more
+              </a>
+            </div>
             <div className="mt-6 space-y-4">
               {upcomingEvents.map((event) => (
                 <div
@@ -270,18 +278,13 @@ export default function HomePageClient({
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-              Get involved
-            </p>
-            <h2 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
-              Choose your pathway to impact.
-            </h2>
-          </div>
-          <button className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-            Explore all programs
-          </button>
+        <div className="space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+            Get involved
+          </p>
+          <h2 className="font-heading text-4xl font-semibold text-primary md:text-5xl">
+            Choose your pathway to impact.
+          </h2>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {pathways.map((pathway) => (

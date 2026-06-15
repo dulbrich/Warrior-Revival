@@ -81,7 +81,7 @@ export default function GetInvolvedPage() {
         />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 md:px-8 md:py-20">
           <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
-            Get involved
+            Join the mission
           </p>
           <h1 className="max-w-3xl font-blackOps text-4xl font-normal text-primary md:text-5xl">
             Join Warrior Revival as a participant, volunteer, or sponsor.
