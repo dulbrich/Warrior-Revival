@@ -84,36 +84,36 @@ export default function AboutPageClient({
               OUR STORY
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival was created to fill a space that disappears when
-              military service ends.
+              I built Warrior Revival because I kept witnessing warriors lose their
+              purpose and pull away from life &mdash; and the evenings and weekends
+              were the hardest. The community they needed simply didn&rsquo;t exist.
+              I wanted to change that &mdash; so I created the space I kept wishing
+              was there.
             </p>
             <p className="text-base text-textSecondary">
-              Through work within the VA, its founder saw many veterans struggling
-              with transition - not because of a mental health disorder, but because
-              they had lost the camaraderie, support, and leadership opportunities
-              that once structured their lives. With few non-clinical options
-              available, many were routed into mental health care for &quot;adjustment
-              issues,&quot; when what they actually needed was connection and purpose.
-              While mental health challenges do exist after service, not every
-              transition struggle is clinical.
+              Warrior Revival was created for every service member, veteran, and
+              military family navigating the journey between service and civilian
+              life &mdash; whether that transition is still ahead of you or already
+              underway.
             </p>
             <p className="text-base text-textSecondary">
-              A practical gap was also evident. Post-9/11 veterans are balancing
-              careers, school, and families, yet most support services operate during
-              business hours. Nights and weekends - when isolation is often strongest
-              - are exactly when veterans have the fewest options.
+              The strongest transitions happen when preparation starts early. By
+              connecting active duty service members with community, resources, and
+              experiences before they separate, we help make the road ahead a little
+              less uncertain and a lot less lonely.
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival was built to meet veterans where they are and to
-              recreate what military life naturally provided: shared experiences,
-              peer support, and meaningful opportunities to lead and contribute.
-              Through recreational experiences veterans want to do, Warrior Revival
-              builds community, reinforces identity, and supports the transition to
-              civilian life.
+              The transition to civilian life opens a new chapter &mdash; and we
+              want to be part of it. Warrior Revival fills the evenings and
+              weekends with high energy, high adventure, and meaningful experiences
+              built around the things service members and veterans genuinely want
+              to do.
             </p>
             <p className="text-base text-textSecondary">
-              Warrior Revival does not replace mental health care. It restores the
-              human infrastructure that existed before the uniform came off.
+              We restore what military life naturally provided &mdash; shared
+              experiences, genuine connection, and a sense of purpose that
+              doesn&rsquo;t end when the uniform comes off. Because every warrior
+              deserves a tribe that has their back, long after service ends.
             </p>
           </div>
           <div className="self-start rounded-2xl border border-border bg-light p-6 shadow-card">
