@@ -1,0 +1,33 @@
+Hi Katie,
+
+Here's a quick rundown of the changes I made to the website this session.
+
+VETERANS PAGE (/veterans)
+- Changed the small label above the testimonials from "Impact on Veterans" to
+  "Built for Warriors. Here for Every Step." (it now sits above the "What Warrior
+  Revival Offers" heading instead).
+- Reordered the page so it now flows: What Warrior Revival Offers -> Our Approach
+  -> What Our Members Say -> Lead With Purpose -> Unsure Where to Start?
+- Updated the "What Warrior Revival Offers" intro copy to mention active duty
+  service members and the military mindset.
+- Added a new "Unsure Where to Start?" section with a "Schedule an Intro Call"
+  button that links to the Contact page (this replaced the old "Why It Matters"
+  blurb here).
+- Swapped the heading styles so "What Warrior Revival Offers" now uses the big
+  bold display font, and "What Our Members Say" uses the lighter heading font.
+- Gave the "Lead With Purpose" section a light gray background.
+
+JOIN THE MISSION PAGE (/get-involved)
+- Moved the "Why It Matters" section here.
+- Moved the animated "Our members have described the challenges of reintegration
+  as..." (Veteran voices) section here as well.
+- Set the "For veterans and participants" section to a white background.
+- Set the "For volunteers" section to a gray background, with the role cards on
+  white so they stand out.
+- Changed the "Apply to Volunteer" button to orange to match the other call-to-
+  action buttons.
+
+Happy to tweak any of these if something doesn't look right.
+
+Thanks,
+Dave
