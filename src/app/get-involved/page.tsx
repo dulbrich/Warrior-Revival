@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ReintegrationVoices from "@/components/ReintegrationVoices";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -93,7 +94,23 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <section id="veterans" className="border-t border-border bg-light">
+      <section className="border-t border-border bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            Why It Matters
+          </h2>
+          <p className="mt-6 max-w-5xl text-base text-textSecondary">
+            By fostering authentic connection and community, Warrior Revival helps address
+            isolation before it becomes crisis — strengthening resilience, supporting
+            mental health, and contributing to suicide prevention through belonging and
+            purpose.
+          </p>
+        </div>
+      </section>
+
+      <ReintegrationVoices />
+
+      <section id="veterans" className="border-t border-border bg-white">
         <div className="mx-auto max-w-7xl px-4 py-14 md:px-8">
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             For veterans and participants
@@ -132,7 +149,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      <section id="volunteers" className="border-y border-border bg-surface">
+      <section id="volunteers" className="border-y border-border bg-gray-200">
         <div className="mx-auto max-w-7xl px-4 py-14 md:px-8">
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             For volunteers
@@ -145,7 +162,7 @@ export default function GetInvolvedPage() {
             {volunteerRoles.map((role) => (
               <div
                 key={role.title}
-                className="rounded-2xl border border-border bg-light p-6 shadow-card"
+                className="rounded-2xl border border-border bg-white p-6 shadow-card"
               >
                 <h3 className="font-heading text-2xl font-semibold text-primary">
                   {role.title}
@@ -156,7 +173,7 @@ export default function GetInvolvedPage() {
           </div>
           <a
             href="/membership"
-            className="mt-8 inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="mt-8 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Apply to volunteer
           </a>

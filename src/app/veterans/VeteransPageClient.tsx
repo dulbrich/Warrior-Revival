@@ -6,20 +6,8 @@ import SubscribeSection from "@/components/SubscribeSection";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const quoteTypingSpeedMs = 24;
-const quoteHoldMs = 5400;
-const quoteSelectMs = 650;
-const quotePauseMs = 1500;
 const testimonialDisplayMs = 15000;
 const testimonialTransitionMs = 900;
-
-const reintegrationQuotes = [
-  "No one wears rank out here.",
-  "Solving a rubix cube with no hands.",
-  "It takes adjusting knowing I have to adjust to my family's lifestyle.",
-  "I have to slow my world... they don't march to the same beat in the civilian world.",
-  "The military kept me together like glue and now that is all melted away, I need to pick up all the pieces off the floor and figure out how to piece them back together again."
-];
 
 // testimonialCards is now passed in as a prop (fetched server-side from
 // Supabase). See src/lib/testimonials/queries.ts.
@@ -61,48 +49,8 @@ export default function VeteransPageClient({
   testimonials: string[];
 }) {
   const testimonialCards = testimonials;
-  const [activeQuoteIndex, setActiveQuoteIndex] = useState(0);
-  const [typedQuote, setTypedQuote] = useState("");
-  const [quotePhase, setQuotePhase] = useState<
-    "typing" | "holding" | "selecting" | "pausing"
-  >("typing");
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [isTestimonialTransitioning, setIsTestimonialTransitioning] = useState(false);
-
-  useEffect(() => {
-    const fullQuote = reintegrationQuotes[activeQuoteIndex];
-    let timeoutId: number | undefined;
-
-    if (quotePhase === "typing") {
-      if (typedQuote.length < fullQuote.length) {
-        timeoutId = window.setTimeout(() => {
-          setTypedQuote(fullQuote.slice(0, typedQuote.length + 1));
-        }, quoteTypingSpeedMs);
-      } else {
-        setQuotePhase("holding");
-      }
-    } else if (quotePhase === "holding") {
-      timeoutId = window.setTimeout(() => {
-        setQuotePhase("selecting");
-      }, quoteHoldMs);
-    } else if (quotePhase === "selecting") {
-      timeoutId = window.setTimeout(() => {
-        setTypedQuote("");
-        setQuotePhase("pausing");
-      }, quoteSelectMs);
-    } else if (quotePhase === "pausing") {
-      timeoutId = window.setTimeout(() => {
-        setActiveQuoteIndex((prev) => (prev + 1) % reintegrationQuotes.length);
-        setQuotePhase("typing");
-      }, quotePauseMs);
-    }
-
-    return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-    };
-  }, [activeQuoteIndex, quotePhase, typedQuote]);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -129,8 +77,6 @@ export default function VeteransPageClient({
     };
   }, [isTestimonialTransitioning, testimonialCards.length]);
 
-  const activeQuote = reintegrationQuotes[activeQuoteIndex];
-  const showClosingQuote = typedQuote.length > 0 && typedQuote.length === activeQuote.length;
   const visibleTestimonials = [0, 1, 2].map(
     (offset) => testimonialCards[(activeTestimonialIndex + offset) % testimonialCards.length]
   );
@@ -144,7 +90,7 @@ export default function VeteransPageClient({
     <main className="bg-light">
       <SiteHeader />
 
-      <section className="relative h-[800px] overflow-hidden bg-surface md:h-[740px] lg:h-[700px]">
+      <section className="relative overflow-hidden bg-surface">
         <div
           className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.18]"
           aria-hidden="true"
@@ -153,12 +99,54 @@ export default function VeteransPageClient({
           className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-secondary/20"
           aria-hidden="true"
         />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
+            Built for Warriors. Here for Every Step.
+          </p>
+          <h2 className="mt-3 font-blackOps text-5xl font-normal text-primary md:text-6xl">
+            What Warrior Revival Offers
+          </h2>
+          <p className="mt-6 max-w-4xl text-base text-textSecondary">
+            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to serving
+            active duty service members, veterans, and their families through genuine
+            connection, shared experiences, and community built around the military
+            mindset.
+          </p>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Our Approach
+          </h3>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {approachCards.map((card) => (
+              <article
+                key={card.title}
+                className="flex overflow-hidden rounded-2xl border border-border bg-surface shadow-card"
+              >
+                <div className="relative aspect-square w-28 shrink-0 sm:w-32 md:w-36">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 144px, (min-width: 640px) 128px, 112px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-heading text-xl font-semibold text-primary">
+                    {card.title}
+                  </h4>
+                  <p className="mt-3 text-base text-textSecondary">{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative h-[800px] overflow-hidden bg-white md:h-[740px] lg:h-[700px]">
         <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-12 md:px-8 md:py-14 lg:py-12">
           <div className="mb-10 space-y-3">
-            <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
-              Impact on Veterans
-            </p>
-            <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
+            <h1 className="max-w-3xl font-heading text-3xl font-semibold text-primary md:text-4xl">
               What Our Members Say
             </h1>
           </div>
@@ -271,7 +259,7 @@ export default function VeteransPageClient({
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-gray-200">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:grid-rows-[auto_1fr] md:items-center md:px-8">
           <div className="md:col-start-2 md:row-start-1">
             <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
@@ -299,99 +287,21 @@ export default function VeteransPageClient({
         </div>
       </section>
 
-      <section className="bg-light">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:px-8">
-          <div className="relative min-h-[380px] md:order-2 md:min-h-[460px]">
-            <Image
-              src="/home/soldier.jpg"
-              alt="Soldier reflecting outdoors"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="rounded-3xl object-cover shadow-card"
-            />
-          </div>
-          <div className="space-y-6 md:order-1">
-            <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-              Our members have described the challenges of reintegration as:
-            </h2>
-            <div className="flex min-h-[280px] flex-col rounded-2xl border border-border bg-white p-6 shadow-card">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-                Veteran voices
-              </p>
-              <div className="flex flex-1 flex-col justify-center">
-                <blockquote className="font-heading text-2xl text-primary md:text-3xl">
-                  <span
-                    className={`quote-text ${
-                      quotePhase === "selecting" ? "quote-selected" : ""
-                    }`}
-                  >
-                    {typedQuote
-                      ? `"${typedQuote}${showClosingQuote ? '"' : ""}`
-                      : ""}
-                  </span>
-                </blockquote>
-              </div>
-              <p className="mt-4 text-sm uppercase tracking-[0.2em] text-textSecondary">
-                {activeQuoteIndex + 1} of {reintegrationQuotes.length}
-              </p>
-            </div>
-            <p className="text-base text-textSecondary">
-              We strive to create a supportive network that fosters camaraderie, a sense of
-              purpose, and to raise awareness of the unique challenges veterans face in the
-              transition to civilian life.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="border-t border-border bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-            What Warrior Revival Offers
+            Unsure Where to Start?
           </h2>
-          <p className="mt-6 max-w-4xl text-base text-textSecondary">
-            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to supporting
-            veterans and their families through connection, community, and shared
-            experiences.
+          <p className="mt-6 max-w-3xl text-base text-textSecondary">
+            Every journey looks different. If you’re not sure where you fit, schedule an
+            intro call and we’ll help you find the right way to get connected.
           </p>
-
-          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
-            Our Approach
-          </h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {approachCards.map((card) => (
-              <article
-                key={card.title}
-                className="flex overflow-hidden rounded-2xl border border-border bg-surface shadow-card"
-              >
-                <div className="relative aspect-square w-28 shrink-0 sm:w-32 md:w-36">
-                  <Image
-                    src={card.imageSrc}
-                    alt={card.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 144px, (min-width: 640px) 128px, 112px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-heading text-xl font-semibold text-primary">
-                    {card.title}
-                  </h4>
-                  <p className="mt-3 text-base text-textSecondary">{card.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
-            Why It Matters
-          </h3>
-          <p className="mt-6 max-w-5xl text-base text-textSecondary">
-            By fostering authentic connection and community, Warrior Revival helps address
-            isolation before it becomes crisis — strengthening resilience, supporting
-            mental health, and contributing to suicide prevention through belonging and
-            purpose.
-          </p>
+          <a
+            href="/contact"
+            className="mt-8 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Schedule an Intro Call
+          </a>
         </div>
       </section>
 
