@@ -28,7 +28,8 @@ const blackOpsFont = Black_Ops_One({
 
 export const metadata: Metadata = {
   title: "Warrior Revival",
-  description: "Warrior Revival website prototype",
+  description:
+    "Warrior Revival is a 501(c)(3) nonprofit founded in 2023 on the belief that no warrior should navigate life’s transitions alone. Through recreation, mentorship, wellness, and therapeutic retreat experiences, we walk alongside service members, veterans, and their families in Utah — fostering healing, resilience, and lasting connection.",
   icons: {
     icon: "/logo.webp"
   }
