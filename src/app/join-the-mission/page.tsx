@@ -66,7 +66,7 @@ const featuredSponsors = [
   { name: "LM", logo: "/home/sponsors/gold/lm.jpg" }
 ];
 
-export default function GetInvolvedPage() {
+export default function JoinTheMissionPage() {
   return (
     <main className="bg-light">
       <SiteHeader />
