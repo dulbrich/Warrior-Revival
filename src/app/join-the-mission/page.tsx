@@ -88,8 +88,9 @@ export default function JoinTheMissionPage() {
             Join Warrior Revival as a participant, volunteer, or sponsor.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">
-            This page is organized for veterans, volunteers, and sponsors so each group
-            can quickly find the right next step.
+            There&apos;s a place for you here — whether you&apos;re a warrior finding your
+            tribe, someone ready to give back, or an organization that believes in the
+            mission.
           </p>
         </div>
       </section>
