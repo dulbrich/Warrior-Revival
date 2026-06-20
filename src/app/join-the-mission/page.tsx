@@ -100,12 +100,38 @@ export default function JoinTheMissionPage() {
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             Why It Matters
           </h2>
-          <p className="mt-6 max-w-5xl text-base text-textSecondary">
-            By fostering authentic connection and community, Warrior Revival helps address
-            isolation before it becomes crisis — strengthening resilience, supporting
-            mental health, and contributing to suicide prevention through belonging and
-            purpose.
-          </p>
+          <div className="mt-6 max-w-5xl space-y-5 text-base text-textSecondary">
+            <p>
+              Each year, nearly 200,000 Americans leave military service and face one of
+              life&apos;s most difficult transitions. They traded civilian life for structure,
+              brotherhood, and a mission that mattered — and when that ends, the silence
+              can be deafening.
+            </p>
+            <p>The numbers tell a sobering story:</p>
+            <ul className="list-disc space-y-3 pl-6">
+              <li>Veterans are 1.5x more likely to die by suicide than non-veterans</li>
+              <li>Nearly 44% of veterans report feeling isolated after leaving service</li>
+              <li>1 in 3 veterans struggles with finding purpose and identity post-service</li>
+              <li>
+                Post-9/11 veterans cite loneliness and lack of community as their greatest
+                challenges
+              </li>
+              <li>
+                Less than 30% of veterans feel well-prepared for the transition to civilian
+                life
+              </li>
+            </ul>
+            <p>
+              But the statistics only tell part of the story. Behind every number is a
+              warrior who showed up every day for this country — and came home to a world
+              that didn&apos;t always know how to show up back. That&apos;s why Warrior Revival
+              exists. Not as a clinical program or a checkbox on a list of veteran services
+              — but as a living, breathing community built around the things warriors
+              actually want to do. Getting outside. Finding their people. Remembering who
+              they are beyond the uniform. Because the best thing we can give a veteran
+              isn&apos;t a pamphlet or a referral. It&apos;s a tribe.
+            </p>
+          </div>
         </div>
       </section>
 
