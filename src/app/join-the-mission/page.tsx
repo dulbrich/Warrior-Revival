@@ -6,17 +6,19 @@ import SubscribeSection from "@/components/SubscribeSection";
 
 const veteranSteps = [
   {
-    title: "Membership is free",
-    description: "Veterans and participants can join at no cost."
-  },
-  {
-    title: "Share your interests",
+    title: "Membership is always free",
     description:
-      "Select activities like side-by-side rides, hiking, scuba, and skydiving."
+      "Membership is always free — because no warrior should have to pay to find their people."
   },
   {
-    title: "Get relevant updates",
-    description: "Receive event invitations and emails tailored to your selected interests."
+    title: "Tell us what you love",
+    description:
+      "Tell us what you love — side-by-sides, hiking, scuba, skydiving — and we'll match you with experiences built around it."
+  },
+  {
+    title: "A Community for Your Whole Family",
+    description:
+      "From family-friendly outdoor adventures to community gatherings, Warrior Revival makes sure the people who supported your service feel just as welcomed, valued, and connected as you do."
   }
 ];
 
@@ -144,7 +146,9 @@ export default function JoinTheMissionPage() {
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
             Become a member to join events, find mentorship, and receive opportunities
-            matched to your interests.
+            matched to your interests. Whether you&apos;re still in uniform or already
+            navigating civilian life — membership is your first step toward finding your
+            tribe. Free to join, no pressure, just your next adventure waiting.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {veteranSteps.map((step) => (
