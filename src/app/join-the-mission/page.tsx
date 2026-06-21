@@ -28,19 +28,17 @@ const volunteerRoles = [
     description: "Help with setup, logistics, check-in, and participant care on activity days."
   },
   {
-    title: "Planning team",
-    description:
-      "Coordinate schedules, vendors, and details that keep activities safe and organized."
+    title: "Admin team",
+    description: "Help behind the scenes with grants, vendors, welcoming members."
   },
   {
     title: "Mentorship",
     description:
-      "Provide peer support to veterans navigating transition, reintegration, and community."
+      "Show up for warriors who are finding their footing — your experience and presence matter more than you know."
   },
   {
     title: "Outreach",
-    description:
-      "Connect veterans, families, and local partners to Warrior Revival opportunities."
+    description: "Help spread the word and bring more warriors and families into the tribe."
   }
 ];
 
@@ -186,8 +184,9 @@ export default function JoinTheMissionPage() {
             For volunteers
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
-            Volunteer forms collect your availability, skills, preferences, and contact
-            details.
+            Getting involved looks different for everyone — and that&apos;s perfectly okay.
+            Whether you have an hour or a whole season, there&apos;s a role here that fits
+            your life.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {volunteerRoles.map((role) => (
@@ -203,7 +202,7 @@ export default function JoinTheMissionPage() {
             ))}
           </div>
           <a
-            href="/membership"
+            href="https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
             className="mt-8 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Apply to volunteer
