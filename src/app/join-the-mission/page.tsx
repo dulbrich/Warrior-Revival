@@ -216,8 +216,11 @@ export default function JoinTheMissionPage() {
             For sponsors
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
-            Sponsorships fund adaptive activities and provide visibility through events,
-            outreach, and marketing materials.
+            As an all-volunteer organization, Warrior Revival keeps overhead low and impact
+            high. Your sponsorship goes directly toward funding the outdoor experiences,
+            retreats, and community resources that support Utah&apos;s service members,
+            veterans, and their families — and every level of partnership makes a
+            visible, meaningful difference.
           </p>
 
           <div className="mt-8 overflow-x-auto rounded-2xl border border-border bg-surface shadow-card">
