@@ -597,41 +597,55 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                   const eventId = event.id;
 
                   return (
-                    <button
+                    <div
                       key={`mobile-${eventId}`}
-                      type="button"
-                      onClick={() => {
-                        setSelectedEventId(eventId);
-                        setIsDetailOpen(true);
-                      }}
-                      className="flex w-full gap-4 rounded-2xl border border-border bg-white p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+                      className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
                     >
-                      <Image
-                        src={event.image}
-                        alt="Warrior Revival"
-                        width={64}
-                        height={64}
-                        className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
-                      />
-                      <div className="flex-1 min-w-0 space-y-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                            {event.dateLabel}
-                          </p>
-                          <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
-                            {event.category}
-                          </span>
-                        </div>
-                        <MarqueeText
-                          text={event.name}
-                          className="font-heading text-xl font-semibold text-primary"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedEventId(eventId);
+                          setIsDetailOpen(true);
+                        }}
+                        className="flex w-full gap-4 p-4 text-left"
+                      >
+                        <Image
+                          src={event.image}
+                          alt="Warrior Revival"
+                          width={64}
+                          height={64}
+                          className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
                         />
-                        <p className="text-base text-textSecondary">{event.location}</p>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
-                          {event.timeLabel}
-                        </p>
-                      </div>
-                    </button>
+                        <div className="flex-1 min-w-0 space-y-2">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                              {event.dateLabel}
+                            </p>
+                            <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                              {event.category}
+                            </span>
+                          </div>
+                          <MarqueeText
+                            text={event.name}
+                            className="font-heading text-xl font-semibold text-primary"
+                          />
+                          <p className="text-base text-textSecondary">{event.location}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
+                            {event.timeLabel}
+                          </p>
+                        </div>
+                      </button>
+                      {event.register_link ? (
+                        <a
+                          href={event.register_link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex w-full items-center justify-center border-t border-secondary/20 bg-secondary px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                        >
+                          Register now
+                        </a>
+                      ) : null}
+                    </div>
                   );
                 })
               )}
@@ -856,6 +870,16 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         </div>
                       </summary>
                       <div className="mt-4 lg:hidden">{renderDetails(event)}</div>
+                      {event.register_link ? (
+                        <a
+                          href={event.register_link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="-mx-4 -mb-4 mt-4 flex items-center justify-center rounded-b-xl border-t border-secondary/20 bg-secondary px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                        >
+                          Register now
+                        </a>
+                      ) : null}
                     </details>
                   );
                 })
