@@ -234,6 +234,8 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     "filters" | "months" | "calendar"
   >("filters");
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [desktopDetailHasMore, setDesktopDetailHasMore] = useState(false);
+  const desktopDetailScrollRef = useRef<HTMLDivElement | null>(null);
   const [calendarMonth, setCalendarMonth] = useState(() => {
     const date = new Date();
     date.setDate(1);
@@ -514,6 +516,30 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   };
 
   const calendarCells = useMemo(() => buildCalendarCells(calendarMonth), [calendarMonth]);
+
+  useEffect(() => {
+    const scrollContainer = desktopDetailScrollRef.current;
+
+    if (!scrollContainer || !selectedEvent) {
+      setDesktopDetailHasMore(false);
+      return;
+    }
+
+    const updateDesktopDetailScrollHint = () => {
+      const remainingScroll =
+        scrollContainer.scrollHeight - scrollContainer.scrollTop - scrollContainer.clientHeight;
+      setDesktopDetailHasMore(remainingScroll > 8);
+    };
+
+    updateDesktopDetailScrollHint();
+    scrollContainer.addEventListener("scroll", updateDesktopDetailScrollHint, { passive: true });
+    window.addEventListener("resize", updateDesktopDetailScrollHint);
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", updateDesktopDetailScrollHint);
+      window.removeEventListener("resize", updateDesktopDetailScrollHint);
+    };
+  }, [selectedEvent]);
 
   return (
     <main className="bg-light">
@@ -887,32 +913,45 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             </div>
           </div>
 
-          <aside className="hidden lg:block lg:col-start-3 lg:sticky lg:top-[7.25rem]">
-            <div className="rounded-xl border border-border bg-surface p-5 shadow-soft">
+          <aside className="hidden lg:col-start-3 lg:block lg:sticky lg:top-[7.25rem]">
+            <div className="max-h-[calc(100vh-8.25rem)] overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
               {selectedEvent ? (
-                <div className="space-y-4">
-                  <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
-                    <Image
-                      src={selectedEvent.image}
-                      alt="Warrior Revival"
-                      fill
-                      sizes="(min-width: 1024px) 20rem, 100vw"
-                      className="object-contain"
-                    />
+                <div className="relative max-h-[calc(100vh-8.25rem)]">
+                  <div
+                    ref={desktopDetailScrollRef}
+                    className="max-h-[calc(100vh-8.25rem)] space-y-4 overflow-y-auto p-5 pb-14 [scrollbar-gutter:stable]"
+                  >
+                    <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
+                      <Image
+                        src={selectedEvent.image}
+                        alt="Warrior Revival"
+                        fill
+                        sizes="(min-width: 1024px) 20rem, 100vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                        {selectedEvent.dateLabel}
+                      </p>
+                      <p className="mt-1 font-heading text-2xl font-semibold text-primary">
+                        {selectedEvent.name}
+                      </p>
+                      <p className="mt-1 text-sm text-textSecondary">{selectedEvent.location}</p>
+                    </div>
+                    {renderDetails(selectedEvent)}
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                      {selectedEvent.dateLabel}
-                    </p>
-                    <p className="mt-1 font-heading text-2xl font-semibold text-primary">
-                      {selectedEvent.name}
-                    </p>
-                    <p className="mt-1 text-sm text-textSecondary">{selectedEvent.location}</p>
-                  </div>
-                  {renderDetails(selectedEvent)}
+                  {desktopDetailHasMore ? (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center rounded-b-xl bg-gradient-to-t from-surface via-surface/95 to-transparent pb-3 pt-10">
+                      <div className="flex items-center gap-1 rounded-full border border-border bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-primary shadow-soft">
+                        <span>More</span>
+                        <span aria-hidden="true">⌄</span>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               ) : (
-                <p className="text-sm text-textSecondary">Select an event to see details.</p>
+                <p className="p-5 text-sm text-textSecondary">Select an event to see details.</p>
               )}
             </div>
           </aside>
