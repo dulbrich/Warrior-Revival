@@ -37,7 +37,7 @@ const approachCards = [
   {
     title: "Accessible & Inclusive Support",
     description:
-      "All programming is offered at no cost, removing barriers to participation for veterans and their families.",
+      "All programming is offered at no cost, removing barriers to participation for veterans and their families. All Warrior Revival events are recovery-friendly and substance-free — so every warrior can show up fully and feel welcome.",
     imageSrc: "/veterans/approach/chair.webp",
     imageAlt: "Inclusive veteran community participation"
   }
