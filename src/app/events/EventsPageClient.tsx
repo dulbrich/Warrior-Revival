@@ -215,6 +215,11 @@ type EventWithDate = EventForDisplay & {
   dateValue: Date;
 };
 
+const isPastEvent = (event: EventWithDate, today: Date) => event.dateValue < today;
+
+const shouldDimPastEvent = (event: EventWithDate, today: Date, showPastEvents: boolean) =>
+  !showPastEvents && isPastEvent(event, today);
+
 type MonthOption = {
   key: string;
   label: string;
@@ -265,7 +270,10 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     let list = eventsWithDate.filter((event) => !Number.isNaN(event.dateValue.getTime()));
 
     if (!showPastEvents) {
-      list = list.filter((event) => event.dateValue >= today);
+      const currentMonthKey = getMonthKey(today);
+      list = list.filter(
+        (event) => event.dateValue >= today || getMonthKey(event.dateValue) === currentMonthKey
+      );
     }
 
     const activeFilters = eventTypeFilters.filter((filter) => selectedFilters.has(filter.id));
@@ -438,11 +446,21 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     }
   };
 
-  const renderDetails = (event: EventForDisplay) => {
+  const renderDetails = (event: EventWithDate) => {
     const calendarLinks = buildCalendarLinks(event);
+    const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
     return (
-      <div className="mt-4 grid gap-3 text-sm text-textSecondary">
+      <div
+        className={`mt-4 grid gap-3 text-sm text-textSecondary ${
+          isDimmedPastEvent ? "opacity-60" : ""
+        }`}
+      >
+        {isDimmedPastEvent ? (
+          <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-red-700 opacity-100">
+            ⚑ Event expired
+          </div>
+        ) : null}
         <div className="grid grid-cols-[72px_1fr] gap-2">
           <span className="font-bold text-primary">Date</span>
           <span>{event.dateLabel}</span>
@@ -621,11 +639,14 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
 
                   const event = item.event;
                   const eventId = event.id;
+                  const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
                   return (
                     <div
                       key={`mobile-${eventId}`}
-                      className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+                      className={`overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 ${
+                        isDimmedPastEvent ? "opacity-60 grayscale" : ""
+                      }`}
                     >
                       <button
                         type="button"
@@ -715,7 +736,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                       return <span key={`empty-${index}`} />;
                     }
 
-                    const hasEvents = eventsByDate.has(cell.dateKey);
+                    const dayEvents = eventsByDate.get(cell.dateKey);
+                    const hasEvents = Boolean(dayEvents?.length);
+                    const isDimmedPastDay = Boolean(
+                      dayEvents?.every((event) => shouldDimPastEvent(event, today, showPastEvents))
+                    );
 
                     if (!hasEvents) {
                       return (
@@ -733,7 +758,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         key={cell.dateKey}
                         type="button"
                         onClick={() => handleCalendarSelect(cell.dateKey)}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-red-500 text-red-600 transition hover:bg-red-50"
+                        className={`flex h-7 w-7 items-center justify-center rounded-full border transition ${
+                          isDimmedPastDay
+                            ? "border-red-200 bg-red-50/40 text-red-300 hover:bg-red-50/60"
+                            : "border-red-500 text-red-600 hover:bg-red-50"
+                        }`}
                       >
                         {cell.day}
                       </button>
@@ -853,6 +882,7 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                   const event = item.event;
                   const eventId = event.id;
                   const isSelected = eventId === selectedEventId;
+                  const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
                   return (
                     <details
@@ -862,7 +892,7 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         isSelected
                           ? "border-2 border-primary/70 bg-primary/10"
                           : "border border-border bg-surface"
-                      }`}
+                      } ${isDimmedPastEvent ? "opacity-60 grayscale" : ""}`}
                     >
                       <summary
                         className="flex cursor-pointer flex-col gap-4 [&::-webkit-details-marker]:hidden sm:flex-row sm:items-center sm:justify-between"
@@ -1128,7 +1158,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                       return <span key={`mobile-empty-${index}`} />;
                     }
 
-                    const hasEvents = eventsByDate.has(cell.dateKey);
+                    const dayEvents = eventsByDate.get(cell.dateKey);
+                    const hasEvents = Boolean(dayEvents?.length);
+                    const isDimmedPastDay = Boolean(
+                      dayEvents?.every((event) => shouldDimPastEvent(event, today, showPastEvents))
+                    );
 
                     if (!hasEvents) {
                       return (
@@ -1146,7 +1180,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         key={cell.dateKey}
                         type="button"
                         onClick={() => handleCalendarSelect(cell.dateKey, true)}
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-primary"
+                        className={`flex h-9 w-9 items-center justify-center rounded-full border ${
+                          isDimmedPastDay
+                            ? "border-primary/15 bg-primary/5 text-primary/35"
+                            : "border-primary/40 bg-primary/10 text-primary"
+                        }`}
                       >
                         {cell.day}
                       </button>
