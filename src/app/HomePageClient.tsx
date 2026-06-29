@@ -122,7 +122,7 @@ export default function HomePageClient({
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:min-h-[680px] md:px-8 lg:min-h-[720px]">
-          <p className="font-accent text-base uppercase tracking-[0.3em] text-white/80 md:text-lg">
+          <p className="font-accent text-lg uppercase tracking-[0.3em] text-white/80 md:text-xl">
             Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
