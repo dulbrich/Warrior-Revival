@@ -65,21 +65,6 @@ export const volunteers: VolunteerMember[] = [
     image: "/about/volunteers/sonny-w.jpg"
   },
   {
-    firstName: "Brandy",
-    lastInitial: "",
-    branch: "Volunteer"
-  },
-  {
-    firstName: "Teresa",
-    lastInitial: "",
-    branch: "Volunteer"
-  },
-  {
-    firstName: "Mike",
-    lastInitial: "",
-    branch: "Volunteer"
-  },
-  {
     firstName: "Dave",
     lastInitial: "U",
     branch: "Volunteer",
