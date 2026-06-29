@@ -11,7 +11,7 @@ const missionCards = [
   {
     title: "Mission",
     description:
-      "Support and empower service members, veterans, and their families in Utah through recreation, mentorship, wellness initiatives, and therapeutic retreat experiences.",
+      "Built for Warriors. Open to Family. One Tribe.",
     badgeClass: "bg-accent/10 text-accent",
     borderClass: "border-accent/30"
   },
