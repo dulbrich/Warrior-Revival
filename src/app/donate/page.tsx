@@ -1,10 +1,9 @@
 import QgivEmbed from "@/components/QgivEmbed";
+import { qgivDonationEmbedId, qgivDonationEmbedUrl, qgivDonationFormUrl } from "@/lib/donation";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
 
-const qgivEmbedId = "86403";
-const qgivEmbedUrl = "https://secure.qgiv.com/for/warriorrevival/embed/86403/";
 
 export default function DonatePage() {
   return (
@@ -26,13 +25,19 @@ export default function DonatePage() {
             their families through transition and beyond. One-time or recurring,
             every contribution moves the mission forward.
           </p>
+          <a
+            href={qgivDonationFormUrl}
+            className="mt-6 inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Open secure donation form
+          </a>
         </div>
       </section>
 
       <section id="give" className="border-t border-border bg-light">
         <div className="mx-auto max-w-3xl px-4 py-14 md:px-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-card md:p-6">
-            <QgivEmbed embedId={qgivEmbedId} embedUrl={qgivEmbedUrl} />
+            <QgivEmbed embedId={qgivDonationEmbedId} embedUrl={qgivDonationEmbedUrl} />
           </div>
         </div>
       </section>
