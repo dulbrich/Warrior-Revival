@@ -1,5 +1,7 @@
 "use client";
 
+import { donatePageHref } from "@/lib/donation";
+
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -298,7 +300,7 @@ export default function AboutPageClient({
             </div>
             <div className="flex flex-col gap-3">
               <a
-                href="https://www.warrior-revival.org/donate"
+                href={donatePageHref}
                 className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Donate today

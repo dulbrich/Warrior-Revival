@@ -1,3 +1,5 @@
+import { donatePageHref } from "@/lib/donation";
+
 export const siteNavigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -5,6 +7,6 @@ export const siteNavigation = [
   { label: "Events", href: "/events" },
   { label: "Join the Mission", href: "/join-the-mission" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Donate", href: "/donate" },
+  { label: "Donate", href: donatePageHref },
   { label: "Contact", href: "/contact" }
 ];
