@@ -49,8 +49,8 @@ const focusAreas = [
   {
     title: "Needs of All",
     description:
-      "From guided outdoor adventures to structured community events, we create spaces where warriors and families can step outside, find their people, and rediscover a sense of purpose.",
-    cta: "Join",
+      "Warrior Revival is committed to serving veterans, service members, and their families throughout Utah. While some of our experiences have physical limitations, we will always work to connect those with disabilities to programs and organizations that are the right fit.",
+    cta: "Membership",
     href: "/membership"
   },
   {
@@ -68,7 +68,7 @@ const focusAreas = [
     title: "Community Partnership",
     description:
       "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong.",
-    cta: "Join",
+    cta: "Membership",
     href: "/membership"
   }
 ];
