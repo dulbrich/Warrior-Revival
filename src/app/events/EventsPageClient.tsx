@@ -229,6 +229,7 @@ type MonthOption = {
 export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   const [query, setQuery] = useState("");
   const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showPreviousThisMonth, setShowPreviousThisMonth] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState(() =>
     new Set(eventTypeFilters.map((filter) => filter.id))
   );
@@ -266,25 +267,60 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     [events]
   );
 
-  const filteredEvents = useMemo(() => {
-    let list = eventsWithDate.filter((event) => !Number.isNaN(event.dateValue.getTime()));
+  const activeFilters = useMemo(
+    () => eventTypeFilters.filter((filter) => selectedFilters.has(filter.id)),
+    [selectedFilters]
+  );
 
-    if (!showPastEvents) {
-      const currentMonthKey = getMonthKey(today);
-      list = list.filter(
-        (event) => event.dateValue >= today || getMonthKey(event.dateValue) === currentMonthKey
-      );
-    }
+  const typeFilteredEvents = useMemo(() => {
+    const validEvents = eventsWithDate.filter(
+      (event) => !Number.isNaN(event.dateValue.getTime())
+    );
 
-    const activeFilters = eventTypeFilters.filter((filter) => selectedFilters.has(filter.id));
     if (activeFilters.length === 0) {
       return [];
     }
 
-    list = list.filter((event) => activeFilters.some((filter) => filter.match(event)));
+    return validEvents.filter((event) => activeFilters.some((filter) => filter.match(event)));
+  }, [activeFilters, eventsWithDate]);
+
+  const previousThisMonthCount = useMemo(() => {
+    if (showPastEvents) {
+      return 0;
+    }
+
+    const currentMonthKey = getMonthKey(today);
+    if (selectedMonth !== "all" && selectedMonth !== currentMonthKey) {
+      return 0;
+    }
+
+    return typeFilteredEvents.filter(
+      (event) => isPastEvent(event, today) && getMonthKey(event.dateValue) === currentMonthKey
+    ).length;
+  }, [selectedMonth, showPastEvents, today, typeFilteredEvents]);
+
+  const canTogglePreviousThisMonth = previousThisMonthCount > 0;
+
+  useEffect(() => {
+    if (showPastEvents || !canTogglePreviousThisMonth) {
+      setShowPreviousThisMonth(false);
+    }
+  }, [canTogglePreviousThisMonth, showPastEvents]);
+
+  const filteredEvents = useMemo(() => {
+    let list = typeFilteredEvents;
+
+    if (!showPastEvents) {
+      const currentMonthKey = getMonthKey(today);
+      list = list.filter(
+        (event) =>
+          event.dateValue >= today ||
+          (showPreviousThisMonth && getMonthKey(event.dateValue) === currentMonthKey)
+      );
+    }
 
     return [...list].sort((a, b) => a.dateValue.getTime() - b.dateValue.getTime());
-  }, [eventsWithDate, selectedFilters, showPastEvents, today]);
+  }, [showPastEvents, showPreviousThisMonth, today, typeFilteredEvents]);
 
   const monthOptions = useMemo<MonthOption[]>(() => {
     const uniqueMonths = new Map<string, MonthOption>();
@@ -533,6 +569,17 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     );
   };
 
+  const previousThisMonthToggle = canTogglePreviousThisMonth ? (
+    <button
+      type="button"
+      className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary underline decoration-border underline-offset-4 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      onClick={() => setShowPreviousThisMonth((previous) => !previous)}
+      aria-expanded={showPreviousThisMonth}
+    >
+      {showPreviousThisMonth ? "Show less" : "Previous"}
+    </button>
+  ) : null;
+
   const calendarCells = useMemo(() => buildCalendarCells(calendarMonth), [calendarMonth]);
 
   useEffect(() => {
@@ -617,6 +664,9 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             </div>
 
             <div className="mt-6 space-y-4">
+              {previousThisMonthToggle ? (
+                <div className="flex justify-end">{previousThisMonthToggle}</div>
+              ) : null}
               {visibleEvents.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-textSecondary">
                   No events match your filters.
@@ -854,9 +904,10 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
               </div>
             </div>
 
-            <p className="mt-4 text-xs text-textSecondary">
-              Showing {visibleEvents.length} of {monthFilteredEvents.length} events
-            </p>
+            <div className="mt-4 flex items-center justify-between gap-3 text-xs text-textSecondary">
+              <p>Showing {visibleEvents.length} of {monthFilteredEvents.length} events</p>
+              {previousThisMonthToggle}
+            </div>
 
             <div className="mt-4 space-y-4">
               {visibleEvents.length === 0 ? (
