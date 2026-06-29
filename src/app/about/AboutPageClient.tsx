@@ -31,6 +31,38 @@ const missionCards = [
   }
 ];
 
+
+const approachCards = [
+  {
+    title: "Community-Centered Programming",
+    description:
+      "Outdoor recreation, social gatherings, and group activities that rebuild the sense of belonging many veterans miss after leaving service.",
+    imageSrc: "/veterans/approach/community.png",
+    imageAlt: "Veterans gathering in community outdoors"
+  },
+  {
+    title: "Peer Connection & Mentorship",
+    description:
+      "Veteran-to-veteran relationships that normalize transition challenges and reduce isolation.",
+    imageSrc: "/veterans/approach/peers.png",
+    imageAlt: "Veterans talking and connecting in peer support"
+  },
+  {
+    title: "Therapeutic & Restorative Retreats",
+    description:
+      "Intentional retreats that promote mental well-being, reflection, and renewed purpose in a supportive environment.",
+    imageSrc: "/veterans/approach/retreat.jpeg",
+    imageAlt: "Veterans in a restorative retreat setting"
+  },
+  {
+    title: "Accessible & Inclusive Support",
+    description:
+      "All programming is offered at no cost, removing barriers to participation for veterans and their families. All Warrior Revival events are recovery-friendly and substance-free — so every warrior can show up fully and feel welcome.",
+    imageSrc: "/veterans/approach/chair.webp",
+    imageAlt: "Inclusive veteran community participation"
+  }
+];
+
 const focusAreas = [
   {
     title: "Outdoor adventure",
@@ -76,7 +108,7 @@ export default function AboutPageClient({
             About Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
-            A veteran-led community built around adventure, mentorship, and belonging.
+            What Our Members Say
           </h1>
         </div>
       </section>
@@ -275,6 +307,49 @@ export default function AboutPageClient({
                   </p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section className="bg-surface">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
+            What Warrior Revival Offers
+          </h2>
+          <p className="mt-6 max-w-4xl text-base text-textSecondary">
+            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to serving
+            active duty service members, veterans, and their families through genuine
+            connection, shared experiences, and community built around the military
+            mindset.
+          </p>
+
+          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
+            Our Approach
+          </h3>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {approachCards.map((card) => (
+              <article
+                key={card.title}
+                className="flex overflow-hidden rounded-2xl border border-border bg-surface shadow-card"
+              >
+                <div className="relative aspect-square w-28 shrink-0 sm:w-32 md:w-36">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 144px, (min-width: 640px) 128px, 112px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-heading text-xl font-semibold text-primary">
+                    {card.title}
+                  </h4>
+                  <p className="mt-3 text-base text-textSecondary">{card.description}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
