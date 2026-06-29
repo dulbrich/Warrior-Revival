@@ -143,7 +143,7 @@ export default function HomePageClient({
             </a>
             <a
               href="/events"
-              className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md border border-white/70 bg-white/10 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               View Events
             </a>
