@@ -100,10 +100,7 @@ export default function VeteransPageClient({
           aria-hidden="true"
         />
         <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8">
-          <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
-            Built for Warriors. Here for Every Step.
-          </p>
-          <h2 className="mt-3 font-blackOps text-5xl font-normal text-primary md:text-6xl">
+          <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             What Warrior Revival Offers
           </h2>
           <p className="mt-6 max-w-4xl text-base text-textSecondary">
@@ -146,8 +143,11 @@ export default function VeteransPageClient({
       <section className="relative h-[800px] overflow-hidden bg-white md:h-[740px] lg:h-[700px]">
         <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-12 md:px-8 md:py-14 lg:py-12">
           <div className="mb-10 space-y-3">
-            <h1 className="max-w-3xl font-heading text-3xl font-semibold text-primary md:text-4xl">
+            <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
               What Our Members Say
+            </p>
+            <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
+              Built for Warriors. Here for Every Step.
             </h1>
           </div>
 
