@@ -67,9 +67,7 @@ const focusAreas = [
   {
     title: "Community Partnership",
     description:
-      "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong.",
-    cta: "Membership",
-    href: "/membership"
+      "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong."
   }
 ];
 
