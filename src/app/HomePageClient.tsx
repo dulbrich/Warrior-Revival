@@ -128,7 +128,9 @@ export default function HomePageClient({
             Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
-            Built for Warriors. Open to Family. One Tribe.
+            <span className="block md:inline">Built for Warriors.</span>{" "}
+            <span className="block md:inline">Open to Family.</span>{" "}
+            <span className="block md:inline">One Tribe.</span>
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
             Warrior Revival is a 501(c)(3) nonprofit founded in 2023 on the belief that no warrior should navigate
