@@ -287,7 +287,7 @@ export default function HomePageClient({
             Get involved
           </p>
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-            Choose your pathway to impact.
+            Join the Mission. Choose Your Role.
           </h2>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
