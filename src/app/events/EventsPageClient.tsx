@@ -215,6 +215,11 @@ type EventWithDate = EventForDisplay & {
   dateValue: Date;
 };
 
+const isPastEvent = (event: EventWithDate, today: Date) => event.dateValue < today;
+
+const shouldDimPastEvent = (event: EventWithDate, today: Date, showPastEvents: boolean) =>
+  !showPastEvents && isPastEvent(event, today);
+
 type MonthOption = {
   key: string;
   label: string;
@@ -224,6 +229,7 @@ type MonthOption = {
 export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   const [query, setQuery] = useState("");
   const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showPreviousThisMonth, setShowPreviousThisMonth] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState(() =>
     new Set(eventTypeFilters.map((filter) => filter.id))
   );
@@ -234,6 +240,8 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     "filters" | "months" | "calendar"
   >("filters");
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [desktopDetailHasMore, setDesktopDetailHasMore] = useState(false);
+  const desktopDetailScrollRef = useRef<HTMLDivElement | null>(null);
   const [calendarMonth, setCalendarMonth] = useState(() => {
     const date = new Date();
     date.setDate(1);
@@ -259,22 +267,60 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     [events]
   );
 
-  const filteredEvents = useMemo(() => {
-    let list = eventsWithDate.filter((event) => !Number.isNaN(event.dateValue.getTime()));
+  const activeFilters = useMemo(
+    () => eventTypeFilters.filter((filter) => selectedFilters.has(filter.id)),
+    [selectedFilters]
+  );
 
-    if (!showPastEvents) {
-      list = list.filter((event) => event.dateValue >= today);
-    }
+  const typeFilteredEvents = useMemo(() => {
+    const validEvents = eventsWithDate.filter(
+      (event) => !Number.isNaN(event.dateValue.getTime())
+    );
 
-    const activeFilters = eventTypeFilters.filter((filter) => selectedFilters.has(filter.id));
     if (activeFilters.length === 0) {
       return [];
     }
 
-    list = list.filter((event) => activeFilters.some((filter) => filter.match(event)));
+    return validEvents.filter((event) => activeFilters.some((filter) => filter.match(event)));
+  }, [activeFilters, eventsWithDate]);
+
+  const previousThisMonthCount = useMemo(() => {
+    if (showPastEvents) {
+      return 0;
+    }
+
+    const currentMonthKey = getMonthKey(today);
+    if (selectedMonth !== "all" && selectedMonth !== currentMonthKey) {
+      return 0;
+    }
+
+    return typeFilteredEvents.filter(
+      (event) => isPastEvent(event, today) && getMonthKey(event.dateValue) === currentMonthKey
+    ).length;
+  }, [selectedMonth, showPastEvents, today, typeFilteredEvents]);
+
+  const canTogglePreviousThisMonth = previousThisMonthCount > 0;
+
+  useEffect(() => {
+    if (showPastEvents || !canTogglePreviousThisMonth) {
+      setShowPreviousThisMonth(false);
+    }
+  }, [canTogglePreviousThisMonth, showPastEvents]);
+
+  const filteredEvents = useMemo(() => {
+    let list = typeFilteredEvents;
+
+    if (!showPastEvents) {
+      const currentMonthKey = getMonthKey(today);
+      list = list.filter(
+        (event) =>
+          event.dateValue >= today ||
+          (showPreviousThisMonth && getMonthKey(event.dateValue) === currentMonthKey)
+      );
+    }
 
     return [...list].sort((a, b) => a.dateValue.getTime() - b.dateValue.getTime());
-  }, [eventsWithDate, selectedFilters, showPastEvents, today]);
+  }, [showPastEvents, showPreviousThisMonth, today, typeFilteredEvents]);
 
   const monthOptions = useMemo<MonthOption[]>(() => {
     const uniqueMonths = new Map<string, MonthOption>();
@@ -436,11 +482,21 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     }
   };
 
-  const renderDetails = (event: EventForDisplay) => {
+  const renderDetails = (event: EventWithDate) => {
     const calendarLinks = buildCalendarLinks(event);
+    const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
     return (
-      <div className="mt-4 grid gap-3 text-sm text-textSecondary">
+      <div
+        className={`mt-4 grid gap-3 text-sm text-textSecondary ${
+          isDimmedPastEvent ? "opacity-60" : ""
+        }`}
+      >
+        {isDimmedPastEvent ? (
+          <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-red-700 opacity-100">
+            ⚑ Event expired
+          </div>
+        ) : null}
         <div className="grid grid-cols-[72px_1fr] gap-2">
           <span className="font-bold text-primary">Date</span>
           <span>{event.dateLabel}</span>
@@ -513,7 +569,42 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     );
   };
 
+  const previousThisMonthToggle = canTogglePreviousThisMonth ? (
+    <button
+      type="button"
+      className="text-xs font-semibold uppercase tracking-[0.2em] text-textSecondary underline decoration-border underline-offset-4 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      onClick={() => setShowPreviousThisMonth((previous) => !previous)}
+      aria-expanded={showPreviousThisMonth}
+    >
+      {showPreviousThisMonth ? "Show less" : "Previous"}
+    </button>
+  ) : null;
+
   const calendarCells = useMemo(() => buildCalendarCells(calendarMonth), [calendarMonth]);
+
+  useEffect(() => {
+    const scrollContainer = desktopDetailScrollRef.current;
+
+    if (!scrollContainer || !selectedEvent) {
+      setDesktopDetailHasMore(false);
+      return;
+    }
+
+    const updateDesktopDetailScrollHint = () => {
+      const remainingScroll =
+        scrollContainer.scrollHeight - scrollContainer.scrollTop - scrollContainer.clientHeight;
+      setDesktopDetailHasMore(remainingScroll > 8);
+    };
+
+    updateDesktopDetailScrollHint();
+    scrollContainer.addEventListener("scroll", updateDesktopDetailScrollHint, { passive: true });
+    window.addEventListener("resize", updateDesktopDetailScrollHint);
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", updateDesktopDetailScrollHint);
+      window.removeEventListener("resize", updateDesktopDetailScrollHint);
+    };
+  }, [selectedEvent]);
 
   return (
     <main className="bg-light">
@@ -573,6 +664,9 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             </div>
 
             <div className="mt-6 space-y-4">
+              {previousThisMonthToggle ? (
+                <div className="flex justify-end">{previousThisMonthToggle}</div>
+              ) : null}
               {visibleEvents.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-textSecondary">
                   No events match your filters.
@@ -595,43 +689,60 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
 
                   const event = item.event;
                   const eventId = event.id;
+                  const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
                   return (
-                    <button
+                    <div
                       key={`mobile-${eventId}`}
-                      type="button"
-                      onClick={() => {
-                        setSelectedEventId(eventId);
-                        setIsDetailOpen(true);
-                      }}
-                      className="flex w-full gap-4 rounded-2xl border border-border bg-white p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40"
+                      className={`overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 ${
+                        isDimmedPastEvent ? "opacity-60 grayscale" : ""
+                      }`}
                     >
-                      <Image
-                        src={event.image}
-                        alt="Warrior Revival"
-                        width={64}
-                        height={64}
-                        className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
-                      />
-                      <div className="flex-1 min-w-0 space-y-2">
-                        <div className="flex items-center justify-between gap-2">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                            {event.dateLabel}
-                          </p>
-                          <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
-                            {event.category}
-                          </span>
-                        </div>
-                        <MarqueeText
-                          text={event.name}
-                          className="font-heading text-xl font-semibold text-primary"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedEventId(eventId);
+                          setIsDetailOpen(true);
+                        }}
+                        className="flex w-full gap-4 p-4 text-left"
+                      >
+                        <Image
+                          src={event.image}
+                          alt="Warrior Revival"
+                          width={64}
+                          height={64}
+                          className="h-16 w-16 rounded-xl border border-border bg-white object-contain"
                         />
-                        <p className="text-base text-textSecondary">{event.location}</p>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
-                          {event.timeLabel}
-                        </p>
-                      </div>
-                    </button>
+                        <div className="flex-1 min-w-0 space-y-2">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                              {event.dateLabel}
+                            </p>
+                            <span className="rounded-full bg-primary/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                              {event.category}
+                            </span>
+                          </div>
+                          <MarqueeText
+                            text={event.name}
+                            className="font-heading text-xl font-semibold text-primary"
+                          />
+                          <p className="text-base text-textSecondary">{event.location}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-primary/70">
+                            {event.timeLabel}
+                          </p>
+                        </div>
+                      </button>
+                      {event.register_link ? (
+                        <a
+                          href={event.register_link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex w-full items-center justify-center border-t border-secondary/20 bg-secondary px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                        >
+                          Register now
+                        </a>
+                      ) : null}
+                    </div>
                   );
                 })
               )}
@@ -675,7 +786,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                       return <span key={`empty-${index}`} />;
                     }
 
-                    const hasEvents = eventsByDate.has(cell.dateKey);
+                    const dayEvents = eventsByDate.get(cell.dateKey);
+                    const hasEvents = Boolean(dayEvents?.length);
+                    const isDimmedPastDay = Boolean(
+                      dayEvents?.every((event) => shouldDimPastEvent(event, today, showPastEvents))
+                    );
 
                     if (!hasEvents) {
                       return (
@@ -693,7 +808,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         key={cell.dateKey}
                         type="button"
                         onClick={() => handleCalendarSelect(cell.dateKey)}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-red-500 text-red-600 transition hover:bg-red-50"
+                        className={`flex h-7 w-7 items-center justify-center rounded-full border transition ${
+                          isDimmedPastDay
+                            ? "border-red-200 bg-red-50/40 text-red-300 hover:bg-red-50/60"
+                            : "border-red-500 text-red-600 hover:bg-red-50"
+                        }`}
                       >
                         {cell.day}
                       </button>
@@ -785,9 +904,10 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
               </div>
             </div>
 
-            <p className="mt-4 text-xs text-textSecondary">
-              Showing {visibleEvents.length} of {monthFilteredEvents.length} events
-            </p>
+            <div className="mt-4 flex items-center justify-between gap-3 text-xs text-textSecondary">
+              <p>Showing {visibleEvents.length} of {monthFilteredEvents.length} events</p>
+              {previousThisMonthToggle}
+            </div>
 
             <div className="mt-4 space-y-4">
               {visibleEvents.length === 0 ? (
@@ -813,6 +933,7 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                   const event = item.event;
                   const eventId = event.id;
                   const isSelected = eventId === selectedEventId;
+                  const isDimmedPastEvent = shouldDimPastEvent(event, today, showPastEvents);
 
                   return (
                     <details
@@ -822,7 +943,7 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         isSelected
                           ? "border-2 border-primary/70 bg-primary/10"
                           : "border border-border bg-surface"
-                      }`}
+                      } ${isDimmedPastEvent ? "opacity-60 grayscale" : ""}`}
                     >
                       <summary
                         className="flex cursor-pointer flex-col gap-4 [&::-webkit-details-marker]:hidden sm:flex-row sm:items-center sm:justify-between"
@@ -856,6 +977,16 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         </div>
                       </summary>
                       <div className="mt-4 lg:hidden">{renderDetails(event)}</div>
+                      {event.register_link ? (
+                        <a
+                          href={event.register_link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="-mx-4 -mb-4 mt-4 flex items-center justify-center rounded-b-xl border-t border-secondary/20 bg-secondary px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                        >
+                          Register now
+                        </a>
+                      ) : null}
                     </details>
                   );
                 })
@@ -863,32 +994,45 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             </div>
           </div>
 
-          <aside className="hidden lg:block lg:col-start-3 lg:sticky lg:top-[7.25rem]">
-            <div className="rounded-xl border border-border bg-surface p-5 shadow-soft">
+          <aside className="hidden lg:col-start-3 lg:block lg:sticky lg:top-[7.25rem]">
+            <div className="max-h-[calc(100vh-8.25rem)] overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
               {selectedEvent ? (
-                <div className="space-y-4">
-                  <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
-                    <Image
-                      src={selectedEvent.image}
-                      alt="Warrior Revival"
-                      fill
-                      sizes="(min-width: 1024px) 20rem, 100vw"
-                      className="object-contain"
-                    />
+                <div className="relative max-h-[calc(100vh-8.25rem)]">
+                  <div
+                    ref={desktopDetailScrollRef}
+                    className="max-h-[calc(100vh-8.25rem)] space-y-4 overflow-y-auto p-5 pb-14 [scrollbar-gutter:stable]"
+                  >
+                    <div className="relative h-52 w-full overflow-hidden rounded-lg border border-border bg-white">
+                      <Image
+                        src={selectedEvent.image}
+                        alt="Warrior Revival"
+                        fill
+                        sizes="(min-width: 1024px) 20rem, 100vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
+                        {selectedEvent.dateLabel}
+                      </p>
+                      <p className="mt-1 font-heading text-2xl font-semibold text-primary">
+                        {selectedEvent.name}
+                      </p>
+                      <p className="mt-1 text-sm text-textSecondary">{selectedEvent.location}</p>
+                    </div>
+                    {renderDetails(selectedEvent)}
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
-                      {selectedEvent.dateLabel}
-                    </p>
-                    <p className="mt-1 font-heading text-2xl font-semibold text-primary">
-                      {selectedEvent.name}
-                    </p>
-                    <p className="mt-1 text-sm text-textSecondary">{selectedEvent.location}</p>
-                  </div>
-                  {renderDetails(selectedEvent)}
+                  {desktopDetailHasMore ? (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center rounded-b-xl bg-gradient-to-t from-surface via-surface/95 to-transparent pb-3 pt-10">
+                      <div className="flex items-center gap-1 rounded-full border border-border bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-primary shadow-soft">
+                        <span>More</span>
+                        <span aria-hidden="true">⌄</span>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               ) : (
-                <p className="text-sm text-textSecondary">Select an event to see details.</p>
+                <p className="p-5 text-sm text-textSecondary">Select an event to see details.</p>
               )}
             </div>
           </aside>
@@ -1065,7 +1209,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                       return <span key={`mobile-empty-${index}`} />;
                     }
 
-                    const hasEvents = eventsByDate.has(cell.dateKey);
+                    const dayEvents = eventsByDate.get(cell.dateKey);
+                    const hasEvents = Boolean(dayEvents?.length);
+                    const isDimmedPastDay = Boolean(
+                      dayEvents?.every((event) => shouldDimPastEvent(event, today, showPastEvents))
+                    );
 
                     if (!hasEvents) {
                       return (
@@ -1083,7 +1231,11 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                         key={cell.dateKey}
                         type="button"
                         onClick={() => handleCalendarSelect(cell.dateKey, true)}
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-primary"
+                        className={`flex h-9 w-9 items-center justify-center rounded-full border ${
+                          isDimmedPastDay
+                            ? "border-primary/15 bg-primary/5 text-primary/35"
+                            : "border-primary/40 bg-primary/10 text-primary"
+                        }`}
                       >
                         {cell.day}
                       </button>

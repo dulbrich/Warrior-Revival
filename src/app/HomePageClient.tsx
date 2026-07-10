@@ -1,5 +1,7 @@
 "use client";
 
+import { donatePageHref } from "@/lib/donation";
+
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -47,8 +49,8 @@ const focusAreas = [
   {
     title: "Needs of All",
     description:
-      "From guided outdoor adventures to structured community events, we create spaces where warriors and families can step outside, find their people, and rediscover a sense of purpose.",
-    cta: "Join",
+      "Warrior Revival is committed to serving veterans, service members, and their families throughout Utah. While some of our experiences have physical limitations, we will always work to connect those with disabilities to programs and organizations that are the right fit.",
+    cta: "Membership",
     href: "/membership"
   },
   {
@@ -65,9 +67,7 @@ const focusAreas = [
   {
     title: "Community Partnership",
     description:
-      "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong.",
-    cta: "Join",
-    href: "/membership"
+      "No single organization can do it all — and we don’t try to. Through intentional community partnerships, Warrior Revival brings together the people, organizations, and resources needed to create meaningful experiences for service members, veterans, and their families. Together we build a community where every warrior finds purpose, connection, and a place to belong."
   }
 ];
 
@@ -122,11 +122,13 @@ export default function HomePageClient({
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl flex-col justify-center gap-6 px-4 py-20 text-white md:min-h-[680px] md:px-8 lg:min-h-[720px]">
-          <p className="font-accent text-base uppercase tracking-[0.3em] text-white/80 md:text-lg">
+          <p className="font-accent text-lg uppercase tracking-[0.3em] text-white/80 md:text-xl">
             Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
-            Built for Warriors. Open to Family. One Tribe.
+            <span className="block md:inline">Built for Warriors.</span>{" "}
+            <span className="block md:inline">Open to Family.</span>{" "}
+            <span className="block md:inline">One Tribe.</span>
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
             Warrior Revival is a 501(c)(3) nonprofit founded in 2023 on the belief that no warrior should navigate
@@ -136,14 +138,14 @@ export default function HomePageClient({
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="/donate"
+              href={donatePageHref}
               className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white shadow-soft transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Donate
             </a>
             <a
               href="/events"
-              className="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="inline-flex items-center justify-center rounded-md border border-white/70 bg-white/10 px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               View Events
             </a>
@@ -283,7 +285,7 @@ export default function HomePageClient({
             Get involved
           </p>
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
-            Choose your pathway to impact.
+            Join the Mission. Choose Your Role.
           </h2>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">

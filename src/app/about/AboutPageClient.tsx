@@ -1,5 +1,7 @@
 "use client";
 
+import { donatePageHref } from "@/lib/donation";
+
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -11,7 +13,7 @@ const missionCards = [
   {
     title: "Mission",
     description:
-      "Support and empower service members, veterans, and their families in Utah through recreation, mentorship, wellness initiatives, and therapeutic retreat experiences.",
+      "Built for Warriors. Open to Family. One Tribe.",
     badgeClass: "bg-accent/10 text-accent",
     borderClass: "border-accent/30"
   },
@@ -35,17 +37,17 @@ const focusAreas = [
   {
     title: "Outdoor adventure",
     description:
-      "Guided hikes, retreats, and recreation that help veterans reconnect with purpose and confidence."
+      "Guided hikes, mountain biking, off-roading, skydiving, retreats, and recreation that help veterans reconnect with purpose and confidence."
   },
   {
     title: "Mentorship & resources",
     description:
-      "Peer-to-peer support, practical guidance, and wellness resources for the transition to civilian life."
+      "Peer-to-peer support, practical guidance, and wellness resources for the transition to civilian life. Join our coffee hours every month hosted in Davis, Utah, and Salt Lake county."
   },
   {
     title: "Family-inclusive support",
     description:
-      "Events and programs that strengthen family bonds and build lasting community ties."
+      "The people who stand beside warriors are just as important as the warriors themselves. Our events and programs are built to strengthen family bonds, foster genuine connection, and create lasting community ties that go far beyond a single event."
   }
 ];
 
@@ -54,6 +56,10 @@ export default function AboutPageClient({
 }: {
   volunteers: VolunteerForDisplay[];
 }) {
+  const displayedVolunteers = volunteers.filter(
+    (volunteer) => !volunteer.displayName.toLowerCase().startsWith("brandy")
+  );
+
   return (
     <main className="bg-light">
       <SiteHeader />
@@ -68,7 +74,7 @@ export default function AboutPageClient({
           aria-hidden="true"
         />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 md:px-8 md:py-20">
-          <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
+          <p className="font-accent text-lg uppercase tracking-[0.3em] text-secondary md:text-xl">
             About Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
@@ -80,36 +86,36 @@ export default function AboutPageClient({
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-start md:px-8">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+            <p className="text-lg font-semibold uppercase tracking-[0.2em] text-secondary md:text-xl">
               OUR STORY
             </p>
-            <p className="text-base text-textSecondary">
+            <p className="text-lg text-textSecondary">
               I built Warrior Revival because I kept witnessing warriors lose their
               purpose and pull away from life &mdash; and the evenings and weekends
               were the hardest. The community they needed simply didn&rsquo;t exist.
               I wanted to change that &mdash; so I created the space I kept wishing
               was there.
             </p>
-            <p className="text-base text-textSecondary">
+            <p className="text-lg text-textSecondary">
               Warrior Revival was created for every service member, veteran, and
               military family navigating the journey between service and civilian
               life &mdash; whether that transition is still ahead of you or already
               underway.
             </p>
-            <p className="text-base text-textSecondary">
+            <p className="text-lg text-textSecondary">
               The strongest transitions happen when preparation starts early. By
               connecting active duty service members with community, resources, and
               experiences before they separate, we help make the road ahead a little
               less uncertain and a lot less lonely.
             </p>
-            <p className="text-base text-textSecondary">
+            <p className="text-lg text-textSecondary">
               The transition to civilian life opens a new chapter &mdash; and we
               want to be part of it. Warrior Revival fills the evenings and
               weekends with high energy, high adventure, and meaningful experiences
               built around the things service members and veterans genuinely want
               to do.
             </p>
-            <p className="text-base text-textSecondary">
+            <p className="text-lg text-textSecondary">
               We restore what military life naturally provided &mdash; shared
               experiences, genuine connection, and a sense of purpose that
               doesn&rsquo;t end when the uniform comes off. Because every warrior
@@ -242,12 +248,15 @@ export default function AboutPageClient({
                 heartfelt encouragement to every event.
               </p>
             </div>
-            <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <a
+              href="https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
+              className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
               Join the volunteer team
-            </button>
+            </a>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {volunteers.map((volunteer) => (
+            {displayedVolunteers.map((volunteer) => (
               <div
                 key={volunteer.id}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft"
@@ -290,12 +299,18 @@ export default function AboutPageClient({
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <button className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <a
+                href={donatePageHref}
+                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
                 Donate today
-              </button>
-              <button className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              </a>
+              <a
+                href="https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-5 py-3 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
                 Become a volunteer
-              </button>
+              </a>
             </div>
           </div>
         </div>

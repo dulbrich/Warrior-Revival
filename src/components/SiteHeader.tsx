@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { donatePageHref } from "@/lib/donation";
 import { siteNavigation } from "./siteNavigation";
 
 export default function SiteHeader() {
@@ -33,7 +34,7 @@ export default function SiteHeader() {
           </a>
           <nav className="hidden items-center gap-6 text-base font-accent tracking-[0.08em] lg:flex">
             {siteNavigation.slice(0, 7).map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href.split("#")[0];
               return (
                 <a
                   key={item.label}
@@ -56,7 +57,7 @@ export default function SiteHeader() {
               Join
             </a>
             <a
-              href="/donate"
+              href={donatePageHref}
               className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-base font-bold uppercase tracking-wide text-white shadow-sm transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Donate
@@ -103,7 +104,7 @@ export default function SiteHeader() {
         <nav className="mx-auto max-w-7xl px-4 pb-4 md:px-8">
           <div className="grid gap-2 pt-2 text-base font-accent text-textSecondary tracking-[0.08em]">
             {siteNavigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href.split("#")[0];
               return (
                 <a
                   key={item.label}

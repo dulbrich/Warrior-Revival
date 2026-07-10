@@ -6,17 +6,19 @@ import SubscribeSection from "@/components/SubscribeSection";
 
 const veteranSteps = [
   {
-    title: "Membership is free",
-    description: "Veterans and participants can join at no cost."
-  },
-  {
-    title: "Share your interests",
+    title: "Membership is always free",
     description:
-      "Select activities like side-by-side rides, hiking, scuba, and skydiving."
+      "Membership is always free — because no warrior should have to pay to find their people."
   },
   {
-    title: "Get relevant updates",
-    description: "Receive event invitations and emails tailored to your selected interests."
+    title: "Tell us what you love",
+    description:
+      "Tell us what you love — side-by-sides, hiking, scuba, skydiving — and we'll match you with experiences built around it."
+  },
+  {
+    title: "A Community for Your Whole Family",
+    description:
+      "From family-friendly outdoor adventures to community gatherings, Warrior Revival makes sure the people who supported your service feel just as welcomed, valued, and connected as you do."
   }
 ];
 
@@ -26,19 +28,17 @@ const volunteerRoles = [
     description: "Help with setup, logistics, check-in, and participant care on activity days."
   },
   {
-    title: "Planning team",
-    description:
-      "Coordinate schedules, vendors, and details that keep activities safe and organized."
+    title: "Admin team",
+    description: "Help behind the scenes with grants, vendors, welcoming members."
   },
   {
     title: "Mentorship",
     description:
-      "Provide peer support to veterans navigating transition, reintegration, and community."
+      "Show up for warriors who are finding their footing — your experience and presence matter more than you know."
   },
   {
     title: "Outreach",
-    description:
-      "Connect veterans, families, and local partners to Warrior Revival opportunities."
+    description: "Help spread the word and bring more warriors and families into the tribe."
   }
 ];
 
@@ -66,7 +66,7 @@ const featuredSponsors = [
   { name: "LM", logo: "/home/sponsors/gold/lm.jpg" }
 ];
 
-export default function GetInvolvedPage() {
+export default function JoinTheMissionPage() {
   return (
     <main className="bg-light">
       <SiteHeader />
@@ -88,8 +88,9 @@ export default function GetInvolvedPage() {
             Join Warrior Revival as a participant, volunteer, or sponsor.
           </h1>
           <p className="max-w-3xl text-base text-textSecondary">
-            This page is organized for veterans, volunteers, and sponsors so each group
-            can quickly find the right next step.
+            There&apos;s a place for you here — whether you&apos;re a warrior finding your
+            tribe, someone ready to give back, or an organization that believes in the
+            mission.
           </p>
         </div>
       </section>
@@ -99,12 +100,38 @@ export default function GetInvolvedPage() {
           <h2 className="font-heading text-3xl font-semibold text-primary md:text-4xl">
             Why It Matters
           </h2>
-          <p className="mt-6 max-w-5xl text-base text-textSecondary">
-            By fostering authentic connection and community, Warrior Revival helps address
-            isolation before it becomes crisis — strengthening resilience, supporting
-            mental health, and contributing to suicide prevention through belonging and
-            purpose.
-          </p>
+          <div className="mt-6 max-w-5xl space-y-5 text-base text-textSecondary">
+            <p>
+              Each year, nearly 200,000 Americans leave military service and face one of
+              life&apos;s most difficult transitions. They traded civilian life for structure,
+              brotherhood, and a mission that mattered — and when that ends, the silence
+              can be deafening.
+            </p>
+            <p>The numbers tell a sobering story:</p>
+            <ul className="list-disc space-y-3 pl-6">
+              <li>Veterans are 1.5x more likely to die by suicide than non-veterans</li>
+              <li>Nearly 44% of veterans report feeling isolated after leaving service</li>
+              <li>1 in 3 veterans struggles with finding purpose and identity post-service</li>
+              <li>
+                Post-9/11 veterans cite loneliness and lack of community as their greatest
+                challenges
+              </li>
+              <li>
+                Less than 30% of veterans feel well-prepared for the transition to civilian
+                life
+              </li>
+            </ul>
+            <p>
+              But the statistics only tell part of the story. Behind every number is a
+              warrior who showed up every day for this country — and came home to a world
+              that didn&apos;t always know how to show up back. That&apos;s why Warrior Revival
+              exists. Not as a clinical program or a checkbox on a list of veteran services
+              — but as a living, breathing community built around the things warriors
+              actually want to do. Getting outside. Finding their people. Remembering who
+              they are beyond the uniform. Because the best thing we can give a veteran
+              isn&apos;t a pamphlet or a referral. It&apos;s a tribe.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -117,7 +144,9 @@ export default function GetInvolvedPage() {
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
             Become a member to join events, find mentorship, and receive opportunities
-            matched to your interests.
+            matched to your interests. Whether you&apos;re still in uniform or already
+            navigating civilian life — membership is your first step toward finding your
+            tribe. Free to join, no pressure, just your next adventure waiting.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {veteranSteps.map((step) => (
@@ -155,8 +184,9 @@ export default function GetInvolvedPage() {
             For volunteers
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
-            Volunteer forms collect your availability, skills, preferences, and contact
-            details.
+            Getting involved looks different for everyone — and that&apos;s perfectly okay.
+            Whether you have an hour or a whole season, there&apos;s a role here that fits
+            your life.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {volunteerRoles.map((role) => (
@@ -172,7 +202,7 @@ export default function GetInvolvedPage() {
             ))}
           </div>
           <a
-            href="/membership"
+            href="https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
             className="mt-8 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Apply to volunteer
@@ -186,8 +216,11 @@ export default function GetInvolvedPage() {
             For sponsors
           </h2>
           <p className="mt-3 max-w-3xl text-base text-textSecondary">
-            Sponsorships fund adaptive activities and provide visibility through events,
-            outreach, and marketing materials.
+            As an all-volunteer organization, Warrior Revival keeps overhead low and impact
+            high. Your sponsorship goes directly toward funding the outdoor experiences,
+            retreats, and community resources that support Utah&apos;s service members,
+            veterans, and their families — and every level of partnership makes a
+            visible, meaningful difference.
           </p>
 
           <div className="mt-8 overflow-x-auto rounded-2xl border border-border bg-surface shadow-card">
