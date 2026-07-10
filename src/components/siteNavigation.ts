@@ -3,6 +3,7 @@ export const siteNavigation = [
   { label: "About", href: "/about" },
   { label: "Veterans", href: "/veterans" },
   { label: "Events", href: "/events" },
+  { label: "Golf", href: "/golf" },
   { label: "Join the Mission", href: "/get-involved" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donate", href: "/donate" },
