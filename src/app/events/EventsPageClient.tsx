@@ -629,18 +629,6 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             <p className="text-base text-textSecondary">
               Search within the filtered list by event name, location, category, or date.
             </p>
-            <div className="flex flex-col items-start gap-2 pt-2 sm:flex-row sm:items-center sm:gap-4">
-              <button
-                type="button"
-                onClick={subscribeToGoogleCalendar}
-                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-              >
-                Subscribe in Google Calendar
-              </button>
-              <p className="max-w-md text-sm text-textSecondary">
-                Adds every future event and keeps your calendar updated as events change.
-              </p>
-            </div>
           </div>
         </div>
 
@@ -680,6 +668,20 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                   </button>
                 ) : null}
               </div>
+            </div>
+
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={subscribeToGoogleCalendar}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <span aria-hidden="true">📅</span>
+                Subscribe in Google Calendar
+              </button>
+              <p className="mt-2 text-xs text-textSecondary">
+                Adds every future event and keeps your calendar updated as events change.
+              </p>
             </div>
 
             <div className="mt-6 space-y-4">
@@ -838,6 +840,20 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
                     );
                   })}
                 </div>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={subscribeToGoogleCalendar}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <span aria-hidden="true">📅</span>
+                  Subscribe
+                </button>
+                <p className="mt-2 text-xs text-textSecondary">
+                  Adds every future event to your Google Calendar and keeps it in sync.
+                </p>
               </div>
 
               <div className="rounded-xl border border-border bg-surface p-4">
