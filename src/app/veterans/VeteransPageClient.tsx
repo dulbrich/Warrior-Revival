@@ -12,37 +12,6 @@ const testimonialTransitionMs = 900;
 // testimonialCards is now passed in as a prop (fetched server-side from
 // Supabase). See src/lib/testimonials/queries.ts.
 
-const approachCards = [
-  {
-    title: "Community-Centered Programming",
-    description:
-      "Outdoor recreation, social gatherings, and group activities that rebuild the sense of belonging many veterans miss after leaving service.",
-    imageSrc: "/veterans/approach/community.png",
-    imageAlt: "Veterans gathering in community outdoors"
-  },
-  {
-    title: "Peer Connection & Mentorship",
-    description:
-      "Veteran-to-veteran relationships that normalize transition challenges and reduce isolation.",
-    imageSrc: "/veterans/approach/peers.png",
-    imageAlt: "Veterans talking and connecting in peer support"
-  },
-  {
-    title: "Therapeutic & Restorative Retreats",
-    description:
-      "Intentional retreats that promote mental well-being, reflection, and renewed purpose in a supportive environment.",
-    imageSrc: "/veterans/approach/retreat.jpeg",
-    imageAlt: "Veterans in a restorative retreat setting"
-  },
-  {
-    title: "Accessible & Inclusive Support",
-    description:
-      "All programming is offered at no cost, removing barriers to participation for veterans and their families. All Warrior Revival events are recovery-friendly and substance-free — so every warrior can show up fully and feel welcome.",
-    imageSrc: "/veterans/approach/chair.webp",
-    imageAlt: "Inclusive veteran community participation"
-  }
-];
-
 export default function VeteransPageClient({
   testimonials
 }: {
@@ -90,7 +59,7 @@ export default function VeteransPageClient({
     <main className="bg-light">
       <SiteHeader />
 
-      <section className="relative overflow-hidden bg-surface">
+      <section className="relative h-[900px] overflow-hidden bg-surface md:h-[820px] lg:h-[760px]">
         <div
           className="absolute inset-0 bg-[url('/home/backgrounds/mountains.jpg')] bg-cover bg-center opacity-[0.18]"
           aria-hidden="true"
@@ -99,56 +68,18 @@ export default function VeteransPageClient({
           className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-secondary/20"
           aria-hidden="true"
         />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8">
-          <p className="font-accent text-sm uppercase tracking-[0.3em] text-secondary">
-            Built for Warriors. Here for Every Step.
-          </p>
-          <h2 className="mt-3 font-blackOps text-5xl font-normal text-primary md:text-6xl">
-            What Warrior Revival Offers
-          </h2>
-          <p className="mt-6 max-w-4xl text-base text-textSecondary">
-            Warrior Revival is a Utah-based 501(c)(3) nonprofit dedicated to serving
-            active duty service members, veterans, and their families through genuine
-            connection, shared experiences, and community built around the military
-            mindset.
-          </p>
-
-          <h3 className="mt-10 font-heading text-2xl font-semibold text-primary md:text-3xl">
-            Our Approach
-          </h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {approachCards.map((card) => (
-              <article
-                key={card.title}
-                className="flex overflow-hidden rounded-2xl border border-border bg-surface shadow-card"
-              >
-                <div className="relative aspect-square w-28 shrink-0 sm:w-32 md:w-36">
-                  <Image
-                    src={card.imageSrc}
-                    alt={card.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 144px, (min-width: 640px) 128px, 112px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-heading text-xl font-semibold text-primary">
-                    {card.title}
-                  </h4>
-                  <p className="mt-3 text-base text-textSecondary">{card.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative h-[800px] overflow-hidden bg-white md:h-[740px] lg:h-[700px]">
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-12 md:px-8 md:py-14 lg:py-12">
-          <div className="mb-10 space-y-3">
-            <h1 className="max-w-3xl font-heading text-3xl font-semibold text-primary md:text-4xl">
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-16 md:px-8 md:py-20 lg:py-16">
+          <div className="mb-10 space-y-4">
+            <p className="font-accent text-lg uppercase tracking-[0.3em] text-secondary md:text-xl">
+              In Their Words
+            </p>
+            <h1 className="max-w-3xl font-blackOps text-5xl font-normal text-primary md:text-6xl">
               What Our Members Say
             </h1>
+            <p className="max-w-3xl text-base text-textSecondary md:text-lg">
+              Real stories from the warriors and families who have found connection,
+              purpose, and belonging through Warrior Revival.
+            </p>
           </div>
 
           <div className="testimonial-mobile-stage flex-1 lg:hidden">
