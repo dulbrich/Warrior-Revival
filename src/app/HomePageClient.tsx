@@ -28,13 +28,15 @@ const pathways: {
     title: "Volunteer",
     description:
       "Getting involved looks different for everyone — and that’s perfectly okay. Whether you can give an hour or a whole season, there’s a place for you here. Help at events, support our outreach, work behind the scenes, or bring your own idea to the table. No pressure, no long commitments — just real people showing up for warriors and their families. As an all-volunteer organization, every contribution means the world to us.",
-    cta: "Become a volunteer"
+    cta: "Become a volunteer",
+    href: "https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
   },
   {
     title: "Sponsor",
     description:
       "Behind every great mission is a community that believes in it. Sponsor an event, fund a retreat, or make a donation — your partnership helps Warrior Revival show up for service members, veterans, and their families when it matters most.",
-    cta: "Partner with us"
+    cta: "Partner with us",
+    href: "https://warrior-revival.org/get-involved"
   }
 ];
 
