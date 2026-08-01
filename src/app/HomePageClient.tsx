@@ -28,13 +28,15 @@ const pathways: {
     title: "Volunteer",
     description:
       "Getting involved looks different for everyone — and that’s perfectly okay. Whether you can give an hour or a whole season, there’s a place for you here. Help at events, support our outreach, work behind the scenes, or bring your own idea to the table. No pressure, no long commitments — just real people showing up for warriors and their families. As an all-volunteer organization, every contribution means the world to us.",
-    cta: "Become a volunteer"
+    cta: "Become a volunteer",
+    href: "https://volunteer.bloomerang.co/volunteer/#/join-party?k=j01dz2foygulh2"
   },
   {
     title: "Sponsor",
     description:
       "Behind every great mission is a community that believes in it. Sponsor an event, fund a retreat, or make a donation — your partnership helps Warrior Revival show up for service members, veterans, and their families when it matters most.",
-    cta: "Partner with us"
+    cta: "Partner with us",
+    href: "https://warrior-revival.org/get-involved"
   }
 ];
 
@@ -126,9 +128,9 @@ export default function HomePageClient({
             Welcome to Warrior Revival
           </p>
           <h1 className="max-w-3xl font-blackOps text-5xl font-normal md:text-6xl">
-            <span className="block md:inline">Built for Warriors.</span>{" "}
-            <span className="block md:inline">Open to Family.</span>{" "}
-            <span className="block md:inline">One Tribe.</span>
+            <span className="block">Built for Warriors.</span>
+            <span className="block">Open to Family.</span>
+            <span className="block">One Tribe.</span>
           </h1>
           <p className="max-w-2xl text-base text-white/90 md:text-lg">
             Warrior Revival is a 501(c)(3) nonprofit founded in 2023 on the belief that no warrior should navigate

@@ -252,6 +252,13 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   const requestedEventId = searchParams.get("event");
   const hasAppliedRequested = useRef(false);
 
+  const subscribeToGoogleCalendar = () => {
+    const feedUrl = new URL("/events/calendar.ics", window.location.origin).toString();
+    const googleUrl = new URL("https://calendar.google.com/calendar/render");
+    googleUrl.searchParams.set("cid", feedUrl);
+    window.open(googleUrl.toString(), "_blank", "noopener,noreferrer");
+  };
+
   const today = useMemo(() => {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
@@ -622,6 +629,18 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
             <p className="text-base text-textSecondary">
               Search within the filtered list by event name, location, category, or date.
             </p>
+            <div className="flex flex-col items-start gap-2 pt-2 sm:flex-row sm:items-center sm:gap-4">
+              <button
+                type="button"
+                onClick={subscribeToGoogleCalendar}
+                className="inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              >
+                Subscribe in Google Calendar
+              </button>
+              <p className="max-w-md text-sm text-textSecondary">
+                Adds every future event and keeps your calendar updated as events change.
+              </p>
+            </div>
           </div>
         </div>
 
