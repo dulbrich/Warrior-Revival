@@ -42,7 +42,7 @@ const sponsorshipLevels = [
     tier: "Title Sponsor",
     amount: "$7,500",
     benefits: [
-      "Two complimentary foursome teams",
+      "Two complimentary foursome teams (Incl. cart and lunch)",
       "18x24 in. tee sign with logo",
       "Space to set up a 10x10 canopy at a hole",
       "Recognition on print and social media leading up to the golf event",
