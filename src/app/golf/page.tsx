@@ -22,7 +22,7 @@ const quickFacts = [
 
 const registrationIncludes = [
   "Admission to Warrior Revival's 3rd Annual Golf Tournament",
-  "Golf cart, one per foursome",
+  "Golf cart, two per foursome",
   "Lunch following tournament play",
   "Opportunities to participate in raffles and prizes",
   "A unique opportunity to play on Hill Air Force Base while supporting veterans"
@@ -56,7 +56,7 @@ const sponsorshipLevels = [
     tier: "Gold Sponsor",
     amount: "$5,000",
     benefits: [
-      "Two complimentary foursome teams",
+      "Two complimentary foursome teams (Incl. cart and lunch)",
       "18x24 in. tee sign with logo",
       "Space to set up a 10x10 canopy at a hole",
       "Recognition on print and social media leading up to the golf event",
