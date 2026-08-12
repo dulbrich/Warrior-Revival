@@ -97,16 +97,39 @@ const confirmedSponsors: Array<{
   href?: string;
 }> = [
   {
-    name: "Utah Veteran Business Resource Center (VBRC)",
+    name: "Rate",
+    tier: "Silver Sponsor",
+    logo: "https://dih4lvql8rjzt.cloudfront.net/cms/8d29c03a-1b06-48dd-9f69-7dd554f49220_rate-arrow-logo.png",
+    href: "https://www.rate.com"
+  },
+  {
+    name: "Cyprus Credit Union",
     tier: "Bronze Sponsor",
-    logo: "/golf/sponsors/utah-vbrc.png",
-    href: "https://utahvbrc.org"
+    logo: "/home/sponsors/gold/cyprus.jpg",
+    href: "https://www.cypruscu.com"
+  },
+  {
+    name: "KeyVia Mortgage",
+    tier: "Bronze Sponsor",
+    logo: "https://keyviamortgage.com/wp-content/uploads/2025/11/favicon-1.svg",
+    href: "https://keyviamortgage.com"
   },
   {
     name: "Liberty Drug LLC",
     tier: "Bronze Sponsor",
     logo: "/golf/sponsors/liberty-drug.png",
     href: "https://www.libertydrugut.com"
+  },
+  {
+    name: "LM Realty",
+    tier: "Bronze Sponsor",
+    href: "https://www.instagram.com/listwithlyss/"
+  },
+  {
+    name: "Utah Veteran Business Resource Center (VBRC)",
+    tier: "Bronze Sponsor",
+    logo: "/golf/sponsors/utah-vbrc.png",
+    href: "https://utahvbrc.org"
   }
 ];
 
@@ -363,33 +386,52 @@ export default function GolfPage() {
 
             {confirmedSponsors.length > 0 ? (
               <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {confirmedSponsors.map((sponsor) => (
-                  <a
-                    key={sponsor.name}
-                    href={sponsor.href ?? registrationUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex min-h-36 flex-col justify-center rounded-xl border border-border bg-light p-5 transition hover:border-secondary hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {sponsor.logo ? (
-                      <Image
-                        src={sponsor.logo}
-                        alt={`${sponsor.name} sponsor logo`}
-                        width={220}
-                        height={80}
-                        className="h-20 w-auto max-w-full object-contain"
-                      />
-                    ) : null}
-                    <p className="mt-4 font-heading text-xl font-semibold text-primary">
-                      {sponsor.name}
-                    </p>
-                    {sponsor.tier ? (
-                      <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
-                        {sponsor.tier}
+                {confirmedSponsors.map((sponsor) => {
+                  const isSilverSponsor = sponsor.tier === "Silver Sponsor";
+                  const isBronzeSponsor = sponsor.tier === "Bronze Sponsor";
+
+                  return (
+                    <a
+                      key={sponsor.name}
+                      href={sponsor.href ?? registrationUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`flex min-h-36 flex-col justify-center rounded-xl border p-5 transition hover:border-secondary hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                        isSilverSponsor
+                          ? "border-slate-400 bg-gradient-to-br from-white via-slate-50 to-slate-200 shadow-card ring-1 ring-slate-300 sm:col-span-2 lg:col-span-1"
+                          : isBronzeSponsor
+                            ? "border-[#a4683a] bg-gradient-to-br from-[#fffaf5] via-[#f4e1cf] to-[#c98b5c]/55 shadow-soft ring-1 ring-[#b87333]/40"
+                            : "border-border bg-light"
+                      }`}
+                    >
+                      {sponsor.logo ? (
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} sponsor logo`}
+                          width={220}
+                          height={80}
+                          className="h-20 w-auto max-w-full object-contain"
+                        />
+                      ) : null}
+                      <p className="mt-4 font-heading text-xl font-semibold text-primary">
+                        {sponsor.name}
                       </p>
-                    ) : null}
-                  </a>
-                ))}
+                      {sponsor.tier ? (
+                        <p
+                          className={`mt-2 w-fit rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-[0.16em] ${
+                            isSilverSponsor
+                              ? "bg-slate-700 text-white"
+                              : isBronzeSponsor
+                                ? "bg-[#8b572a] text-white"
+                                : "text-secondary"
+                          }`}
+                        >
+                          {sponsor.tier}
+                        </p>
+                      ) : null}
+                    </a>
+                  );
+                })}
               </div>
             ) : (
               <div className="mt-6 rounded-xl border border-dashed border-border bg-light p-6 text-base text-textSecondary">
