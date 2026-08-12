@@ -70,7 +70,7 @@ const sponsorshipLevels = [
     tier: "Silver Sponsor",
     amount: "$3,000",
     benefits: [
-      "One complimentary foursome team",
+      "One complimentary foursome team (Incl. cart and lunch)",
       "18x24 in. tee sign with logo",
       "Space to set up a 10x10 canopy at a hole",
       "Recognition on print and social media leading up to the golf event",
@@ -81,7 +81,7 @@ const sponsorshipLevels = [
     tier: "Bronze Sponsor",
     amount: "$1,500",
     benefits: [
-      "One complimentary foursome team",
+      "One complimentary foursome team (Incl. cart and lunch)",
       "18x24 in. tee sign with logo",
       "Space to set up a 10x10 canopy at a hole"
     ]
