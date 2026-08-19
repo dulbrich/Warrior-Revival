@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Black_Ops_One, Montserrat, Open_Sans } from "next/font/google";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const headingFont = Montserrat({
@@ -46,6 +47,7 @@ export default function RootLayout({
         className={`${headingFont.variable} ${bodyFont.variable} ${accentFont.variable} ${blackOpsFont.variable} font-sans`}
       >
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );

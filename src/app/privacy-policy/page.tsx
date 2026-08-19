@@ -105,7 +105,34 @@ export default function PrivacyPolicyPage() {
                 browsers allow you to control the use of cookies on your computer. If
                 you choose to limit the use of cookies on your computer, we may not be
                 able to provide you the services you request on our Site. Cookies,
-                when used, are not persisted.
+                when used, may remain on your device for the period specified by the
+                cookie or until you delete them.
+              </p>
+              <p>
+                <span className="font-semibold text-primary">Website analytics.</span> We
+                use Google Analytics to understand how visitors use our Site, such as
+                which pages are viewed, general device and browser information, and
+                how visitors arrived at the Site. Google Analytics may use cookies and
+                similar technologies to provide these measurements. Google processes
+                this information under its{" "}
+                <a
+                  className="font-semibold text-primary underline hover:text-secondary"
+                  href="https://policies.google.com/privacy"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Privacy Policy
+                </a>
+                . You can also install the{" "}
+                <a
+                  className="font-semibold text-primary underline hover:text-secondary"
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Google Analytics opt-out browser add-on
+                </a>
+                .
               </p>
               <p>
                 <span className="font-semibold text-primary">Server log files.</span> Your
