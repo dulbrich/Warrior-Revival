@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const measurementId =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-HYNGMXZKYT";
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-HYNGMXZKYT";
 
 declare global {
   interface Window {

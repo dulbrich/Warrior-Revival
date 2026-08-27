@@ -155,7 +155,7 @@ Ask the project owner for the values. They come from the [Supabase dashboard](ht
 | `NEXT_PUBLIC_SUPABASE_URL` | The Supabase project's URL | Project Settings → API → *Project URL* |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | A public, safe-to-expose read key | Project Settings → API → *anon public* key |
 | `SUPABASE_SERVICE_ROLE_KEY` | An admin key — **NEVER share this publicly** | Project Settings → API → *service_role* key |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional override for the site's default Google Analytics 4 Measurement ID; set it to an empty value to disable analytics | Google Analytics → Admin → Data Streams → your web stream |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional override for the site's default Google Analytics 4 Measurement ID; leave blank to use `G-HYNGMXZKYT` | Google Analytics → Admin → Data Streams → your web stream |
 | `DEV_AUTH_EMAIL` | (Optional) Your admin email, used only locally to skip the magic-link login when you're developing | Just put your own email |
 
 Paste each value to the right of the `=` sign. No quotes needed. Save the file.
