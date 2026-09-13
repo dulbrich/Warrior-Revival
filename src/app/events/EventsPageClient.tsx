@@ -253,9 +253,13 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
   const hasAppliedRequested = useRef(false);
 
   const subscribeToGoogleCalendar = () => {
-    const feedUrl = new URL("/events/calendar.ics", window.location.origin).toString();
+    // Google Calendar's "add by URL" flow expects a webcal:// URL; passing an
+    // https:// URL as the cid makes it reject the feed with
+    // "Unable to subscribe to calendar. Check the URL."
+    const feedUrl = new URL("/events/calendar.ics", window.location.origin);
+    feedUrl.protocol = "webcal:";
     const googleUrl = new URL("https://calendar.google.com/calendar/render");
-    googleUrl.searchParams.set("cid", feedUrl);
+    googleUrl.searchParams.set("cid", feedUrl.toString());
     window.open(googleUrl.toString(), "_blank", "noopener,noreferrer");
   };
 
