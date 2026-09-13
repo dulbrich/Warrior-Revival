@@ -13,14 +13,30 @@ const compactTime = (value: string) => value.replaceAll(":", "").slice(0, 6).pad
 const utcStamp = (value: string | Date) =>
   new Date(value).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
 
+// RFC 5545 line folding is measured in octets, and a multi-octet character
+// must never be split across a fold. Folding by JS string length (UTF-16 code
+// units) can split an emoji's surrogate pair mid-character and corrupt the
+// feed, so we iterate by code point and count UTF-8 bytes. Continuation lines
+// begin with a leading space (1 octet), so their content budget is 74.
+const encoder = new TextEncoder();
 const foldLine = (line: string) => {
   const chunks: string[] = [];
-  let remaining = line;
-  while (remaining.length > 73) {
-    chunks.push(remaining.slice(0, 73));
-    remaining = remaining.slice(73);
+  let current = "";
+  let currentBytes = 0;
+  let isFirst = true;
+  for (const ch of line) {
+    const chBytes = encoder.encode(ch).length;
+    const limit = isFirst ? 75 : 74;
+    if (currentBytes + chBytes > limit) {
+      chunks.push(current);
+      current = "";
+      currentBytes = 0;
+      isFirst = false;
+    }
+    current += ch;
+    currentBytes += chBytes;
   }
-  chunks.push(remaining);
+  chunks.push(current);
   return chunks.join("\r\n ");
 };
 
@@ -35,12 +51,16 @@ const eventLines = (event: EventRow) => {
 
   let dateLines: string[];
   if (event.start_time) {
-    const start = `${date}T${compactTime(event.start_time)}`;
-    const end = event.end_time ? `${date}T${compactTime(event.end_time)}` : start;
-    dateLines = [
-      `DTSTART;TZID=${event.timezone}:${start}`,
-      `DTEND;TZID=${event.timezone}:${end}`
-    ];
+    const startTime = compactTime(event.start_time);
+    const endTime = event.end_time ? compactTime(event.end_time) : null;
+    dateLines = [`DTSTART;TZID=${event.timezone}:${date}T${startTime}`];
+    // Only emit DTEND when it is strictly after DTSTART. A zero- or negative-
+    // duration timed event (DTEND <= DTSTART, e.g. a 9:00–9:00 entry) is invalid
+    // per RFC 5545 and makes Google reject the entire feed with "Unable to add
+    // calendar." Omitting DTEND yields a valid zero-duration event instead.
+    if (endTime && endTime > startTime) {
+      dateLines.push(`DTEND;TZID=${event.timezone}:${date}T${endTime}`);
+    }
   } else {
     const nextDate = new Date(`${event.event_date}T00:00:00Z`);
     nextDate.setUTCDate(nextDate.getUTCDate() + 1);
