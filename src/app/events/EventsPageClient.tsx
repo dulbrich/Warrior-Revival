@@ -256,10 +256,14 @@ export default function EventsPage({ events }: { events: EventForDisplay[] }) {
     // Google Calendar's "add by URL" flow expects a webcal:// URL; passing an
     // https:// URL as the cid makes it reject the feed with
     // "Unable to subscribe to calendar. Check the URL."
-    const feedUrl = new URL("/events/calendar.ics", window.location.origin);
-    feedUrl.protocol = "webcal:";
+    //
+    // NOTE: build the webcal URL as a string. Assigning `url.protocol = "webcal:"`
+    // is silently ignored by the URL API because http/https are "special" schemes
+    // and webcal is not — the WHATWG spec forbids switching between the two via the
+    // protocol setter, so the URL would stay https://.
+    const feedUrl = `webcal://${window.location.host}/events/calendar.ics`;
     const googleUrl = new URL("https://calendar.google.com/calendar/render");
-    googleUrl.searchParams.set("cid", feedUrl.toString());
+    googleUrl.searchParams.set("cid", feedUrl);
     window.open(googleUrl.toString(), "_blank", "noopener,noreferrer");
   };
 
