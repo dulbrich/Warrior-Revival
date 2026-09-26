@@ -94,6 +94,7 @@ const confirmedSponsors: Array<{
   name: string;
   tier?: string;
   logo?: string;
+  logos?: Array<{ src: string; alt: string }>;
   href?: string;
 }> = [
   {
@@ -101,6 +102,20 @@ const confirmedSponsors: Array<{
     tier: "Bronze Sponsor",
     logo: "/home/sponsors/gold/cyprus.jpg",
     href: "https://www.cypruscu.com"
+  },
+  {
+    name: "High Octane Lemonade & The Pub Sports Bar Layton",
+    tier: "Bronze Sponsor",
+    logos: [
+      {
+        src: "/golf/sponsors/high-octane-lemonade.png",
+        alt: "High Octane Lemonade logo"
+      },
+      {
+        src: "/golf/sponsors/pub-sports-bar.png",
+        alt: "The Pub Sports Bar Layton logo"
+      }
+    ]
   },
   {
     name: "KeyVia Mortgage",
@@ -399,7 +414,21 @@ export default function GolfPage() {
                             : "border-border bg-light"
                       }`}
                     >
-                      {sponsor.logo ? (
+                      {sponsor.logos ? (
+                        <div className="grid grid-cols-2 items-center gap-4">
+                          {sponsor.logos.map((logo) => (
+                            <div key={logo.src} className="relative h-24 w-full">
+                              <Image
+                                src={logo.src}
+                                alt={logo.alt}
+                                fill
+                                sizes="(min-width: 1024px) 180px, 40vw"
+                                className="object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ) : sponsor.logo ? (
                         <Image
                           src={sponsor.logo}
                           alt={`${sponsor.name} sponsor logo`}
