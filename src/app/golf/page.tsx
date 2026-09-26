@@ -117,6 +117,7 @@ const confirmedSponsors: Array<{
   {
     name: "LM Realty",
     tier: "Bronze Sponsor",
+    logo: "/golf/sponsors/lm-realty.png",
     href: "https://www.instagram.com/listwithlyss/"
   },
   {
