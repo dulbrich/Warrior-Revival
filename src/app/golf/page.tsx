@@ -97,12 +97,6 @@ const confirmedSponsors: Array<{
   href?: string;
 }> = [
   {
-    name: "Rate",
-    tier: "Silver Sponsor",
-    logo: "https://dih4lvql8rjzt.cloudfront.net/cms/8d29c03a-1b06-48dd-9f69-7dd554f49220_rate-arrow-logo.png",
-    href: "https://www.rate.com"
-  },
-  {
     name: "Cyprus Credit Union",
     tier: "Bronze Sponsor",
     logo: "/home/sponsors/gold/cyprus.jpg",

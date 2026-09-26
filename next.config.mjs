@@ -10,11 +10,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "dih4lvql8rjzt.cloudfront.net",
-        pathname: "/cms/**"
-      },
-      {
-        protocol: "https",
         hostname: "keyviamortgage.com",
         pathname: "/wp-content/uploads/**"
       }
