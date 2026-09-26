@@ -136,6 +136,10 @@ const confirmedSponsors: Array<{
     href: "https://www.instagram.com/listwithlyss/"
   },
   {
+    name: "The Davidson Family",
+    tier: "Bronze Sponsor"
+  },
+  {
     name: "Utah Veteran Business Resource Center (VBRC)",
     tier: "Bronze Sponsor",
     logo: "/golf/sponsors/utah-vbrc.png",
