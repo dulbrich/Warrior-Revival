@@ -352,6 +352,31 @@ export default function GolfPage() {
             ))}
           </div>
 
+          <aside className="mt-10 overflow-hidden rounded-2xl border border-accent/70 bg-primary px-6 py-7 text-white shadow-card md:px-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-3xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
+                  Supporting Veterans &amp; Military
+                </p>
+                <h3 className="mt-2 font-heading text-2xl font-semibold md:text-3xl">
+                  Warrior Rising is donating a team
+                </h3>
+                <p className="mt-3 text-base text-white/80 md:text-lg">
+                  Thanks to Warrior Rising, a foursome team is being donated for veterans and
+                  military members to play in this year&apos;s tournament.
+                </p>
+              </div>
+              <a
+                href="https://warriorrising.org"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit shrink-0 items-center justify-center rounded-md bg-accent px-5 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Visit Warrior Rising
+              </a>
+            </div>
+          </aside>
+
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {sponsorshipLevels.map((level) => (
               <article
