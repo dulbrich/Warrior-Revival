@@ -161,6 +161,103 @@ export const metadata: Metadata = {
     "Register for Warrior Revival's 3rd Annual Golf Tournament at Hubbard Golf Course on Hill Air Force Base on October 2, 2026."
 };
 
+function SponsorSpotlight() {
+  return (
+    <div className="rounded-2xl border border-border bg-surface p-6 shadow-card md:p-8">
+      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
+            Signed-Up Sponsors
+          </p>
+          <h2 className="mt-2 font-heading text-2xl font-semibold text-primary">
+            Sponsor spotlight
+          </h2>
+        </div>
+        <a
+          href={registrationUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex w-fit items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          Become a sponsor
+        </a>
+      </div>
+
+      {confirmedSponsors.length > 0 ? (
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {confirmedSponsors.map((sponsor) => {
+            const isSilverSponsor = sponsor.tier === "Silver Sponsor";
+            const isBronzeSponsor = sponsor.tier === "Bronze Sponsor";
+
+            return (
+              <a
+                key={sponsor.name}
+                href={sponsor.href ?? registrationUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`flex min-h-36 flex-col justify-center rounded-xl border p-5 transition hover:border-secondary hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  isSilverSponsor
+                    ? "border-slate-400 bg-gradient-to-br from-white via-slate-50 to-slate-200 shadow-card ring-1 ring-slate-300 sm:col-span-2 lg:col-span-1"
+                    : isBronzeSponsor
+                      ? "border-[#a4683a] bg-gradient-to-br from-[#fffaf5] via-[#f4e1cf] to-[#c98b5c]/55 shadow-soft ring-1 ring-[#b87333]/40"
+                      : "border-border bg-light"
+                }`}
+              >
+                {sponsor.logos ? (
+                  <div className="grid grid-cols-2 items-center gap-4">
+                    {sponsor.logos.map((logo) => (
+                      <div key={logo.src} className="relative h-24 w-full">
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          fill
+                          sizes="(min-width: 1024px) 180px, 40vw"
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : sponsor.logo ? (
+                  <Image
+                    src={sponsor.logo}
+                    alt={`${sponsor.name} sponsor logo`}
+                    width={220}
+                    height={80}
+                    className="h-20 w-auto max-w-full object-contain"
+                  />
+                ) : null}
+                <p className="mt-4 font-heading text-xl font-semibold text-primary">
+                  {sponsor.name}
+                </p>
+                {sponsor.note ? (
+                  <p className="mt-2 text-base text-textSecondary">{sponsor.note}</p>
+                ) : null}
+                {sponsor.tier ? (
+                  <p
+                    className={`mt-2 w-fit rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-[0.16em] ${
+                      isSilverSponsor
+                        ? "bg-slate-700 text-white"
+                        : isBronzeSponsor
+                          ? "bg-[#8b572a] text-white"
+                          : "text-secondary"
+                    }`}
+                  >
+                    {sponsor.tier}
+                  </p>
+                ) : null}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="mt-6 rounded-xl border border-dashed border-border bg-light p-6 text-base text-textSecondary">
+          Confirmed tournament sponsors will be highlighted here as logos and names are added.
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function GolfPage() {
   return (
     <main className="bg-light">
@@ -333,6 +430,12 @@ export default function GolfPage() {
         </div>
       </section>
 
+      <section className="bg-light">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <SponsorSpotlight />
+        </div>
+      </section>
+
       <section id="sponsors" className="bg-light">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <div className="max-w-3xl">
@@ -386,99 +489,6 @@ export default function GolfPage() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-2xl border border-border bg-surface p-6 shadow-card md:p-8">
-            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-                  Signed-Up Sponsors
-                </p>
-                <h3 className="mt-2 font-heading text-2xl font-semibold text-primary">
-                  Sponsor spotlight
-                </h3>
-              </div>
-              <a
-                href={registrationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex w-fit items-center justify-center rounded-md border border-primary px-4 py-2 text-base font-bold uppercase tracking-wide text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Become a sponsor
-              </a>
-            </div>
-
-            {confirmedSponsors.length > 0 ? (
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {confirmedSponsors.map((sponsor) => {
-                  const isSilverSponsor = sponsor.tier === "Silver Sponsor";
-                  const isBronzeSponsor = sponsor.tier === "Bronze Sponsor";
-
-                  return (
-                    <a
-                      key={sponsor.name}
-                      href={sponsor.href ?? registrationUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`flex min-h-36 flex-col justify-center rounded-xl border p-5 transition hover:border-secondary hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                        isSilverSponsor
-                          ? "border-slate-400 bg-gradient-to-br from-white via-slate-50 to-slate-200 shadow-card ring-1 ring-slate-300 sm:col-span-2 lg:col-span-1"
-                          : isBronzeSponsor
-                            ? "border-[#a4683a] bg-gradient-to-br from-[#fffaf5] via-[#f4e1cf] to-[#c98b5c]/55 shadow-soft ring-1 ring-[#b87333]/40"
-                            : "border-border bg-light"
-                      }`}
-                    >
-                      {sponsor.logos ? (
-                        <div className="grid grid-cols-2 items-center gap-4">
-                          {sponsor.logos.map((logo) => (
-                            <div key={logo.src} className="relative h-24 w-full">
-                              <Image
-                                src={logo.src}
-                                alt={logo.alt}
-                                fill
-                                sizes="(min-width: 1024px) 180px, 40vw"
-                                className="object-contain"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      ) : sponsor.logo ? (
-                        <Image
-                          src={sponsor.logo}
-                          alt={`${sponsor.name} sponsor logo`}
-                          width={220}
-                          height={80}
-                          className="h-20 w-auto max-w-full object-contain"
-                        />
-                      ) : null}
-                      <p className="mt-4 font-heading text-xl font-semibold text-primary">
-                        {sponsor.name}
-                      </p>
-                      {sponsor.note ? (
-                        <p className="mt-2 text-base text-textSecondary">{sponsor.note}</p>
-                      ) : null}
-                      {sponsor.tier ? (
-                        <p
-                          className={`mt-2 w-fit rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-[0.16em] ${
-                            isSilverSponsor
-                              ? "bg-slate-700 text-white"
-                              : isBronzeSponsor
-                                ? "bg-[#8b572a] text-white"
-                                : "text-secondary"
-                          }`}
-                        >
-                          {sponsor.tier}
-                        </p>
-                      ) : null}
-                    </a>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="mt-6 rounded-xl border border-dashed border-border bg-light p-6 text-base text-textSecondary">
-                Confirmed tournament sponsors will be highlighted here as logos and names are
-                added.
-              </div>
-            )}
-          </div>
         </div>
       </section>
 
