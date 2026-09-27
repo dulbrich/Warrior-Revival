@@ -149,6 +149,7 @@ const confirmedSponsors: Array<{
   {
     name: "Warrior Rising",
     tier: "Veteran & Military Team Donor",
+    logo: "/golf/sponsors/warrior-rising.png",
     href: "https://warriorrising.org",
     note: "Donating a foursome team for veterans and military members"
   }
