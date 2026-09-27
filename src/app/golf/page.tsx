@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GolfCountdown from "@/components/GolfCountdown";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -303,6 +304,8 @@ export default function GolfPage() {
           </div>
         </div>
       </section>
+
+      <GolfCountdown />
 
       <section className="border-b border-border bg-surface">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 py-8 md:grid-cols-3 md:px-8 xl:grid-cols-6">
