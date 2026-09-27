@@ -106,18 +106,9 @@ const confirmedSponsors: Array<{
     href: "https://www.cypruscu.com"
   },
   {
-    name: "High Octane Lemonade & The Pub Sports Bar Layton",
+    name: "High Octane Lemonade",
     tier: "Bronze Sponsor",
-    logos: [
-      {
-        src: "/golf/sponsors/high-octane-lemonade.png",
-        alt: "High Octane Lemonade logo"
-      },
-      {
-        src: "/golf/sponsors/pub-sports-bar.png",
-        alt: "The Pub Sports Bar Layton logo"
-      }
-    ]
+    logo: "/golf/sponsors/high-octane-lemonade.png"
   },
   {
     name: "KeyVia Mortgage",
@@ -140,6 +131,11 @@ const confirmedSponsors: Array<{
   {
     name: "The Davidson Family",
     tier: "Bronze Sponsor"
+  },
+  {
+    name: "The Pub Sports Bar Layton",
+    tier: "Bronze Sponsor",
+    logo: "/golf/sponsors/pub-sports-bar.png"
   },
   {
     name: "Utah Veteran Business Resource Center (VBRC)",
