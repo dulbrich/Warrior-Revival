@@ -95,7 +95,6 @@ const confirmedSponsors: Array<{
   name: string;
   tier?: string;
   logo?: string;
-  logoOnDark?: boolean;
   logos?: Array<{ src: string; alt: string }>;
   href?: string;
   note?: string;
@@ -128,13 +127,6 @@ const confirmedSponsors: Array<{
     tier: "Bronze Sponsor",
     logo: "/golf/sponsors/lm-realty.png",
     href: "https://www.instagram.com/listwithlyss/"
-  },
-  {
-    name: "The Break",
-    tier: "Bronze Sponsor",
-    logo: "/golf/sponsors/the-break.png",
-    logoOnDark: true,
-    href: "https://thebreakgrill.com/"
   },
   {
     name: "The Davidson Family",
@@ -223,17 +215,13 @@ function SponsorSpotlight() {
                     ))}
                   </div>
                 ) : sponsor.logo ? (
-                  <div
-                    className={`relative h-24 w-full overflow-hidden rounded-lg ${
-                      sponsor.logoOnDark ? "bg-primary" : ""
-                    }`}
-                  >
+                  <div className="relative h-24 w-full overflow-hidden rounded-lg">
                     <Image
                       src={sponsor.logo}
                       alt={`${sponsor.name} sponsor logo`}
                       fill
                       sizes="(min-width: 1024px) 260px, (min-width: 640px) 45vw, 90vw"
-                      className={`object-contain ${sponsor.logoOnDark ? "p-2" : ""}`}
+                      className="object-contain"
                     />
                   </div>
                 ) : null}
