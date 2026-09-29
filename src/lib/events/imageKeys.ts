@@ -3,14 +3,15 @@
 // asset path here at render time. Add a new key by adding the asset under
 // /public/events/ and listing it below.
 
-export const IMAGE_KEYS = ["hike", "coffee", "lunch", "book"] as const;
+export const IMAGE_KEYS = ["hike", "coffee", "lunch", "book", "veteran-5k"] as const;
 export type ImageKey = (typeof IMAGE_KEYS)[number];
 
 const imageKeyToPath: Record<ImageKey, string> = {
   hike: "/events/hiking.jpg",
   coffee: "/events/coffee.jpg",
   lunch: "/events/lunch.jpg",
-  book: "/events/books.jpg"
+  book: "/events/books.jpg",
+  "veteran-5k": "/events/veteran-5k.png"
 };
 
 const FALLBACK_IMAGE = "/logo.webp";
