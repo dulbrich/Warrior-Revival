@@ -1,4 +1,5 @@
 import { IMAGE_KEYS } from "@/lib/events/imageKeys";
+import { isHomepageHighlighted } from "@/lib/events/homepageHighlight";
 import { EVENT_STATUSES } from "@/lib/events/schema";
 import type { EventRow } from "@/lib/events/types";
 
@@ -48,6 +49,26 @@ export default function EventForm({ mode, action, defaults, canSetStatus }: Prop
         ) : (
           <input type="hidden" name="status" value="pending" />
         )}
+        {canSetStatus ? (
+          <label className="flex items-start gap-3 rounded-xl border border-border bg-light p-4">
+            <input
+              name="homepage_highlight"
+              type="checkbox"
+              value="true"
+              defaultChecked={isHomepageHighlighted(v.notes)}
+              className="mt-1 h-4 w-4 rounded border-border text-accent focus-visible:ring-2 focus-visible:ring-accent"
+            />
+            <span>
+              <span className="block text-sm font-semibold text-primary">
+                Highlight on homepage
+              </span>
+              <span className="mt-1 block text-sm text-textSecondary">
+                Prioritizes this event in the homepage&apos;s three upcoming event slots,
+                even when its date is farther out.
+              </span>
+            </span>
+          </label>
+        ) : null}
         <Field label="Audience">
           <input
             name="audience"

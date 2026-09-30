@@ -11,6 +11,10 @@ import {
   formDataToObject
 } from "@/lib/events/schema";
 import { fetchEventById } from "@/lib/events/queries";
+import {
+  isHomepageHighlighted,
+  setHomepageHighlight
+} from "@/lib/events/homepageHighlight";
 
 function revalidatePublicEventPages() {
   revalidatePath("/events");
@@ -25,11 +29,16 @@ export async function createEventAction(formData: FormData) {
   }
   // Contributors can never publish directly — server-side enforced even if a
   // crafted POST tries to set status=approved. RLS will also block it.
-  const status = user.role === "admin" ? parsed.data.status : "pending";
+  const { homepage_highlight, ...eventData } = parsed.data;
+  const status = user.role === "admin" ? eventData.status : "pending";
+  const notes = setHomepageHighlight(
+    null,
+    user.role === "admin" && homepage_highlight === "true"
+  );
   const supabase = createSupabaseServerClient();
   const { error } = await supabase
     .from("events")
-    .insert([{ ...parsed.data, status, created_by: user.id }]);
+    .insert([{ ...eventData, status, notes, created_by: user.id }]);
   if (error) throw new Error(`Insert failed: ${error.message}`);
   revalidatePublicEventPages();
   revalidatePath("/admin/events");
@@ -46,23 +55,30 @@ export async function updateEventAction(formData: FormData) {
   if (!parsed.success) {
     throw new Error(parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "));
   }
-  const { id, ...rest } = parsed.data;
+  const { id, homepage_highlight, ...rest } = parsed.data;
+  const existing = await fetchEventById(id);
+  if (!existing) throw new Error("Event not found.");
 
   // Contributors are limited to their own pending events; double-check here
   // before issuing the update so we return a clear error rather than letting
   // RLS swallow it. Admins are not constrained.
   if (user.role === "contributor") {
-    const existing = await fetchEventById(id);
-    if (!existing || existing.created_by !== user.id || existing.status !== "pending") {
+    if (existing.created_by !== user.id || existing.status !== "pending") {
       throw new Error("You can only edit your own pending events.");
     }
   }
   const status = user.role === "admin" ? rest.status : "pending";
+  const notes = setHomepageHighlight(
+    existing.notes,
+    user.role === "admin"
+      ? homepage_highlight === "true"
+      : isHomepageHighlighted(existing.notes)
+  );
 
   const supabase = createSupabaseServerClient();
   const { error } = await supabase
     .from("events")
-    .update({ ...rest, status })
+    .update({ ...rest, status, notes })
     .eq("id", id);
   if (error) throw new Error(`Update failed: ${error.message}`);
 

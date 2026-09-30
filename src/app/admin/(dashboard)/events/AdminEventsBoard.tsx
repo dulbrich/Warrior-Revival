@@ -476,6 +476,11 @@ export default function AdminEventsBoard({
                     <div className="min-w-0 flex-1 space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <StatusPill status={event.status} />
+                        {event.homepageHighlight ? (
+                          <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-accent">
+                            ★ Homepage
+                          </span>
+                        ) : null}
                         <p className="text-xs font-semibold uppercase tracking-wide text-textSecondary">
                           {event.dateLabel}
                         </p>
@@ -736,7 +741,14 @@ function EventDetailPanel({
         />
       </div>
       <div>
-        <StatusPill status={event.status} />
+        <div className="flex flex-wrap items-center gap-2">
+          <StatusPill status={event.status} />
+          {event.homepageHighlight ? (
+            <span className="rounded-full bg-accent/15 px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-accent">
+              ★ Homepage highlight
+            </span>
+          ) : null}
+        </div>
         <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-textSecondary">
           {event.dateLabel}
         </p>

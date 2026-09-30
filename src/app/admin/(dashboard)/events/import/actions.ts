@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireRole } from "@/lib/auth/role";
 import { parseBulkEvents, eventDedupeKey } from "@/lib/events/bulkImport";
+import { setHomepageHighlight } from "@/lib/events/homepageHighlight";
 import type { ImportState } from "./types";
 
 // useFormState action: validate a pasted/uploaded JSON array of events, drop
@@ -70,11 +71,18 @@ export async function bulkImportEventsAction(
   if (toInsert.length > 0) {
     // Contributors can never publish directly — force pending regardless of
     // any status set in the JSON (server-side enforced; RLS also blocks it).
-    const rows = toInsert.map((entry) => ({
-      ...entry.value,
-      status: user.role === "admin" ? entry.value.status : "pending",
-      created_by: user.id
-    }));
+    const rows = toInsert.map((entry) => {
+      const { homepage_highlight, ...eventData } = entry.value;
+      return {
+        ...eventData,
+        status: user.role === "admin" ? eventData.status : "pending",
+        notes: setHomepageHighlight(
+          null,
+          user.role === "admin" && homepage_highlight === "true"
+        ),
+        created_by: user.id
+      };
+    });
 
     // ignoreDuplicates uses the (name, event_date) UNIQUE constraint as a final
     // backstop against anything our in-memory check missed (e.g. a concurrent

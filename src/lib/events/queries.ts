@@ -18,7 +18,8 @@ export async function fetchApprovedEvents(): Promise<EventForDisplay[]> {
   return (data as EventRow[]).map(eventRowToDisplay);
 }
 
-// Next `limit` approved events from today forward. Used by the homepage strip.
+// Highlighted approved events take priority in the homepage's limited set,
+// regardless of how far out they are. Remaining slots use the nearest events.
 export async function fetchUpcomingEvents(limit: number): Promise<EventForDisplay[]> {
   const supabase = createSupabaseServerClient();
   const today = new Date().toISOString().slice(0, 10);
@@ -28,11 +29,14 @@ export async function fetchUpcomingEvents(limit: number): Promise<EventForDispla
     .eq("status", "approved")
     .gte("event_date", today)
     .order("event_date", { ascending: true })
-    .limit(limit);
+    .limit(250);
   if (error) {
     throw new Error(`Failed to fetch upcoming events: ${error.message}`);
   }
-  return (data as EventRow[]).map(eventRowToDisplay);
+  const events = (data as EventRow[]).map(eventRowToDisplay);
+  const highlighted = events.filter((event) => event.homepageHighlight);
+  const standard = events.filter((event) => !event.homepageHighlight);
+  return [...highlighted, ...standard].slice(0, limit);
 }
 
 // All events regardless of status, newest first. Used by the /admin events

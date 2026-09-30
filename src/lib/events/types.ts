@@ -4,6 +4,10 @@
 // once, server-side, before the data reaches React.
 
 import { formatEventDate, formatEventTime } from "./format";
+import {
+  isHomepageHighlighted,
+  stripHomepageHighlightMarker
+} from "./homepageHighlight";
 import { resolveEventImage } from "./imageKeys";
 
 export type EventStatus = "pending" | "approved" | "removed";
@@ -50,6 +54,7 @@ export type EventForDisplay = {
   contact: { name: string; phone: string } | null;
   register_link: string;
   createdBy: string | null;  // user id; used by /admin to decide who can edit
+  homepageHighlight: boolean;
 };
 
 export function eventRowToDisplay(row: EventRow): EventForDisplay {
@@ -67,10 +72,11 @@ export function eventRowToDisplay(row: EventRow): EventForDisplay {
     location: row.location,
     category: row.audience ?? "",
     address: row.address,
-    notes: row.description ?? row.notes,
+    notes: row.description ?? stripHomepageHighlightMarker(row.notes),
     image: resolveEventImage(row.image_key),
     contact,
     register_link: row.register_link ?? "",
-    createdBy: row.created_by
+    createdBy: row.created_by,
+    homepageHighlight: isHomepageHighlighted(row.notes)
   };
 }

@@ -45,7 +45,8 @@ export const eventFormSchema = z.object({
   cost: optionalString,
   host_name: optionalString,
   contact_name: optionalString,
-  contact_phone: optionalString
+  contact_phone: optionalString,
+  homepage_highlight: z.enum(["true"]).optional()
 });
 
 export type EventFormValues = z.infer<typeof eventFormSchema>;

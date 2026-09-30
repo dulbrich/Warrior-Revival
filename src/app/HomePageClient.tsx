@@ -220,7 +220,11 @@ export default function HomePageClient({
               {upcomingEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="cursor-pointer rounded-xl border border-border bg-surface p-4 shadow-soft transition hover:border-primary/40 hover:bg-primary/5"
+                  className={`cursor-pointer rounded-xl border p-4 shadow-soft transition hover:border-primary/40 hover:bg-primary/5 ${
+                    event.homepageHighlight
+                      ? "border-accent/60 bg-accent/5 ring-1 ring-accent/20"
+                      : "border-border bg-surface"
+                  }`}
                   role="link"
                   tabIndex={0}
                   onClick={() =>
@@ -245,9 +249,16 @@ export default function HomePageClient({
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-primary">
-                          {event.category}
-                        </span>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold uppercase tracking-wide text-primary">
+                            {event.category}
+                          </span>
+                          {event.homepageHighlight ? (
+                            <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                              Featured
+                            </span>
+                          ) : null}
+                        </div>
                         <span className="text-sm font-semibold uppercase tracking-wide text-textSecondary">
                           {event.dateLabel}
                         </span>
