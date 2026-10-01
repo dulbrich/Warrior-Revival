@@ -98,7 +98,15 @@ const confirmedSponsors: Array<{
   logos?: Array<{ src: string; alt: string }>;
   href?: string;
   note?: string;
+  logoBackdrop?: "dark";
 }> = [
+  {
+    name: "Cambridge Financial Network",
+    tier: "Bronze Sponsor",
+    logo: "/golf/sponsors/cambridge-financial-network.png",
+    href: "https://www.cambridgefn.com",
+    logoBackdrop: "dark"
+  },
   {
     name: "Cyprus Credit Union",
     tier: "Bronze Sponsor",
@@ -215,7 +223,11 @@ function SponsorSpotlight() {
                     ))}
                   </div>
                 ) : sponsor.logo ? (
-                  <div className="relative h-24 w-full overflow-hidden rounded-lg">
+                  <div
+                    className={`relative h-24 w-full overflow-hidden rounded-lg ${
+                      sponsor.logoBackdrop === "dark" ? "bg-primary p-3" : ""
+                    }`}
+                  >
                     <Image
                       src={sponsor.logo}
                       alt={`${sponsor.name} sponsor logo`}
