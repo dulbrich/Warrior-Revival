@@ -152,6 +152,12 @@ const confirmedSponsors: Array<{
     href: "https://utahvbrc.org"
   },
   {
+    name: "WeUpliftU Foundation",
+    tier: "Bronze Sponsor",
+    logo: "/golf/sponsors/weupliftu.png",
+    href: "https://weupliftu.com"
+  },
+  {
     name: "Warrior Rising",
     tier: "Veteran & Military Team Donor",
     logo: "/golf/sponsors/warrior-rising.png",
