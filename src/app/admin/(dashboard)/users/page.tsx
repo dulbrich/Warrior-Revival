@@ -67,8 +67,8 @@ export default async function AdminUsersPage() {
           Invite a new user
         </h2>
         <p className="mt-1 text-sm text-textSecondary">
-          They&apos;ll receive a sign-in link by email and land in the admin on
-          first click.
+          They&apos;ll receive an invitation by email. After accepting it, they can
+          use Forgot password on the login screen to create or reset their password.
         </p>
         <form action={inviteUserAction} className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto_auto]">
           <input
