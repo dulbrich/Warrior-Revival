@@ -7,6 +7,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 export default function LoginForm() {
   const searchParams = useSearchParams();
   const errorParam = searchParams.get("error");
+  const passwordParam = searchParams.get("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +42,12 @@ export default function LoginForm() {
       <p className="mt-3 text-sm text-textSecondary">
         Sign in with the email and password for your Warrior Revival account.
       </p>
+
+      {passwordParam === "updated" ? (
+        <p className="mt-5 rounded-md border border-success/40 bg-success/10 px-3 py-2 text-sm text-success">
+          Password updated. Sign in with your new password.
+        </p>
+      ) : null}
 
       {errorParam === "not_authorized" ? (
         <p className="mt-5 rounded-md border border-warning/40 bg-warning/10 px-3 py-2 text-sm text-warning">
