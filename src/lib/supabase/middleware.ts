@@ -40,10 +40,19 @@ export async function updateSession(request: NextRequest) {
   const isAdminRoute = pathname.startsWith("/admin");
   const isLoginRoute = pathname.startsWith("/admin/login");
   const isAuthRoute = pathname.startsWith("/admin/auth");
+  const isPasswordRoute =
+    pathname.startsWith("/admin/forgot-password") ||
+    pathname.startsWith("/admin/reset-password");
   const isDevSigninRoute = pathname.startsWith("/admin/dev-signin");
   const isUsersRoute = pathname.startsWith("/admin/users");
 
-  if (isAdminRoute && !isLoginRoute && !isAuthRoute && !isDevSigninRoute) {
+  if (
+    isAdminRoute &&
+    !isLoginRoute &&
+    !isAuthRoute &&
+    !isPasswordRoute &&
+    !isDevSigninRoute
+  ) {
     if (!user) {
       const url = request.nextUrl.clone();
       // Dev convenience: skip the magic-link email round-trip when running
