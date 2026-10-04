@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-// Exchanges the magic-link OTP code in the query string for a Supabase session
-// (cookies set via the SSR client), then redirects to /admin. The middleware
-// will then verify the email is on the ADMIN_EMAILS allowlist.
+// Exchanges an emailed Supabase auth code (recovery or invitation) for a
+// session, then redirects to the requested admin destination. Middleware and
+// server-side role guards remain responsible for admin authorization.
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code");
   const next = request.nextUrl.searchParams.get("next") ?? "/admin";
