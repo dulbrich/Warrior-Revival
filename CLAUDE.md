@@ -45,13 +45,15 @@ The "What Our Members Say" carousel on `/veterans` is fed by the Supabase `testi
 Other page content (founder/leadership bios) is still exported as TypeScript constants from `src/data/*.ts`. Only events and volunteers have moved.
 
 ### Auth + admin UI
-Admin UI lives under `/admin`, gated by Supabase Auth (magic-link, no passwords). The middleware (`src/middleware.ts` → `src/lib/supabase/middleware.ts`) refreshes the session on every request and bounces unauthenticated visitors from `/admin` to `/admin/login`. Authorization is **role-based**, not allowlist-based — see "Roles" below.
+Admin UI lives under `/admin`, gated by Supabase Auth (email/password with password recovery). The middleware (`src/middleware.ts` → `src/lib/supabase/middleware.ts`) refreshes the session on every request and bounces unauthenticated visitors from `/admin` to `/admin/login`. Authorization is **role-based**, not allowlist-based — see "Roles" below.
 
 - `src/lib/supabase/{server,client}.ts` — typed clients for Server Components / Route Handlers vs. Client Components. Both wire cookies via `@supabase/ssr`.
 - `src/lib/supabase/admin.ts` — service-role client. Only ever used server-side for `auth.admin.*` calls in `/admin/users` actions.
 - `src/lib/auth/role.ts` — `getSessionUser()` + `requireAdmin()` / `requireRole()` guards used by every server action.
-- `src/app/admin/login/` — magic-link form (client) wrapped in Suspense (server entry).
-- `src/app/admin/auth/callback/route.ts` — exchanges the OTP code for a session.
+- `src/app/admin/login/` — email/password form (client) wrapped in Suspense (server entry).
+- `src/app/admin/forgot-password/` — sends Supabase password-recovery emails.
+- `src/app/admin/reset-password/` — lets a signed-in user choose a new password; also linked as Change password in the dashboard header.
+- `src/app/admin/auth/callback/route.ts` — exchanges the emailed recovery/invite code for a session. Supabase's verified recovery intent always routes to the password form, even without `next`.
 - `src/app/admin/logout/route.ts` — POST endpoint that signs out + redirects.
 - `src/app/admin/(dashboard)/` — route group containing all authed pages. Its `layout.tsx` enforces auth one more time as defense in depth and renders the role chip + nav.
 
