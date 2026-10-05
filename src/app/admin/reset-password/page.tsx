@@ -65,11 +65,11 @@ export default function ResetPasswordPage() {
         </h1>
 
         {!ready ? (
-          <p className="mt-5 text-sm text-textSecondary">Checking reset link...</p>
+          <p className="mt-5 text-sm text-textSecondary">Checking your session...</p>
         ) : !authorized ? (
           <>
             <p className="mt-5 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-600">
-              This reset link is invalid or expired.
+              Sign in or use a valid password-reset link to change your password.
             </p>
             <p className="mt-5 text-center text-sm">
               <a

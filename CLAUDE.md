@@ -52,8 +52,8 @@ Admin UI lives under `/admin`, gated by Supabase Auth (email/password with passw
 - `src/lib/auth/role.ts` — `getSessionUser()` + `requireAdmin()` / `requireRole()` guards used by every server action.
 - `src/app/admin/login/` — email/password form (client) wrapped in Suspense (server entry).
 - `src/app/admin/forgot-password/` — sends Supabase password-recovery emails.
-- `src/app/admin/reset-password/` — lets a recovery-session user choose a new password.
-- `src/app/admin/auth/callback/route.ts` — exchanges the emailed recovery/invite code for a session.
+- `src/app/admin/reset-password/` — lets a signed-in user choose a new password; also linked as Change password in the dashboard header.
+- `src/app/admin/auth/callback/route.ts` — exchanges the emailed recovery/invite code for a session. Supabase's verified recovery intent always routes to the password form, even without `next`.
 - `src/app/admin/logout/route.ts` — POST endpoint that signs out + redirects.
 - `src/app/admin/(dashboard)/` — route group containing all authed pages. Its `layout.tsx` enforces auth one more time as defense in depth and renders the role chip + nav.
 

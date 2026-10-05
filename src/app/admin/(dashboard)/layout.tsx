@@ -81,6 +81,12 @@ export default async function AdminDashboardLayout({
             <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
               {user.role}
             </span>
+            <a
+              href="/admin/reset-password"
+              className="text-xs font-semibold text-primary underline underline-offset-4 hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Change password
+            </a>
             <form action="/admin/logout" method="POST">
               <button
                 type="submit"
