@@ -63,7 +63,7 @@ export default function EventForm({ mode, action, defaults, canSetStatus }: Prop
                 Highlight on homepage
               </span>
               <span className="mt-1 block text-sm text-textSecondary">
-                Prioritizes this event in the homepage&apos;s three upcoming event slots,
+                Prioritizes this event in the homepage&apos;s five upcoming event slots,
                 even when its date is farther out.
               </span>
             </span>
