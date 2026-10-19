@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SubscribeSection from "@/components/SubscribeSection";
@@ -38,39 +39,7 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-          <form className="rounded-2xl border border-border bg-light p-6 shadow-card">
-            <div className="grid gap-4">
-              <label className="text-base font-semibold text-textSecondary">
-                Name
-                <input
-                  className="mt-2 h-11 w-full rounded-md border border-border bg-white px-3 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  type="text"
-                  placeholder="Your name"
-                />
-              </label>
-              <label className="text-base font-semibold text-textSecondary">
-                Email
-                <input
-                  className="mt-2 h-11 w-full rounded-md border border-border bg-white px-3 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  type="email"
-                  placeholder="you@example.com"
-                />
-              </label>
-              <label className="text-base font-semibold text-textSecondary">
-                Message
-                <textarea
-                  className="mt-2 min-h-[140px] w-full rounded-md border border-border bg-white px-3 py-2 text-base text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  placeholder="How can we help?"
-                />
-              </label>
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold uppercase tracking-wide text-white transition hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                Send message
-              </button>
-            </div>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
